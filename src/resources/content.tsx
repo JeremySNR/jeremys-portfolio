@@ -294,6 +294,16 @@ const gallery: Gallery = {
       alt: "Neural River AI Venture Builder",
       orientation: "horizontal",
     },
+    {
+      src: "/images/gallery/IMG-20250402-WA0027.jpg",
+      alt: "Gallery photo",
+      orientation: "vertical",
+    },
+    {
+      src: "/images/gallery/IMG-20251014-WA0001.jpg",
+      alt: "Gallery photo",
+      orientation: "vertical",
+    },
   ],
 };
 
