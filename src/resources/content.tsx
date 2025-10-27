@@ -2,39 +2,34 @@ import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/
 import { Line, Logo, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  firstName: "Jeremy",
+  lastName: "Smith",
+  name: `Jeremy Smith`,
+  role: "Entrepreneur & Technology Leader",
+  avatar: "/images/1726940932303.jpeg",
+  email: "jeremy@neural-voice.ai",
+  location: "Europe/London", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter: Newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly newsletter about creativity and engineering</>,
+  description: <>Updates on AI, entrepreneurship, and technology insights</>,
 };
 
 const social: Social = [
   // Links are automatically displayed.
   // Import new icons in /once-ui/icons.ts
   {
-    name: "GitHub",
-    icon: "github",
-    link: "https://github.com/once-ui-system",
-  },
-  {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://linkedin.com/in/jsmithsales",
   },
   {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    name: "Website",
+    icon: "globe",
+    link: "https://neural-voice.ai",
   },
   {
     name: "Email",
@@ -49,30 +44,24 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Building innovative companies and scaling high-performing teams</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">Recent Work</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          Featured work
+          Featured project
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/work/neural-voice",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at{" "}
-      <Logo
-        dark
-        icon="/trademarks/wordmark-dark.svg"
-        style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}
-      />
-      , where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I'm Jeremy, an entrepreneur and technology leader with a track record of founding companies, raising capital, and building products from concept to market.
+      <br /> Proven expertise in AI, sales leadership, go-to-market strategy, and scaling businesses from zero to revenue.
     </>
   ),
 };
@@ -98,9 +87,9 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Jeremy is an entrepreneur and technology leader with extensive experience building companies from the ground up. 
+        Proven track record in fundraising (£1m+ raised), product development, team building, and go-to-market execution. 
+        Expertise spans AI and emerging technologies, B2B SaaS sales, operational leadership, and scaling businesses from concept to revenue and beyond.
       </>
     ),
   },
@@ -109,41 +98,69 @@ const about: About = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Neural Voice",
+        timeframe: "Sep 2023 - Present",
+        role: "Co-Founder & CEO",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Founded company from scratch, raising nearly £1m and securing Innovate UK grant (selected from 2,250 competing businesses)
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Built proprietary enterprise AI agent platform from the ground up, working with leading AI providers whilst developing all core technology in-house to create unique conversational capabilities that scale to hundreds of thousands of simultaneous calls with sub-300ms latency, NLP, and sentiment detection
+          </>,
+          <>
+            Integrated platform with 600+ business tools including leading GDS, PMS, and CRM systems; partnered with largest UK travel businesses delivering 87% cost savings versus traditional call centres
+          </>,
+          <>
+            Featured on BBC, ITV, Fox News, NBC, The Independent, Travel Weekly; keynote at ITT 'Humans vs AI' with industry C-suite executives
+          </>,
+          <>
+            Invited to Downing Street for AI policy work with Labour government; presented at universities, AI conferences, and travel events
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Neural River",
+        timeframe: "Jul 2023 - Mar 2024",
+        role: "Co-Founder",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Founded AI incubator identifying and developing fresh university AI talent to work on internal and external AI startups
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Grew business with expanding portfolio of AI ventures; developed lifelike AI avatars for travel, legal, and sales sectors
+          </>,
+          <>
+            Launched Sales Compass as Neural River product, providing fractional sales leadership and strategic guidance to B2B technology companies
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "AssessFirst UK",
+        timeframe: "Sep 2022 - Jun 2023",
+        role: "BDR/SDR Manager",
+        achievements: [
+          <>
+            Led UK market expansion, establishing entire UK sales operation from ground up; recruited and managed high-performing BDR team
+          </>,
+          <>
+            Implemented Sales Enablement platform and designed inbound/outbound strategies; streamlined operations by integrating underutilised systems
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Force24 - Marketing Automation",
+        timeframe: "Oct 2020 - Sep 2022",
+        role: "Inside Sales Manager",
+        achievements: [
+          <>
+            Led Inside Sales team of 8 representatives; launched partnership division; achieved 100%+ target attainment across all ramped reps in Q2 2022
+          </>,
+          <>
+            Rapidly promoted through four roles in under two years; established training frameworks and became recognised expert in education sector
           </>,
         ],
         images: [],
@@ -152,77 +169,50 @@ const about: About = {
   },
   studies: {
     display: true, // set to false to hide this section
-    title: "Studies",
+    title: "Education",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "Bangor University, Wales",
+        description: <>MA in Business and Marketing (Distinction, 2019-20). BSc in Business and Finance (2:1, 2016-19). President of Bangor Poker Society (2018-19, Won Best New Opportunity Award). Silver Duke of Edinburgh Award.</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Collyer's College, Horsham",
+        description: <>A Levels: Business Studies, Electronics, Computer Science (2014-16)</>,
       },
     ],
   },
   technical: {
     display: true, // set to false to hide this section
-    title: "Technical skills",
+    title: "Key Skills & Expertise",
     skills: [
       {
-        title: "Figma",
+        title: "AI & Technology",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>Expert in Conversational AI, Voice Technology, NLP, Machine Learning, Platform Architecture, and API Integration. Built enterprise-scale AI platforms handling hundreds of thousands of concurrent calls with sub-300ms latency.</>
         ),
         tags: [
           {
-            name: "Figma",
-            icon: "figma",
+            name: "AI",
+            icon: "openai",
           },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        title: "Next.js",
+        title: "Leadership & Strategy",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>Proven track record in fundraising (£1m+), strategic planning, stakeholder engagement, public speaking, team building, and agile methodologies. Successfully led companies from concept to enterprise deployment.</>
         ),
-        tags: [
-          {
-            name: "JavaScript",
-            icon: "javascript",
-          },
-          {
-            name: "Next.js",
-            icon: "nextjs",
-          },
-          {
-            name: "Supabase",
-            icon: "supabase",
-          },
-        ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        tags: [],
+        images: [],
+      },
+      {
+        title: "Sales & Business Development",
+        description: (
+          <>Extensive experience in B2B SaaS, Enterprise Sales, Pipeline Management, Customer Success, Market Expansion, and Sales Enablement across travel, HR-tech, marketing automation, and SaaS sectors.</>
+        ),
+        tags: [],
+        images: [],
       },  
     ],
   },
@@ -255,44 +245,54 @@ const gallery: Gallery = {
   // These are placeholder images, replace with your own
   images: [
     {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
+      src: "/images/gallery/ROZ_8680.jpg",
+      alt: "Gallery photo",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
+      src: "/images/gallery/PXL_20250319_123231055.jpg",
+      alt: "Gallery photo",
       orientation: "vertical",
     },
     {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
+      src: "/images/gallery/1241067471_HIGH.jpg",
+      alt: "Gallery photo",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
+      src: "/images/gallery/PXL_20250916_170927338.jpg",
+      alt: "Gallery photo",
       orientation: "vertical",
     },
     {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
+      src: "/images/gallery/IMG20230809090847_01.jpg",
+      alt: "Gallery photo",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
+      src: "/images/gallery/PXL_20251013_202014559.NIGHT.jpg",
+      alt: "Gallery photo",
+      orientation: "vertical",
+    },
+    {
+      src: "/images/gallery/IMG-20221207-WA0034.jpg",
+      alt: "Gallery photo",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
+      src: "/images/gallery/1_20240223_121141_0000.png",
+      alt: "Gallery photo",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/gallery/20231121_103712_0000.png",
+      alt: "Gallery photo",
       orientation: "vertical",
+    },
+    {
+      src: "/images/projects/neural-river/1752133774471.jpeg",
+      alt: "Neural River AI Venture Builder",
+      orientation: "horizontal",
     },
   ],
 };
