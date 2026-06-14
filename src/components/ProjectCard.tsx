@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import {
   AvatarGroup,
   Carousel,
@@ -9,6 +10,7 @@ import {
   SmartLink,
   Text,
 } from "@once-ui-system/core";
+import styles from "./ProjectCard.module.scss";
 
 interface ProjectCardProps {
   href: string;
@@ -30,7 +32,29 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   avatars,
   link,
 }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    el.style.setProperty("--mx", `${x}px`);
+    el.style.setProperty("--my", `${y}px`);
+    el.style.setProperty("--rx", `${((x / rect.width) - 0.5) * 5}deg`);
+    el.style.setProperty("--ry", `${((y / rect.height) - 0.5) * -5}deg`);
+  };
+
+  const handleLeave = () => {
+    const el = cardRef.current;
+    if (!el) return;
+    el.style.setProperty("--rx", "0deg");
+    el.style.setProperty("--ry", "0deg");
+  };
+
   return (
+    <div ref={cardRef} className={styles.card} onMouseMove={handleMove} onMouseLeave={handleLeave}>
     <Column fillWidth gap="m">
       <Carousel
         sizes="(max-width: 960px) 100vw, 960px"
@@ -77,5 +101,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         )}
       </Flex>
     </Column>
+    </div>
   );
 };

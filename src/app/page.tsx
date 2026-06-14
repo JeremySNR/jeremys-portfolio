@@ -15,6 +15,7 @@ import { home, about, person, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
+import { NeuralField } from "@/components/effects/NeuralField";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -28,7 +29,9 @@ export async function generateMetadata() {
 
 export default function Home() {
   return (
-    <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
+    <>
+      <NeuralField />
+      <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center" style={{ position: "relative", zIndex: 1 }}>
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -104,6 +107,7 @@ export default function Home() {
         <Projects range={[1, 1]} />
       </RevealFx>
       <Projects range={[2]} />
-    </Column>
+      </Column>
+    </>
   );
 }
