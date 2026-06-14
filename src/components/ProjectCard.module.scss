@@ -6,17 +6,21 @@
   transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-/* cursor-following emerald spotlight */
+/* cursor-following emerald spotlight, feathered so it never shows a hard
+   edge where it meets the card boundary */
 .card::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   background: radial-gradient(
-    300px circle at var(--mx, -200px) var(--my, -200px),
-    rgba(52, 211, 153, 0.14),
-    transparent 60%
+    260px circle at var(--mx, -200px) var(--my, -200px),
+    rgba(52, 211, 153, 0.16),
+    rgba(52, 211, 153, 0.05) 35%,
+    transparent 70%
   );
+  -webkit-mask: radial-gradient(135% 130% at 50% 50%, #000 52%, transparent 100%);
+  mask: radial-gradient(135% 130% at 50% 50%, #000 52%, transparent 100%);
   opacity: 0;
   transition: opacity 0.35s ease;
   pointer-events: none;
