@@ -9,9 +9,11 @@ import { useEffect, useRef, useState } from "react";
 export function Reveal({
   children,
   delay = 0,
+  style,
 }: {
   children: React.ReactNode;
   delay?: number;
+  style?: React.CSSProperties;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [shown, setShown] = useState(false);
@@ -46,6 +48,7 @@ export function Reveal({
         transform: shown ? "none" : "translateY(26px)",
         transition: `opacity 0.7s ease ${delay}s, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) ${delay}s`,
         willChange: "opacity, transform",
+        ...style,
       }}
     >
       {children}

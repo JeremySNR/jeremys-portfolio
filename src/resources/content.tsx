@@ -1,4 +1,4 @@
-import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import { About, Blog, Gallery, Home, News, Newsletter, Person, Social, Work } from "@/types";
 import { Line, Logo, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
@@ -406,4 +406,183 @@ const gallery: Gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+const news: News = {
+  path: "/news",
+  label: "News",
+  title: `In the news – ${person.name}`,
+  description: `Where ${person.name} and his work have been featured in the press`,
+  intro: (
+    <>
+      A running list of where my work has turned up. Some of it people loved, a fair bit of it people loved to hate. Either way, here it all is.
+    </>
+  ),
+  items: [
+    // AI Steve, 2024
+    {
+      outlet: "WIRED",
+      title: "AI Steve, the chatbot running for UK Parliament",
+      date: "Jun 2024",
+      tag: "AI Steve",
+      link: "https://www.google.com/search?q=wired+AI+Steve+morgan+meaker+member+of+parliament",
+      featured: true,
+    },
+    {
+      outlet: "NBC News",
+      title: "An AI candidate running for Parliament says AI can humanize politics",
+      date: "Jun 2024",
+      tag: "AI Steve",
+      link: "https://www.nbcnews.com/tech/tech-news/ai-candidate-running-parliament-uk-says-ai-can-humanize-politics-rcna156991",
+      featured: true,
+    },
+    {
+      outlet: "Fox News",
+      title: "UK parliamentary candidate runs as first AI lawmaker with an interactive avatar",
+      date: "Jun 2024",
+      tag: "AI Steve",
+      link: "https://www.foxnews.com/world/uk-parliamentary-candidate-runs-first-ai-lawmaker-interactive-ai-avatar",
+      featured: true,
+    },
+    {
+      outlet: "Gizmodo",
+      title: "An AI bot could be the first artificial Member of Parliament",
+      date: "Jun 2024",
+      tag: "AI Steve",
+      link: "https://gizmodo.com/ai-steve-endacott-running-for-parliament-1851533808",
+    },
+    {
+      outlet: "Dazed",
+      title: "Meet AI Steve, the chatbot standing for election as a UK MP",
+      date: "Jun 2024",
+      tag: "AI Steve",
+      link: "https://www.dazeddigital.com/life-culture/article/62895/1/meet-ai-steve-endacott-the-chatbot-standing-for-election-as-a-uk-mp-brighton",
+    },
+    {
+      outlet: "Euronews",
+      title: "Meet AI Steve, the UK's avatar election candidate",
+      date: "Jun 2024",
+      tag: "AI Steve",
+      link: "https://www.euronews.com/2024/06/13/meet-ai-steve-the-uks-avatar-election-candidate",
+    },
+    {
+      outlet: "Tech Times",
+      title: "'AI Steve' is running for Parliament in the UK",
+      date: "Jun 2024",
+      tag: "AI Steve",
+      link: "https://www.techtimes.com/articles/305672/20240613/ai-steve-running-parliament-uk-candidate-made-endacott-neural-voice.htm",
+    },
+    {
+      outlet: "Gulf News",
+      title: "Meet AI Steve, AI candidate on the ballot for the UK election",
+      date: "Jun 2024",
+      tag: "AI Steve",
+      link: "https://gulfnews.com/world/europe/meet-ai-steve-ai-candidate-on-the-ballot-for-uk-election-1.1718789686441",
+    },
+    {
+      outlet: "VOA",
+      title: "Candidate uses AI version of self in British election",
+      date: "Jun 2024",
+      tag: "AI Steve",
+      link: "https://learningenglish.voanews.com/a/candidate-uses-ai-version-of-self-in-british-election/7663233.html",
+    },
+    {
+      outlet: "Travel Weekly",
+      title: "Endacott creates avatar 'AI Steve' to stand in general election",
+      date: "Jun 2024",
+      tag: "AI Steve",
+      link: "https://travelweekly.co.uk/articles/526523/endacott-creates-avatar-ai-steve-to-stand-in-general-election",
+    },
+    // AI Mark, 2025
+    {
+      outlet: "BBC News",
+      title: "MP becomes first to create himself as an AI bot",
+      date: "Aug 2025",
+      tag: "AI Mark",
+      link: "https://www.bbc.co.uk/news/articles/cy5pr3q6lrpo",
+      featured: true,
+    },
+    {
+      outlet: "The Washington Post",
+      title: "A politician made an AI clone of himself. The outrage was real.",
+      date: "Aug 2025",
+      tag: "AI Mark",
+      link: "https://www.washingtonpost.com/world/2025/08/06/ai-chatbot-mp-britain-labour/",
+      featured: true,
+    },
+    {
+      outlet: "Euronews",
+      title: "A British politician turned himself into an AI chatbot: the UK's first virtual MP",
+      date: "Aug 2025",
+      tag: "AI Mark",
+      link: "https://www.euronews.com/next/2025/08/06/a-british-politician-turned-himself-into-an-ai-chatbot-meet-the-uks-first-virtual-mp",
+    },
+    {
+      outlet: "Raconteur",
+      title: "Mark Sewards' AI misfire puts the spotlight on bad chatbots",
+      date: "Aug 2025",
+      tag: "AI Mark",
+      link: "https://www.raconteur.net/technology/mark-sewards-ai-misfire-puts-spotlight-on-bad-chatbots",
+    },
+    {
+      outlet: "eWeek",
+      title: "UK politician launches the first AI bot of an MP",
+      date: "Aug 2025",
+      tag: "AI Mark",
+      link: "https://www.eweek.com/news/uk-mp-mark-sewards-ai-bot/",
+    },
+    {
+      outlet: "LBC",
+      title: "Politician launches the UK's first virtual MP",
+      date: "Aug 2025",
+      tag: "AI Mark",
+      link: "https://www.lbc.co.uk/politics/uk-politics/labour-ai-leeds-mp/",
+    },
+    {
+      outlet: "Yorkshire Evening Post",
+      title: "'AI is on its way': Leeds MP's virtual twin sparks debate",
+      date: "Aug 2025",
+      tag: "AI Mark",
+      link: "https://www.yorkshireeveningpost.co.uk/news/politics/leeds-mp-mark-sewards-ai-reaction-5261812",
+    },
+    // Travel & industry
+    {
+      outlet: "Travel Weekly",
+      title: "Joins Travel Counsellors as its first AI Innovation Partner",
+      tag: "Travel",
+      link: "https://travelweekly.co.uk/all-content/son-of-travel-counsellor-joins-business-as-ai-innovation-partner",
+    },
+    {
+      outlet: "Travel Weekly",
+      title: "Start-up introduces 'AI Emily' as a virtual travel agent",
+      tag: "Travel",
+      link: "https://travelweekly.co.uk/news/start-up-introduces-ai-emily-as-virtual-travel-agent",
+    },
+    {
+      outlet: "Travolution",
+      title: "Travel Counsellors appoints Jeremy Smith to AI Innovation Partner role",
+      tag: "Travel",
+      link: "https://www.travolution.com/news/travel-sectors/travel-agents/travel-counsellors-appoints-jeremy-smith-to-newly-created-ai-innovation-partner-role/",
+    },
+    {
+      outlet: "Prolific North",
+      title: "Travel Counsellors invests in AI with Neural Voice founder",
+      tag: "Travel",
+      link: "https://www.prolificnorth.co.uk/news/travel-counsellors-invests-in-ai-with-neural-voice-founder/",
+    },
+    {
+      outlet: "TTG",
+      title: "'AI will soon be part of every travel transaction, but there's hope yet for humans' (ITT 2024)",
+      date: "Jun 2024",
+      tag: "Travel",
+      link: "https://www.ttgmedia.com/news/ai-will-soon-become-a-part-of-every-travel-transaction-but-theres-hope-yet-for-humans-itt-delegates-told-52758",
+    },
+    // Recognition
+    {
+      outlet: "GrantUp",
+      title: "Neural Voice wins an Innovate UK Smart Grant (£341,810)",
+      tag: "Recognition",
+      link: "https://www.grantup.co.uk/work/neural-voice-wins-smart-grant-to-revolutionise-contact-centres-with-real-time-voice-ai",
+    },
+  ],
+};
+
+export { person, social, newsletter, home, about, blog, work, gallery, news };

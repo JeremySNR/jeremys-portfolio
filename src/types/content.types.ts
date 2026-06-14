@@ -272,3 +272,31 @@ export interface Gallery extends BasePageConfig {
     orientation: string;
   }>;
 }
+
+/**
+ * A single press / news feature.
+ */
+export type NewsItem = {
+  /** Publication or outlet name */
+  outlet: string;
+  /** Headline or short description of the feature */
+  title: string;
+  /** Display date, e.g. "Aug 2025" */
+  date?: string;
+  /** Topic/category tag, e.g. "AI Steve" */
+  tag?: string;
+  /** Link to the article */
+  link: string;
+  /** Flag the most notable outlets for the featured strip */
+  featured?: boolean;
+};
+
+/**
+ * News/press page configuration.
+ */
+export interface News extends BasePageConfig {
+  /** Intro line shown under the page title */
+  intro?: React.ReactNode;
+  /** List of press features */
+  items: NewsItem[];
+}
