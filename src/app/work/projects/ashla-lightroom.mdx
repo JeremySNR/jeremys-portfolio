@@ -1,0 +1,39 @@
+---
+title: "Ashla: AI Colour Grading for Lightroom"
+publishedAt: "2025-05-31"
+summary: "A Lightroom Classic plugin that grades photos from a description or a reference frame — vision-enabled, restrained, and aiming for the grade you don't notice."
+images:
+  - "/api/og/generate?title=Ashla"
+team:
+  - name: "Jeremy Smith"
+    role: "Creator"
+    avatar: "/images/1726940932303.jpeg"
+    linkedIn: "https://linkedin.com/in/jsmithsales"
+link: "https://github.com/JeremySNR/ashla-lightroom"
+---
+
+## Overview
+
+Ashla is a plugin for Adobe Lightroom Classic that automates colour grading. Describe a look, hand it a reference image, or ask for an automatic enhancement, and it reads your photo and applies professional-grade develop settings in a single click.
+
+## The Problem
+
+Traditional editing means manually wrangling dozens of sliders or buying presets that never quite fit the frame. Ashla interprets creative intent and applies a coherent, comprehensive edit — treating the sliders as one interconnected system rather than isolated dials.
+
+## Key Features
+
+- **Three input modes** — descriptive text ("warm Portra 400 tones"), a reference image, or automatic "Lucky" mode
+- **Intelligent editing** — exposure, contrast, tone curves, HSL, colour grading, and grain
+- **Optional composition** — reframe, level horizons, or adjust aspect ratios for specific film formats
+- **Vision-enabled** — analyses actual pixel data from JPEG previews for context-aware decisions
+- **Restrained by design** — aims for "the grade you do not notice" rather than an obvious filter
+
+## How It Works
+
+The plugin gathers image metadata and a JPEG preview, then on a background thread sends it plus the user's input to a vision model, which returns structured develop settings. Those values are validated, clamped to safe ranges, and applied as a preset.
+
+## Technology
+
+Lua 5.1 on the Lightroom Classic plugin architecture, an OpenAI vision backend, and OS-keychain storage for credentials.
+
+[View on GitHub →](https://github.com/JeremySNR/ashla-lightroom)

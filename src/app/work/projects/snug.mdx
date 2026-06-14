@@ -1,0 +1,47 @@
+---
+title: "snug: Token-Budget Context Management"
+publishedAt: "2026-04-06"
+summary: "A zero-dependency TypeScript primitive for fitting prioritised content into an LLM token budget — with a small ecosystem of adapters for OpenAI, Anthropic, and tiktoken."
+images:
+  - "/api/og/generate?title=snug"
+team:
+  - name: "Jeremy Smith"
+    role: "Creator"
+    avatar: "/images/1726940932303.jpeg"
+    linkedIn: "https://linkedin.com/in/jsmithsales"
+link: "https://github.com/JeremySNR/snug"
+---
+
+## Overview
+
+snug solves a problem every LLM application eventually hits: fitting system prompts, conversation history, documents, and tool definitions into a limited context window. Rather than every team rebuilding the same bespoke truncation logic, snug provides a single, well-tested function that handles context budgeting cleanly.
+
+## The Problem
+
+Context windows are finite, but the things you want to put in them are not. When you exceed the budget, you need to decide what survives — and doing that naively breaks things: dropping a `tool_use` without its matching `tool_result`, or evicting the system prompt before low-priority chat history.
+
+## Key Features
+
+- **Zero dependencies** — runs on Node, Deno, Bun, and edge runtimes
+- **Priority-based selection** — items are included greedily by priority level
+- **Flexible tokenisation** — bring your own tokeniser or use the built-in approximation
+- **Pair constraints** — guarantees atomic 1:1 relationships such as `tool_use` / `tool_result`
+- **Order preservation** — returns included items in their original input order
+
+```ts
+const { included, excluded, tokensUsed } = fit(items, options);
+```
+
+## The Ecosystem
+
+The zero-dependency core pairs with focused adapters published on npm:
+
+- **snug-tiktoken** — pre-wired with accurate OpenAI and Anthropic token counting
+- **snug-openai** — direct support for OpenAI SDK message arrays
+- **snug-anthropic** — Anthropic SDK integration with automatic tool-message pairing
+
+## Technology
+
+TypeScript, zero runtime dependencies, broad runtime support. Published to npm under the snug family of packages.
+
+[View on GitHub →](https://github.com/JeremySNR/snug)

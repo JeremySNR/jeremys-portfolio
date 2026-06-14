@@ -45,6 +45,11 @@ export default function About() {
       items: about.studies.institutions.map((institution) => institution.name),
     },
     {
+      title: about.publications?.title ?? "",
+      display: about.publications?.display ?? false,
+      items: about.publications?.papers.map((paper) => paper.title) ?? [],
+    },
+    {
       title: about.technical.title,
       display: about.technical.display,
       items: about.technical.skills.map((skill) => skill.title),
@@ -273,6 +278,56 @@ export default function About() {
                     <Text variant="heading-default-xs" onBackground="neutral-weak">
                       {institution.description}
                     </Text>
+                  </Column>
+                ))}
+              </Column>
+            </>
+          )}
+
+          {about.publications?.display && (
+            <>
+              <Heading
+                as="h2"
+                id={about.publications.title}
+                variant="display-strong-s"
+                marginBottom="m"
+              >
+                {about.publications.title}
+              </Heading>
+              <Column fillWidth gap="l" marginBottom="40">
+                {about.publications.papers.map((paper, index) => (
+                  <Column key={`${paper.title}-${index}`} fillWidth gap="8">
+                    <Row fillWidth horizontal="between" vertical="end" marginBottom="4">
+                      <Text id={paper.title} variant="heading-strong-l">
+                        {paper.title}
+                      </Text>
+                      {paper.date && (
+                        <Text variant="heading-default-xs" onBackground="neutral-weak">
+                          {paper.date}
+                        </Text>
+                      )}
+                    </Row>
+                    {paper.venue && (
+                      <Text variant="body-default-s" onBackground="brand-weak">
+                        {paper.venue}
+                      </Text>
+                    )}
+                    {paper.description && (
+                      <Text variant="body-default-m" onBackground="neutral-weak">
+                        {paper.description}
+                      </Text>
+                    )}
+                    <Row paddingTop="4">
+                      <Button
+                        href={paper.link}
+                        prefixIcon="document"
+                        suffixIcon="arrowUpRightFromSquare"
+                        label="Read paper"
+                        size="s"
+                        weight="default"
+                        variant="secondary"
+                      />
+                    </Row>
                   </Column>
                 ))}
               </Column>

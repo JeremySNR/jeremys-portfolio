@@ -1,0 +1,36 @@
+---
+title: "Holocron: Local-First Knowledge Base"
+publishedAt: "2025-12-29"
+summary: "A local-first knowledge base that pairs Notion-style block editing with a Teenage Engineering industrial aesthetic — private by default, with on-device semantic search."
+images:
+  - "/api/og/generate?title=Holocron"
+team:
+  - name: "Jeremy Smith"
+    role: "Creator"
+    avatar: "/images/1726940932303.jpeg"
+    linkedIn: "https://linkedin.com/in/jsmithsales"
+link: "https://github.com/JeremySNR/holocron"
+---
+
+## Overview
+
+Holocron is a local-first knowledge base that combines the intuitive block editing of Notion with the tactile, industrial aesthetic of a Teenage Engineering synthesiser — without your notes living on someone else's server.
+
+## The Problem
+
+> "I love Notion, but I don't love the feeling that my brain is living on someone else's server."
+
+Holocron resolves the tension between loving an intuitive note-taking tool and resenting the loss of data autonomy. It is privacy-native: offline-first, with your data staying on your machine.
+
+## Key Features
+
+- **Tactile block editor** — a `/` command palette and drag-and-drop
+- **Industrial data grids** — relational data with status tracking
+- **Local semantic search** — a Rust-based embedding engine that finds conceptual matches with no cloud indexing
+- **AI co-processor** — an optional panel connecting to external models (via OpenRouter) with awareness of your database
+
+## Technology
+
+Svelte 5 and Tailwind CSS 4 on the front end; a Rust core packaged with Tauri for desktop; Yjs CRDTs plus IndexedDB for conflict-free offline persistence. Actively developed and already daily-use ready.
+
+[View on GitHub →](https://github.com/JeremySNR/holocron)

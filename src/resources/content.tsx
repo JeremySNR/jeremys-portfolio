@@ -5,7 +5,7 @@ const person: Person = {
   firstName: "Jeremy",
   lastName: "Smith",
   name: `Jeremy Smith`,
-  role: "Entrepreneur & Technology Leader",
+  role: "AI Innovation Partner & Founder",
   avatar: "/images/1726940932303.jpeg",
   email: "jeremy@neural-voice.ai",
   location: "Europe/London", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
@@ -27,6 +27,11 @@ const social: Social = [
     link: "https://linkedin.com/in/jsmithsales",
   },
   {
+    name: "GitHub",
+    icon: "github",
+    link: "https://github.com/JeremySNR",
+  },
+  {
     name: "Website",
     icon: "globe",
     link: "https://neural-voice.ai",
@@ -44,7 +49,7 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building innovative companies and scaling high-performing teams</>,
+  headline: <>Building AI that ships — from enterprise platforms to open-source tools and research</>,
   featured: {
     display: true,
     title: (
@@ -52,16 +57,16 @@ const home: Home = {
         <strong className="ml-4">Recent Work</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          Featured project
+          Project Foundry
         </Text>
       </Row>
     ),
-    href: "/work/neural-voice",
+    href: "/work/project-foundry",
   },
   subline: (
     <>
-      I'm Jeremy, an entrepreneur and technology leader with a track record of founding companies, raising capital, and building products from concept to market.
-      <br /> Proven expertise in AI, sales leadership, go-to-market strategy, and scaling businesses from zero to revenue.
+      I'm Jeremy, an AI Innovation Partner and founder. I lead enterprise AI strategy and product at Travel Counsellors, founded Neural Voice, and build open-source AI tools and research in the open.
+      <br /> Proven expertise in conversational AI, multi-agent systems, agentic engineering, fundraising, and taking products from concept to revenue.
     </>
   ),
 };
@@ -87,9 +92,12 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Jeremy is an entrepreneur and technology leader with extensive experience building companies from the ground up. 
-        Proven track record in fundraising (£1m+ raised), product development, team building, and go-to-market execution. 
-        Expertise spans AI and emerging technologies, B2B SaaS sales, operational leadership, and scaling businesses from concept to revenue and beyond.
+        Jeremy is an AI innovation partner, founder, and builder. He currently leads enterprise AI strategy and product
+        development at Travel Counsellors, a £1bn+ travel group, having founded Neural Voice and Neural River before that.
+        Alongside his commercial work he ships open-source AI tools and publishes research — from agentic-engineering
+        governance and LLM context tooling to multi-agent language systems.
+        Proven track record in fundraising (£1m+ raised), product development, team building, and go-to-market execution,
+        with deep hands-on expertise across conversational AI, multi-agent systems, and emerging AI technologies.
       </>
     ),
   },
@@ -98,8 +106,25 @@ const about: About = {
     title: "Work Experience",
     experiences: [
       {
+        company: "Travel Counsellors",
+        timeframe: "2025 - Present",
+        role: "AI Innovation Partner",
+        achievements: [
+          <>
+            Lead enterprise AI strategy and product development across a £1bn+ travel group, identifying high-impact use cases and taking them from prototype to production
+          </>,
+          <>
+            Built and shipped AI products including voice agents for recruitment (Zoom Contact Center integration), AI-powered customer and app support agents, and a ChatGPT app for travel matching
+          </>,
+          <>
+            Keynote speaker at TC Together (Manchester), sharing the company's AI roadmap with counsellors and senior leadership
+          </>,
+        ],
+        images: [],
+      },
+      {
         company: "Neural Voice",
-        timeframe: "Sep 2023 - Present",
+        timeframe: "Sep 2023 - 2025",
         role: "Co-Founder & CEO",
         achievements: [
           <>
@@ -181,6 +206,27 @@ const about: About = {
       },
     ],
   },
+  publications: {
+    display: true,
+    title: "Publications",
+    papers: [
+      {
+        title: "Don't Merge Carol: Cross-Inhibition and Protected Dissent in Multi-Agent Language Systems",
+        venue: "Zenodo",
+        date: "2026",
+        description: (
+          <>
+            A study of multi-agent language systems exploring whether agents can coordinate through a shared latent buffer
+            rather than text. Phase 1 introduces a text-level blackboard with cross-inhibition and a structurally protected
+            dissenter ("Carol"); Phase 2 introduces the Latent Resonance Loop, with Behaviourally-Aligned Prefix Codecs and
+            TIES-inspired conflict resolution. Demonstrates that protected dissent and latent-space conflict resolution can
+            produce emergent shared representations distinct from any individual agent.
+          </>
+        ),
+        link: "https://zenodo.org/records/19467363",
+      },
+    ],
+  },
   technical: {
     display: true, // set to false to hide this section
     title: "Key Skills & Expertise",
@@ -188,7 +234,7 @@ const about: About = {
       {
         title: "AI & Technology",
         description: (
-          <>Expert in Conversational AI, Voice Technology, NLP, Machine Learning, Platform Architecture, and API Integration. Built enterprise-scale AI platforms handling hundreds of thousands of concurrent calls with sub-300ms latency.</>
+          <>Expert in Conversational &amp; Voice AI, multi-agent systems, agentic engineering, LLM tooling, NLP, platform architecture, and API integration. Built enterprise-scale AI platforms handling hundreds of thousands of concurrent calls with sub-300ms latency, and ship in TypeScript, Python, and Rust.</>
         ),
         tags: [
           {
@@ -213,7 +259,20 @@ const about: About = {
         ),
         tags: [],
         images: [],
-      },  
+      },
+      {
+        title: "Open Source & Research",
+        description: (
+          <>Build and maintain open-source AI tooling — including Project Foundry (governance for AI coding agents), the snug context-budgeting library, and Converge — and publish research on multi-agent language systems. Active on GitHub at JeremySNR.</>
+        ),
+        tags: [
+          {
+            name: "GitHub",
+            icon: "github",
+          },
+        ],
+        images: [],
+      },
     ],
   },
 };
@@ -244,6 +303,26 @@ const gallery: Gallery = {
   // Images by https://lorant.one
   // These are placeholder images, replace with your own
   images: [
+    {
+      src: "/images/gallery/manchester-tc-together.jpg",
+      alt: "Jeremy Smith speaking after a keynote at TC Together in Manchester",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/gallery/jeremy-interview.jpg",
+      alt: "Jeremy Smith during a media interview",
+      orientation: "vertical",
+    },
+    {
+      src: "/images/gallery/IMG-20250402-WA0027.jpg",
+      alt: "Gallery photo",
+      orientation: "vertical",
+    },
+    {
+      src: "/images/gallery/IMG-20251014-WA0001.jpg",
+      alt: "Gallery photo",
+      orientation: "vertical",
+    },
     {
       src: "/images/gallery/ROZ_8680.jpg",
       alt: "Gallery photo",
@@ -293,16 +372,6 @@ const gallery: Gallery = {
       src: "/images/projects/neural-river/1752133774471.jpeg",
       alt: "Neural River AI Venture Builder",
       orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/IMG-20250402-WA0027.jpg",
-      alt: "Gallery photo",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/IMG-20251014-WA0001.jpg",
-      alt: "Gallery photo",
-      orientation: "vertical",
     },
   ],
 };

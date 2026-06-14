@@ -177,6 +177,26 @@ export interface About extends BasePageConfig {
       description: React.ReactNode;
     }>;
   };
+  /** Publications/papers section */
+  publications?: {
+    /** Whether to display publications section */
+    display: boolean;
+    /** Title for the publications section */
+    title: string;
+    /** List of published papers */
+    papers: Array<{
+      /** Paper title */
+      title: string;
+      /** Venue or publisher (e.g. "Zenodo") */
+      venue?: string;
+      /** Publication date, displayed as-is */
+      date?: string;
+      /** Short description or abstract */
+      description?: React.ReactNode;
+      /** Link to the paper */
+      link: string;
+    }>;
+  };
   /** Technical skills section */
   technical: {
     /** Whether to display technical skills section */
