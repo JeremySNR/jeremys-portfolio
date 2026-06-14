@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="AI Steve, a voice waveform feeding a ticked ballot into a ballot box, with a small AI node cluster">
+  <defs>
+    <radialGradient id="st-glow" cx="48%" cy="44%" r="60%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="st-grid" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M56 0H0V56" fill="none" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+    </pattern>
+    <filter id="st-grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="720" fill="#141310"/>
+  <rect width="1280" height="720" fill="url(#st-grid)"/>
+  <rect width="1280" height="720" fill="url(#st-glow)"/>
+  <rect x="96" y="112" width="1088" height="496" rx="26" fill="#ffffff" fill-opacity="0.015" stroke="#cdbfa3" stroke-opacity="0.16" stroke-width="1.5"/>
+
+  <!-- AI node cluster (source) -->
+  <g>
+    <g stroke="#34d399" stroke-width="2" stroke-opacity="0.4">
+      <line x1="210" y1="220" x2="278" y2="190"/>
+      <line x1="278" y1="190" x2="250" y2="262"/>
+      <line x1="210" y1="220" x2="250" y2="262"/>
+      <line x1="250" y1="262" x2="300" y2="300"/>
+    </g>
+    <g fill="#10b981">
+      <circle cx="210" cy="220" r="11"/><circle cx="278" cy="190" r="11"/><circle cx="250" cy="262" r="11"/>
+    </g>
+  </g>
+
+  <!-- voice waveform flowing toward the box -->
+  <g fill="#34d399">
+    <rect x="316" y="335" width="10" height="50" rx="5" fill-opacity="0.6"/>
+    <rect x="338" y="305" width="10" height="110" rx="5" fill-opacity="0.7"/>
+    <rect x="360" y="275" width="10" height="170" rx="5" fill-opacity="0.8"/>
+    <rect x="382" y="320" width="10" height="80" rx="5" fill-opacity="0.7"/>
+    <rect x="404" y="255" width="10" height="210" rx="5" fill-opacity="0.9"/>
+    <rect x="426" y="300" width="10" height="120" rx="5" fill-opacity="0.8"/>
+    <rect x="448" y="285" width="10" height="150" rx="5" fill-opacity="0.85"/>
+    <rect x="470" y="330" width="10" height="60" rx="5" fill-opacity="0.7"/>
+  </g>
+  <g stroke="#34d399" stroke-width="2.5" stroke-opacity="0.5" fill="#34d399">
+    <line x1="496" y1="360" x2="556" y2="360"/>
+    <polygon points="556,353 570,360 556,367" fill-opacity="0.85"/>
+  </g>
+
+  <!-- ballot box -->
+  <g>
+    <rect x="590" y="392" width="280" height="178" rx="14" fill="#10b981" fill-opacity="0.06" stroke="#34d399" stroke-width="2.5"/>
+    <rect x="640" y="384" width="180" height="16" rx="8" fill="#141310" stroke="#34d399" stroke-width="2.5"/>
+  </g>
+
+  <!-- ballot paper (ticked) sliding into the slot -->
+  <g transform="rotate(-9 730 320)">
+    <rect x="662" y="232" width="136" height="170" rx="10" fill="#efe7d6" fill-opacity="0.12" stroke="#cdbfa3" stroke-opacity="0.7" stroke-width="2"/>
+    <line x1="684" y1="266" x2="776" y2="266" stroke="#cdbfa3" stroke-opacity="0.4" stroke-width="3"/>
+    <rect x="684" y="296" width="30" height="30" rx="6" fill="none" stroke="#34d399" stroke-width="2.5"/>
+    <path d="M690 311 l9 10 l18 -20" fill="none" stroke="#34d399" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="728" y1="311" x2="776" y2="311" stroke="#cdbfa3" stroke-opacity="0.4" stroke-width="3"/>
+    <line x1="684" y1="352" x2="770" y2="352" stroke="#cdbfa3" stroke-opacity="0.3" stroke-width="3"/>
+  </g>
+
+  <!-- the lone amber "179 votes" accent dot -->
+  <circle cx="1010" cy="300" r="9" fill="#e0a45e"/>
+  <circle cx="1010" cy="300" r="20" fill="none" stroke="#e0a45e" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="3 8"/>
+
+  <g stroke="#34d399" stroke-opacity="0.4" stroke-width="2">
+    <path d="M128 144 h24 M128 144 v24"/>
+    <path d="M1152 576 h-24 M1152 576 v-24"/>
+  </g>
+  <rect width="1280" height="720" filter="url(#st-grain)" opacity="0.05"/>
+</svg>

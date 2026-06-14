@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="AI Mark, a chat speech bubble with a voice waveform inside, a faint duplicate twin bubble behind, and a 24/7 clock">
+  <defs>
+    <radialGradient id="m-glow" cx="46%" cy="42%" r="60%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="m-grid" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M56 0H0V56" fill="none" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
+    </pattern>
+    <filter id="m-grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="720" fill="#141310"/>
+  <rect width="1280" height="720" fill="url(#m-grid)"/>
+  <rect width="1280" height="720" fill="url(#m-glow)"/>
+  <rect x="96" y="112" width="1088" height="496" rx="26" fill="#ffffff" fill-opacity="0.015" stroke="#cdbfa3" stroke-opacity="0.16" stroke-width="1.5"/>
+
+  <!-- faint twin bubble behind (the clone) -->
+  <g transform="translate(34 30)">
+    <path d="M380 200 h360 a28 28 0 0 1 28 28 v176 a28 28 0 0 1 -28 28 h-300 l-46 48 v-48 h-14 a28 28 0 0 1 -28 -28 v-176 a28 28 0 0 1 28 -28 z"
+          fill="none" stroke="#34d399" stroke-opacity="0.22" stroke-width="2"/>
+  </g>
+
+  <!-- main chat bubble -->
+  <path d="M380 200 h360 a28 28 0 0 1 28 28 v176 a28 28 0 0 1 -28 28 h-300 l-46 48 v-48 h-14 a28 28 0 0 1 -28 -28 v-176 a28 28 0 0 1 28 -28 z"
+        fill="#10b981" fill-opacity="0.06" stroke="#34d399" stroke-width="2.5"/>
+
+  <!-- voice waveform inside the bubble -->
+  <g fill="#34d399">
+    <rect x="430" y="300" width="12" height="56" rx="6" fill-opacity="0.6"/>
+    <rect x="458" y="276" width="12" height="104" rx="6" fill-opacity="0.7"/>
+    <rect x="486" y="250" width="12" height="156" rx="6" fill-opacity="0.85"/>
+    <rect x="514" y="292" width="12" height="72" rx="6" fill-opacity="0.7"/>
+    <rect x="542" y="236" width="12" height="184" rx="6" fill-opacity="0.95"/>
+    <rect x="570" y="268" width="12" height="120" rx="6" fill-opacity="0.8"/>
+    <rect x="598" y="286" width="12" height="84" rx="6" fill-opacity="0.75"/>
+    <rect x="626" y="252" width="12" height="152" rx="6" fill-opacity="0.85"/>
+    <rect x="654" y="296" width="12" height="64" rx="6" fill-opacity="0.7"/>
+    <rect x="682" y="276" width="12" height="104" rx="6" fill-opacity="0.7"/>
+    <rect x="710" y="306" width="12" height="48" rx="6" fill-opacity="0.6"/>
+  </g>
+
+  <!-- 24/7 clock motif -->
+  <g>
+    <circle cx="930" cy="250" r="46" fill="none" stroke="#34d399" stroke-width="2.5"/>
+    <line x1="930" y1="250" x2="930" y2="220" stroke="#34d399" stroke-width="3" stroke-linecap="round"/>
+    <line x1="930" y1="250" x2="954" y2="262" stroke="#34d399" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="930" cy="250" r="4" fill="#34d399"/>
+  </g>
+  <!-- amber "controversy" notification dot -->
+  <circle cx="964" cy="214" r="11" fill="#e0a45e"/>
+
+  <!-- small node accent -->
+  <g>
+    <g stroke="#34d399" stroke-width="2" stroke-opacity="0.4">
+      <line x1="900" y1="430" x2="968" y2="460"/>
+      <line x1="968" y1="460" x2="930" y2="500"/>
+    </g>
+    <g fill="#10b981">
+      <circle cx="900" cy="430" r="9"/><circle cx="968" cy="460" r="9"/><circle cx="930" cy="500" r="9"/>
+    </g>
+  </g>
+
+  <g stroke="#34d399" stroke-opacity="0.4" stroke-width="2">
+    <path d="M128 144 h24 M128 144 v24"/>
+    <path d="M1152 576 h-24 M1152 576 v-24"/>
+  </g>
+  <rect width="1280" height="720" filter="url(#m-grain)" opacity="0.05"/>
+</svg>
