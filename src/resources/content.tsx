@@ -7,7 +7,7 @@ const person: Person = {
   name: `Jeremy Smith`,
   role: "AI Innovation Partner & Founder",
   avatar: "/images/1726940932303.jpeg",
-  email: "jeremy@neural-voice.ai",
+  email: "jezalexandersmith@gmail.com",
   location: "Europe/London", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English"], // optional: Leave the array empty if you don't want to display languages
 };
