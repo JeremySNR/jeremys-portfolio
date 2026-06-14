@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------------ *
- * Jeremy Smith — editorial-tech finishing layer
+ * Jeremy Smith, editorial-tech finishing layer
  *
  * Additive polish on top of the Once UI design system:
  * serif optical tuning, a film-grain overlay for depth, a considered
@@ -41,7 +41,7 @@ h6 {
 }
 
 /* ------------------------------------------------------------------ *
- * Film-grain overlay — a quiet, premium tactile texture over the page.
+ * Film-grain overlay: a quiet, premium tactile texture over the page.
  * Fixed, non-interactive, and very low opacity so it reads as depth
  * rather than noise.
  * ------------------------------------------------------------------ */

@@ -1,7 +1,7 @@
 ---
 title: "Pluribus: Protected Dissent in Multi-Agent AI"
 publishedAt: "2026-03-28"
-summary: "A research project and published paper on multi-agent language systems where agents coordinate through cross-inhibition and a structurally protected dissenter — exploring whether agents can collaborate through a shared latent buffer rather than text."
+summary: "A research project and published paper on multi-agent language systems, where agents argue through cross-inhibition and one dissenter is built so it can't be voted out."
 images:
   - "/images/projects/pluribus/cover.svg"
 team:
@@ -12,27 +12,27 @@ team:
 link: "https://github.com/JeremySNR/Pluribus"
 ---
 
-## Overview
+## What it is
 
-Pluribus is a research project on multi-agent language systems and the basis for the paper *"Don't Merge Carol: Cross-Inhibition and Protected Dissent in Multi-Agent Language Systems."* It asks a deceptively simple question: when multiple AI agents reason about a problem together, what should the coordination medium be — and how do you stop the group from collapsing into a single, amplified opinion?
+Pluribus is a research project and the basis for my paper, "Don't Merge Carol: Cross-Inhibition and Protected Dissent in Multi-Agent Language Systems." It started with a simple question: when a bunch of AI agents think about a problem together, how should they actually talk to each other, and how do you stop them collapsing into one loud opinion?
 
-## The Idea
+## The idea
 
-The obvious failure mode for multi-agent systems is making the agents too similar. A hive of homogeneous agents does not give you diverse perspectives; it gives you one perspective, amplified. The project — named after Vince Gilligan's *Pluribus* — protects a permanent dissenter named **Carol**, whose voice is structurally difficult to erase regardless of how strongly the others agree.
+The classic way multi-agent systems fail is by making all the agents too alike. A hive of identical agents doesn't give you lots of perspectives, it gives you one perspective shouted louder. So the project (named after the Vince Gilligan show) protects a permanent dissenter called Carol, and builds her in so the group can't quietly silence her.
 
-## Two Phases
+## Two phases
 
-- **Phase 1 — Blackboard hive.** A text-level shared blackboard with *cross-inhibition*: agents challenge weak reasoning, with influence rising or falling based on the quality of their arguments. Carol cannot be silenced. The finding: adversarial deliberation helps most on judgment-heavy tasks rather than simple factual ones.
-- **Phase 2 — Latent Resonance Loop.** Agents encode hidden states into a shared continuous buffer using Behaviourally-Aligned Prefix Codecs (BAPC), resolve conflicts with a TIES-inspired merge rule, and update the buffer through damped fixed-point iteration.
+- Phase 1 is a text-level blackboard with cross-inhibition. Agents push back on weak reasoning, and how much sway each one has goes up or down depending on how good their arguments are. Carol stays no matter what. The takeaway: arguing helps most on judgment calls, not simple facts.
+- Phase 2 is the Latent Resonance Loop. Agents write hidden states into a shared continuous buffer using Behaviourally-Aligned Prefix Codecs, sort out disagreements with a TIES-style merge, and settle the buffer through damped fixed-point iteration.
 
-## A Result Worth Being Honest About
+## Being honest about the results
 
-An early Phase 2 result that looked promising turned out to be largely an artifact of representation anisotropy — very high cosine similarity in upper transformer layers was preserving a shared background direction rather than useful task information. After isotropy calibration, the system produced collective latent states (at GPT-2 scale and across three 7B model families) that were consistently distinct from any individual agent's. On all five test prompts, the collective decoded to tokens absent from every individual agent's top-10 distribution, with mean Jensen-Shannon divergence of 0.08–0.13. Downstream usefulness was more limited, with the clearest advantage on prompts carrying genuine strategic tension.
+One early Phase 2 result looked exciting but turned out to be mostly an artifact. Very high cosine similarity in the upper layers was just preserving a shared background direction, not anything useful. Once I calibrated for that, the collective states (at GPT-2 scale and across three 7B model families) came out genuinely distinct from any single agent. On all five test prompts the collective decoded to tokens that weren't in any individual agent's top 10, with mean Jensen-Shannon divergence of 0.08 to 0.13. How useful those states are downstream is more of a mixed bag, with the clearest win on prompts that had real strategic tension.
 
-The contribution is not a broad quality claim, but an empirical demonstration that protected dissent and latent-space conflict resolution can produce emergent shared representations in multi-agent language systems.
+So it's not a sweeping "this is better" claim. It's a concrete demonstration that protected dissent and latent-space conflict resolution can produce shared representations that emerge from the group rather than any one agent.
 
-## Read the Paper
+## Read it
 
-The paper is published on Zenodo. Phase 1 code lives at [github.com/JeremySNR/pluribus](https://github.com/JeremySNR/Pluribus) and Phase 2 at [github.com/JeremySNR/Pluribus-P2](https://github.com/JeremySNR/Pluribus-P2).
+The paper is up on Zenodo. Phase 1 code is at [github.com/JeremySNR/pluribus](https://github.com/JeremySNR/Pluribus) and Phase 2 at [github.com/JeremySNR/Pluribus-P2](https://github.com/JeremySNR/Pluribus-P2).
 
-[Read the paper on Zenodo →](https://zenodo.org/records/19467363)
+[Read the paper on Zenodo](https://zenodo.org/records/19467363)

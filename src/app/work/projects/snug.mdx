@@ -1,7 +1,7 @@
 ---
 title: "snug: Token-Budget Context Management"
 publishedAt: "2026-04-06"
-summary: "A zero-dependency TypeScript primitive for fitting prioritised content into an LLM token budget — with a small ecosystem of adapters for OpenAI, Anthropic, and tiktoken."
+summary: "A tiny, zero-dependency TypeScript library for fitting prioritised content into an LLM token budget, with adapters for OpenAI, Anthropic, and tiktoken."
 images:
   - "/images/projects/snug/cover.svg"
 team:
@@ -12,36 +12,34 @@ team:
 link: "https://github.com/JeremySNR/snug"
 ---
 
-## Overview
+## What it is
 
-snug solves a problem every LLM application eventually hits: fitting system prompts, conversation history, documents, and tool definitions into a limited context window. Rather than every team rebuilding the same bespoke truncation logic, snug provides a single, well-tested function that handles context budgeting cleanly.
+snug solves a problem every LLM app runs into sooner or later: you've got more stuff to put in the context window than will actually fit. System prompts, chat history, documents, tool definitions. snug is one small, well-tested function that decides what makes the cut.
 
-## The Problem
+## Why it exists
 
-Context windows are finite, but the things you want to put in them are not. When you exceed the budget, you need to decide what survives — and doing that naively breaks things: dropping a `tool_use` without its matching `tool_result`, or evicting the system prompt before low-priority chat history.
+Context windows are finite, but the things you want to cram into them aren't. When you go over budget you have to drop something, and doing it naively breaks stuff fast. You lose a `tool_use` but keep its `tool_result`, or you bin the system prompt before the low-priority chat history. snug just handles that for you.
 
-## Key Features
+## What's good about it
 
-- **Zero dependencies** — runs on Node, Deno, Bun, and edge runtimes
-- **Priority-based selection** — items are included greedily by priority level
-- **Flexible tokenisation** — bring your own tokeniser or use the built-in approximation
-- **Pair constraints** — guarantees atomic 1:1 relationships such as `tool_use` / `tool_result`
-- **Order preservation** — returns included items in their original input order
+- No dependencies at all, and it runs anywhere: Node, Deno, Bun, edge runtimes
+- You set priorities, and it keeps the important things first
+- Bring your own tokeniser, or use the built-in approximation
+- It keeps paired items together, so a `tool_use` and its `tool_result` always travel as one
+- Whatever survives comes back in the original order
 
 ```ts
 const { included, excluded, tokensUsed } = fit(items, options);
 ```
 
-## The Ecosystem
+## The little family around it
 
-The zero-dependency core pairs with focused adapters published on npm:
+The core stays dependency-free, and a few small adapters do the provider-specific work:
 
-- **snug-tiktoken** — pre-wired with accurate OpenAI and Anthropic token counting
-- **snug-openai** — direct support for OpenAI SDK message arrays
-- **snug-anthropic** — Anthropic SDK integration with automatic tool-message pairing
+- snug-tiktoken, wired up with accurate OpenAI and Anthropic token counting
+- snug-openai, which takes OpenAI SDK message arrays directly
+- snug-anthropic, which handles Anthropic messages and keeps tool calls paired up
 
-## Technology
+All TypeScript, all on npm.
 
-TypeScript, zero runtime dependencies, broad runtime support. Published to npm under the snug family of packages.
-
-[View on GitHub →](https://github.com/JeremySNR/snug)
+[Have a look on GitHub](https://github.com/JeremySNR/snug)

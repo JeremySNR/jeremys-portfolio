@@ -75,14 +75,14 @@ const fonts: FontsConfig = {
 // default customization applied to the HTML in the main layout.tsx
 const style: StyleConfig = {
   theme: "system", // dark | light | system
-  neutral: "sand", // sand | gray | slate | custom — warm "paper" base for an editorial feel
+  neutral: "sand", // sand | gray | slate | custom. Warm "paper" base for an editorial feel
   brand: "emerald", // warm paper + green ink: a considered, editorial palette
-  accent: "emerald", // single confident accent — restraint over a scattered palette
+  accent: "emerald", // single confident accent, restraint over a scattered palette
   solid: "contrast", // color | contrast
   solidStyle: "flat", // flat | plastic
   border: "rounded", // rounded | playful | conservative
   surface: "translucent", // filled | translucent
-  transition: "all", // all | micro | macro — richer, smoother motion throughout
+  transition: "all", // all | micro | macro. Richer, smoother motion throughout
   scaling: "100", // 90 | 95 | 100 | 105 | 110
 };
 

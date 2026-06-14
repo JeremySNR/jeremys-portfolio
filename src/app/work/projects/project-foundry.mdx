@@ -1,7 +1,7 @@
 ---
 title: "Project Foundry: Governance for AI Coding Agents"
 publishedAt: "2026-06-06"
-summary: "An open-source governance layer for autonomous AI coding agents — raw tickets in, reviewed PRs out, every decision policy-gated, human-approved, and fully audited."
+summary: "An open-source governance layer for autonomous AI coding agents. Raw tickets go in, reviewed PRs come out, and every step is policy-gated, human-approved, and fully audited."
 images:
   - "/images/projects/project-foundry/cover.svg"
 team:
@@ -12,35 +12,35 @@ team:
 link: "https://github.com/JeremySNR/Project-foundry"
 ---
 
-## Overview
+## What it is
 
-Project Foundry is the governance layer for autonomous AI coding agents. It sits between raw work requests and the agents that implement them, automating the journey from ticket to reviewed pull request while keeping humans firmly in control. Built for the era of long-horizon agentic engineering, where models can work autonomously for extended periods, Foundry makes every previously invisible decision explicit and governed.
+Foundry is a governance layer that sits between your tickets and the AI agents that do the coding. It takes a raw work request all the way through to a reviewed pull request, and keeps a human in control the whole way. The idea is simple: let agents do the heavy lifting, but make every decision along the way explicit and safe.
 
-## The Problem
+## Why I built it
 
-Frontier models can now code autonomously for hours, but raw capability is no longer the bottleneck. The gap is everything surrounding the agent: was the ticket actually ready? Which repository does this belong in? Is the change safe to delegate? Who signed off? What did it cost? And why did the agent do what it did? Foundry answers these questions by design rather than after the fact.
+Frontier models can write code on their own for hours now, so raw capability isn't really the bottleneck anymore. Everything around the agent is. Was the ticket actually ready? Which repo does this belong in? Is this change safe to hand off? Who signed off, what did it cost, and why did the agent do that? Foundry answers all of those by design instead of after something has gone wrong.
 
-## How It Works
+## How it works
 
-A tracker webhook hits the Foundry API, which drives an orchestrator through a clear pipeline:
+A ticket comes in from your tracker and Foundry runs it through a clear pipeline:
 
-- **Analysis** — readiness assessment, missing acceptance criteria
-- **Context gathering** — relevant repo, files, and tests
-- **Risk classification** — flagging auth, payments, or PII exposure
-- **Delivery planning** — with a mandatory human approval gate
-- **Governed agent dispatch** — with retry loops on CI failures
-- **Hard policy blocks** — forbidden paths, migrations, and auth changes never auto-run
+- Reads the ticket and checks it's actually ready to work on
+- Pulls in the context that matters (the right repo, files, and tests)
+- Classifies the risk, flagging anything that touches auth, payments, or personal data
+- Plans the work and pauses for a human to approve it
+- Dispatches the agent, and retries sensibly if CI fails
+- Hard-blocks the scary stuff. Forbidden paths, migrations, and auth changes never run on their own
 
-## Key Features
+## The good bits
 
-- **Multi-vendor by design** — trackers (Linear, GitHub Issues, Jira), SCMs (GitHub, GitLab), and agents (Cursor, Claude Code, webhooks, manual)
-- **Default-deny policy engine** — written in both Python and OPA/Rego, with tests required for every policy change
-- **Complete audit trail** — content-hashed evidence packs mapped to SOC 2, ISO/IEC 27001, and EU AI Act controls
-- **Fleet visibility** — a dashboard with delivery trends, epic views, and agent scorecards showing success rates by provider and repo
-- **Safety guarantees** — mandatory human approval before any dispatch, RBAC for sensitive areas, webhook dedup/replay protection, and per-run budget caps
+- Works with what you already use: Linear, GitHub Issues, or Jira for tracking, GitHub or GitLab for code, and Cursor, Claude Code, or webhooks for the agents
+- A default-deny policy engine written in both Python and OPA/Rego, with tests required before any policy change ships
+- A full audit trail with content hashing, and evidence packs that map to SOC 2, ISO/IEC 27001, and the EU AI Act
+- A dashboard for the whole fleet: delivery trends, epic views, and scorecards showing how each agent does by provider and repo
+- A human has to approve before anything runs, with role-based access, replay protection, and budget caps per run
 
-## Technology
+## Under the hood
 
-Python 3.11+, FastAPI, SQLAlchemy (SQLite in dev, Postgres in production) with Alembic migrations, an OPA/Rego policy engine, durable orchestration (with Temporal in progress), OpenTelemetry observability, and Docker Compose deployment. Licensed Apache-2.0.
+Python and FastAPI, SQLAlchemy (SQLite for dev, Postgres in production) with Alembic migrations, an OPA/Rego policy engine, durable orchestration (Temporal is on the way), OpenTelemetry for observability, and a Docker Compose setup. It's Apache-2.0 licensed.
 
-[View on GitHub →](https://github.com/JeremySNR/Project-foundry)
+[Have a look on GitHub](https://github.com/JeremySNR/Project-foundry)

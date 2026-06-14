@@ -1,7 +1,7 @@
 ---
 title: "Ashla: AI Colour Grading for Lightroom"
 publishedAt: "2025-05-31"
-summary: "A Lightroom Classic plugin that grades photos from a description or a reference frame — vision-enabled, restrained, and aiming for the grade you don't notice."
+summary: "A Lightroom Classic plugin that grades your photos from a description or a reference frame. Vision-enabled, restrained, and aiming for the grade you don't notice."
 images:
   - "/images/projects/ashla/cover.svg"
 team:
@@ -12,28 +12,28 @@ team:
 link: "https://github.com/JeremySNR/ashla-lightroom"
 ---
 
-## Overview
+## What it is
 
-Ashla is a plugin for Adobe Lightroom Classic that automates colour grading. Describe a look, hand it a reference image, or ask for an automatic enhancement, and it reads your photo and applies professional-grade develop settings in a single click.
+Ashla is a plugin for Adobe Lightroom Classic that does your colour grading for you. Describe the look you want, hand it a reference image, or just ask it to make the shot better, and it reads the photo and applies a proper set of develop settings in one click.
 
-## The Problem
+## Why it's handy
 
-Traditional editing means manually wrangling dozens of sliders or buying presets that never quite fit the frame. Ashla interprets creative intent and applies a coherent, comprehensive edit — treating the sliders as one interconnected system rather than isolated dials.
+Normal editing means pushing dozens of sliders around or buying presets that never quite fit the frame. Ashla works out what you're going for and applies a coherent edit, treating all the sliders as one connected system instead of a pile of separate dials.
 
-## Key Features
+## What it does
 
-- **Three input modes** — descriptive text ("warm Portra 400 tones"), a reference image, or automatic "Lucky" mode
-- **Intelligent editing** — exposure, contrast, tone curves, HSL, colour grading, and grain
-- **Optional composition** — reframe, level horizons, or adjust aspect ratios for specific film formats
-- **Vision-enabled** — analyses actual pixel data from JPEG previews for context-aware decisions
-- **Restrained by design** — aims for "the grade you do not notice" rather than an obvious filter
+- Three ways in: describe it ("warm Portra 400 tones"), give it a reference image, or hit the automatic "Lucky" mode
+- Handles exposure, contrast, tone curves, HSL, colour grading, and grain
+- Can reframe, level a horizon, or crop to a film format if you want it to
+- Actually looks at the photo (it reads the pixels from a JPEG preview), so its choices fit the image
+- Stays restrained on purpose. It's after the grade you don't notice, not an obvious filter
 
-## How It Works
+## How it works
 
-The plugin gathers image metadata and a JPEG preview, then on a background thread sends it plus the user's input to a vision model, which returns structured develop settings. Those values are validated, clamped to safe ranges, and applied as a preset.
+The plugin grabs the photo's metadata and a JPEG preview, sends it off to a vision model on a background thread, and gets back a structured set of develop settings. Those get checked, clamped to safe ranges, and applied as a preset.
 
-## Technology
+## Under the hood
 
-Lua 5.1 on the Lightroom Classic plugin architecture, an OpenAI vision backend, and OS-keychain storage for credentials.
+Written in Lua for the Lightroom Classic plugin system, backed by an OpenAI vision model, with your API key kept in the OS keychain.
 
-[View on GitHub →](https://github.com/JeremySNR/ashla-lightroom)
+[Have a look on GitHub](https://github.com/JeremySNR/ashla-lightroom)

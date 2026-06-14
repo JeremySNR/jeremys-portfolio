@@ -49,7 +49,7 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building AI that ships — from enterprise platforms to open-source tools and research</>,
+  headline: <>Building AI that actually ships, from enterprise platforms to open-source tools and research</>,
   featured: {
     display: true,
     title: (
@@ -65,8 +65,8 @@ const home: Home = {
   },
   subline: (
     <>
-      I'm Jeremy, an AI Innovation Partner and founder. I lead enterprise AI strategy and product at Travel Counsellors, founded Neural Voice, and build open-source AI tools and research in the open.
-      <br /> Proven expertise in conversational AI, multi-agent systems, agentic engineering, fundraising, and taking products from concept to revenue.
+      I'm Jeremy. I lead AI strategy and product at Travel Counsellors, I founded Neural Voice, and I build open-source AI tools and research in the open.
+      <br /> I work across conversational AI, multi-agent systems, and agentic engineering, and I love taking things from a rough idea to something real and in front of people.
     </>
   ),
 };
@@ -92,12 +92,11 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Jeremy is an AI innovation partner, founder, and builder. He currently leads enterprise AI strategy and product
-        development at Travel Counsellors, a £1bn+ travel group, having founded Neural Voice and Neural River before that.
-        Alongside his commercial work he ships open-source AI tools and publishes research — from agentic-engineering
-        governance and LLM context tooling to multi-agent language systems.
-        Proven track record in fundraising (£1m+ raised), product development, team building, and go-to-market execution,
-        with deep hands-on expertise across conversational AI, multi-agent systems, and emerging AI technologies.
+        I'm an AI builder and founder. Right now I lead AI strategy and product at Travel Counsellors, a £1bn+ travel
+        group, after founding Neural Voice and Neural River. On the side I ship open-source AI tools and publish research,
+        covering everything from governance for coding agents and LLM context tooling to multi-agent language systems.
+        I've raised over £1m, taken products from nothing to revenue, hired and led teams, and I still get stuck into the
+        hard AI problems myself.
       </>
     ),
   },
@@ -111,13 +110,13 @@ const about: About = {
         role: "AI Innovation Partner",
         achievements: [
           <>
-            Lead enterprise AI strategy and product development across a £1bn+ travel group, identifying high-impact use cases and taking them from prototype to production
+            Leading AI strategy and product across a £1bn+ travel group, finding the use cases that actually matter and taking them from prototype to production
           </>,
           <>
-            Built and shipped AI products including voice agents for recruitment (Zoom Contact Center integration), AI-powered customer and app support agents, and a ChatGPT app for travel matching
+            Built and shipped real products: voice agents for recruitment (hooked into Zoom Contact Center), AI customer and app support agents, and a ChatGPT app for travel matching
           </>,
           <>
-            Keynote speaker at TC Together (Manchester), sharing the company's AI roadmap with counsellors and senior leadership
+            Gave the keynote at TC Together in Manchester, walking counsellors and senior leadership through where we're taking AI
           </>,
         ],
         images: [],
@@ -263,7 +262,7 @@ const about: About = {
       {
         title: "Open Source & Research",
         description: (
-          <>Build and maintain open-source AI tooling — including Project Foundry (governance for AI coding agents), the snug context-budgeting library, and Converge — and publish research on multi-agent language systems. Active on GitHub at JeremySNR.</>
+          <>I build and maintain open-source AI tools like Project Foundry (governance for AI coding agents) and the snug context-budgeting library, and I publish research on multi-agent language systems. Most of it lives on GitHub at JeremySNR.</>
         ),
         tags: [
           {

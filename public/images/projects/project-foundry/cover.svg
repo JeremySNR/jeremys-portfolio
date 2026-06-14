@@ -1,18 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Project Foundry — governance pipeline from tickets to a reviewed, merged pull request">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Project Foundry, a governance pipeline taking a ticket through analysis, a risk gate and human approval to a reviewed, merged pull request, with an audit trail beneath">
   <defs>
-    <radialGradient id="f-glow" cx="50%" cy="46%" r="55%">
-      <stop offset="0%" stop-color="#10b981" stop-opacity="0.28"/>
+    <radialGradient id="f-glow" cx="50%" cy="42%" r="60%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.26"/>
       <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
     </radialGradient>
-    <pattern id="f-grid" width="64" height="64" patternUnits="userSpaceOnUse">
-      <path d="M64 0H0V64" fill="none" stroke="#ffffff" stroke-opacity="0.035" stroke-width="1"/>
+    <pattern id="f-grid" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M56 0H0V56" fill="none" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1"/>
     </pattern>
     <filter id="f-grain">
       <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
       <feColorMatrix type="saturate" values="0"/>
     </filter>
-    <filter id="f-soft" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="6"/>
+    <filter id="f-soft" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="9"/>
     </filter>
   </defs>
 
@@ -20,48 +20,90 @@
   <rect width="1280" height="720" fill="url(#f-grid)"/>
   <rect width="1280" height="720" fill="url(#f-glow)"/>
 
-  <!-- flow baseline -->
-  <g stroke="#34d399" stroke-width="2.5" fill="none" stroke-linecap="round">
-    <line x1="250" y1="360" x2="372" y2="360" stroke-dasharray="2 12" stroke-opacity="0.8"/>
-    <line x1="468" y1="360" x2="596" y2="360" stroke-opacity="0.55"/>
-    <path d="M684 360 H760 M760 360 C 810 360 812 300 862 300 M760 360 C 810 360 812 420 862 420 M862 300 C 912 300 916 360 966 360 M862 420 C 912 420 916 360 966 360" stroke-opacity="0.55"/>
+  <!-- dashboard backdrop panel -->
+  <rect x="96" y="112" width="1088" height="496" rx="26" fill="#ffffff" fill-opacity="0.015" stroke="#cdbfa3" stroke-opacity="0.16" stroke-width="1.5"/>
+  <line x1="96" y1="170" x2="1184" y2="170" stroke="#cdbfa3" stroke-opacity="0.12" stroke-width="1.5"/>
+  <g fill="#cdbfa3" fill-opacity="0.45">
+    <circle cx="130" cy="141" r="6"/><circle cx="152" cy="141" r="6"/><circle cx="174" cy="141" r="6"/>
   </g>
 
-  <!-- tickets in -->
-  <g stroke="#cdbfa3" stroke-opacity="0.7" fill="#cdbfa3" fill-opacity="0.04">
-    <rect x="150" y="318" width="104" height="64" rx="10"/>
-    <rect x="134" y="300" width="104" height="64" rx="10" fill-opacity="0.07"/>
-    <line x1="152" y1="322" x2="208" y2="322" stroke-opacity="0.5" stroke-width="3"/>
-    <line x1="152" y1="338" x2="192" y2="338" stroke-opacity="0.35" stroke-width="3"/>
+  <!-- connectors with arrowheads -->
+  <g stroke="#34d399" fill="#34d399">
+    <g stroke-width="2.5" stroke-opacity="0.55" fill="none">
+      <line x1="248" y1="318" x2="372" y2="318"/>
+      <line x1="468" y1="318" x2="566" y2="318"/>
+      <line x1="676" y1="318" x2="766" y2="318"/>
+      <line x1="868" y1="318" x2="958" y2="318"/>
+    </g>
+    <g fill-opacity="0.8">
+      <polygon points="372,311 386,318 372,325"/>
+      <polygon points="566,311 580,318 566,325"/>
+      <polygon points="766,311 780,318 766,325"/>
+      <polygon points="958,311 972,318 958,325"/>
+    </g>
   </g>
 
-  <!-- policy gate -->
+  <!-- 1. ticket in -->
+  <g stroke="#cdbfa3" stroke-opacity="0.7" fill="#cdbfa3">
+    <rect x="170" y="294" width="78" height="56" rx="9" fill-opacity="0.05"/>
+    <rect x="158" y="282" width="78" height="56" rx="9" fill-opacity="0.09"/>
+    <line x1="172" y1="300" x2="222" y2="300" stroke-opacity="0.5" stroke-width="3"/>
+    <line x1="172" y1="314" x2="208" y2="314" stroke-opacity="0.35" stroke-width="3"/>
+  </g>
+
+  <!-- 2. analyse (scan) -->
+  <g fill="none" stroke="#34d399" stroke-width="2.5">
+    <circle cx="420" cy="318" r="36"/>
+    <circle cx="420" cy="318" r="18" stroke-opacity="0.6"/>
+    <circle cx="420" cy="318" r="4" fill="#34d399"/>
+  </g>
+
+  <!-- 3. risk gate (diamond + amber alert) -->
   <g>
-    <polygon points="420,312 470,360 420,408 370,360" fill="#10b981" fill-opacity="0.10" stroke="#34d399" stroke-width="2.5"/>
-    <circle cx="420" cy="360" r="6" fill="#34d399"/>
+    <polygon points="622,272 668,318 622,364 576,318" fill="#e0a45e" fill-opacity="0.10" stroke="#e0a45e" stroke-width="2.5"/>
+    <line x1="622" y1="300" x2="622" y2="324" stroke="#e0a45e" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="622" cy="338" r="3.5" fill="#e0a45e"/>
   </g>
 
-  <!-- human approval -->
+  <!-- 4. human approval (emphasised) -->
   <g>
-    <circle cx="640" cy="360" r="42" fill="#141310" stroke="#34d399" stroke-width="2.5"/>
-    <path d="M622 360 l12 13 l24 -27" fill="none" stroke="#34d399" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="820" cy="318" r="48" fill="#10b981" filter="url(#f-soft)" opacity="0.28"/>
+    <circle cx="820" cy="318" r="40" fill="#141310" stroke="#34d399" stroke-width="3"/>
+    <path d="M800 318 l13 14 l26 -29" fill="none" stroke="#34d399" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 
-  <!-- merge branch nodes -->
-  <circle cx="862" cy="300" r="9" fill="#0e1a14" stroke="#34d399" stroke-width="2.5"/>
-  <circle cx="862" cy="420" r="9" fill="#0e1a14" stroke="#34d399" stroke-width="2.5"/>
-
-  <!-- merged PR -->
+  <!-- 5. merged PR (git-merge glyph) -->
+  <g stroke="#34d399" stroke-width="3" fill="none">
+    <path d="M1006 290 v18 c0 18 14 28 30 28" stroke-opacity="0.7"/>
+    <path d="M1006 346 v-12" stroke-opacity="0.7"/>
+    <circle cx="1006" cy="284" r="7" fill="#141310"/>
+    <circle cx="1006" cy="352" r="7" fill="#141310"/>
+  </g>
   <g>
-    <circle cx="1010" cy="360" r="50" fill="#10b981" filter="url(#f-soft)" opacity="0.35"/>
-    <circle cx="1010" cy="360" r="48" fill="#10b981"/>
-    <path d="M988 360 l14 15 l28 -32" fill="none" stroke="#0c1510" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="1066" cy="336" r="34" fill="#10b981"/>
+    <path d="M1050 336 l11 12 l21 -24" fill="none" stroke="#0c1510" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 
-  <!-- corner ticks for blueprint texture -->
-  <g stroke="#34d399" stroke-opacity="0.45" stroke-width="2">
-    <path d="M96 96 h26 M96 96 v26"/>
-    <path d="M1184 624 h-26 M1184 624 v-26"/>
+  <!-- audit trail strip -->
+  <g>
+    <line x1="158" y1="520" x2="1120" y2="520" stroke="#cdbfa3" stroke-opacity="0.3" stroke-width="1.5"/>
+    <g fill="#34d399" fill-opacity="0.7">
+      <circle cx="200" cy="520" r="4"/><circle cx="320" cy="520" r="4"/><circle cx="440" cy="520" r="4"/>
+      <circle cx="560" cy="520" r="4"/><circle cx="680" cy="520" r="4"/><circle cx="800" cy="520" r="4"/>
+      <circle cx="920" cy="520" r="4"/><circle cx="1040" cy="520" r="4"/>
+    </g>
+    <g fill="#cdbfa3" fill-opacity="0.28">
+      <rect x="190" y="486" width="14" height="24" rx="3"/>
+      <rect x="214" y="476" width="14" height="34" rx="3"/>
+      <rect x="238" y="494" width="14" height="16" rx="3"/>
+      <rect x="262" y="482" width="14" height="28" rx="3"/>
+    </g>
+  </g>
+
+  <!-- corner ticks -->
+  <g stroke="#34d399" stroke-opacity="0.4" stroke-width="2">
+    <path d="M128 144 h24 M128 144 v24"/>
+    <path d="M1152 576 h-24 M1152 576 v-24"/>
   </g>
 
   <rect width="1280" height="720" filter="url(#f-grain)" opacity="0.05"/>
