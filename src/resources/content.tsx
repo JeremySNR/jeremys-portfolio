@@ -226,6 +226,37 @@ const about: About = {
       },
     ],
   },
+  talks: {
+    display: true,
+    title: "Talks & Writing",
+    items: [
+      {
+        title: "Building an AI business",
+        meta: "Leeds Business Podcast",
+        link: "https://leedsbusinesspodcast.com/podcast/neural-voice-jeremy-smith/",
+      },
+      {
+        title: "AI and Voice Has Come of Age",
+        meta: "Interview",
+        link: "https://www.youtube.com/watch?v=YdwrcrWwwo0",
+      },
+      {
+        title: "Voice AI That Closes Deals",
+        meta: "Talk",
+        link: "https://www.youtube.com/watch?v=kmzExzu-wr4",
+      },
+      {
+        title: "Voices of Tomorrow: My Vision for Conversational AI",
+        meta: "Essay on Medium",
+        link: "https://medium.com/@jeremy_32707/voices-of-tomorrow-my-vision-for-conversational-ai-a32e66c42455",
+      },
+      {
+        title: "More Than Words: Crafting AI That Understands the Symphony of Speech",
+        meta: "Essay on Medium",
+        link: "https://medium.com/@jeremy_32707/more-than-words-crafting-ai-that-understands-the-symphony-of-speech-6cd0df5b0e31",
+      },
+    ],
+  },
   technical: {
     display: true, // set to false to hide this section
     title: "Key Skills & Expertise",

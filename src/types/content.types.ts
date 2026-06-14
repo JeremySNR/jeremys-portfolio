@@ -197,6 +197,22 @@ export interface About extends BasePageConfig {
       link: string;
     }>;
   };
+  /** Talks, interviews and writing section */
+  talks?: {
+    /** Whether to display the section */
+    display: boolean;
+    /** Title for the section */
+    title: string;
+    /** List of talks, interviews and articles */
+    items: Array<{
+      /** Title of the talk/interview/article */
+      title: string;
+      /** Short label such as the outlet or format */
+      meta?: string;
+      /** Link to the item */
+      link: string;
+    }>;
+  };
   /** Technical skills section */
   technical: {
     /** Whether to display technical skills section */

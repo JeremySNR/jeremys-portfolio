@@ -11,6 +11,7 @@ import {
   Meta,
   Schema,
   Row,
+  SmartLink,
 } from "@once-ui-system/core";
 import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
@@ -48,6 +49,11 @@ export default function About() {
       title: about.publications?.title ?? "",
       display: about.publications?.display ?? false,
       items: about.publications?.papers.map((paper) => paper.title) ?? [],
+    },
+    {
+      title: about.talks?.title ?? "",
+      display: about.talks?.display ?? false,
+      items: about.talks?.items.map((item) => item.title) ?? [],
     },
     {
       title: about.technical.title,
@@ -329,6 +335,38 @@ export default function About() {
                       />
                     </Row>
                   </Column>
+                ))}
+              </Column>
+            </>
+          )}
+
+          {about.talks?.display && (
+            <>
+              <Heading as="h2" id={about.talks.title} variant="display-strong-s" marginBottom="m">
+                {about.talks.title}
+              </Heading>
+              <Column fillWidth gap="16" marginBottom="40">
+                {about.talks.items.map((item, index) => (
+                  <Row
+                    key={`${item.title}-${index}`}
+                    fillWidth
+                    horizontal="between"
+                    vertical="center"
+                    gap="16"
+                  >
+                    <SmartLink href={item.link} suffixIcon="arrowUpRightFromSquare">
+                      <Text variant="body-default-m">{item.title}</Text>
+                    </SmartLink>
+                    {item.meta && (
+                      <Text
+                        variant="body-default-s"
+                        onBackground="neutral-weak"
+                        style={{ whiteSpace: "nowrap" }}
+                      >
+                        {item.meta}
+                      </Text>
+                    )}
+                  </Row>
                 ))}
               </Column>
             </>
