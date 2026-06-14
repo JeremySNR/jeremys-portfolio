@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Pluribus — a network of language-model agents with one larger, ring-protected dissenting node, Carol">
+  <defs>
+    <radialGradient id="p-glow" cx="38%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="p-glow2" cx="72%" cy="64%" r="40%">
+      <stop offset="0%" stop-color="#e0a45e" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#e0a45e" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="p-grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" fill="none" stroke="#ffffff" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+    <filter id="p-grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="720" fill="#141310"/>
+  <rect width="1280" height="720" fill="url(#p-grid)"/>
+  <rect width="1280" height="720" fill="url(#p-glow)"/>
+  <rect width="1280" height="720" fill="url(#p-glow2)"/>
+
+  <!-- edges between agents -->
+  <g stroke="#34d399" stroke-opacity="0.4" stroke-width="2">
+    <line x1="380" y1="250" x2="560" y2="190"/>
+    <line x1="560" y1="190" x2="720" y2="260"/>
+    <line x1="380" y1="250" x2="500" y2="380"/>
+    <line x1="560" y1="190" x2="620" y2="360"/>
+    <line x1="720" y1="260" x2="620" y2="360"/>
+    <line x1="500" y1="380" x2="620" y2="360"/>
+  </g>
+
+  <!-- cross-inhibition edges toward Carol, with stop-signal ticks -->
+  <g stroke="#e0a45e" stroke-opacity="0.6" stroke-width="2.5">
+    <line x1="720" y1="260" x2="892" y2="452"/>
+    <line x1="620" y1="360" x2="892" y2="452"/>
+    <!-- stop-signal ticks (perpendicular) -->
+    <line x1="800" y1="345" x2="820" y2="331" stroke-width="4" stroke-linecap="round"/>
+    <line x1="752" y1="400" x2="772" y2="388" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- agent nodes -->
+  <g fill="#10b981">
+    <circle cx="380" cy="250" r="16"/>
+    <circle cx="560" cy="190" r="16"/>
+    <circle cx="720" cy="260" r="16"/>
+    <circle cx="500" cy="380" r="16"/>
+    <circle cx="620" cy="360" r="16"/>
+  </g>
+  <g fill="none" stroke="#34d399" stroke-opacity="0.5" stroke-width="2">
+    <circle cx="380" cy="250" r="24"/>
+    <circle cx="560" cy="190" r="24"/>
+    <circle cx="720" cy="260" r="24"/>
+    <circle cx="500" cy="380" r="24"/>
+    <circle cx="620" cy="360" r="24"/>
+  </g>
+
+  <!-- Carol: the protected dissenter -->
+  <g>
+    <circle cx="892" cy="452" r="32" fill="#e0a45e"/>
+    <circle cx="892" cy="452" r="44" fill="none" stroke="#e0a45e" stroke-width="2.5" stroke-opacity="0.9"/>
+    <circle cx="892" cy="452" r="56" fill="none" stroke="#e0a45e" stroke-width="1.5" stroke-opacity="0.45" stroke-dasharray="3 9"/>
+  </g>
+
+  <!-- corner ticks -->
+  <g stroke="#34d399" stroke-opacity="0.45" stroke-width="2">
+    <path d="M96 96 h26 M96 96 v26"/>
+    <path d="M1184 624 h-26 M1184 624 v-26"/>
+  </g>
+
+  <rect width="1280" height="720" filter="url(#p-grain)" opacity="0.05"/>
+</svg>

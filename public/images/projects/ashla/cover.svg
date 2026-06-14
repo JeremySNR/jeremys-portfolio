@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Ashla — a photographic tone curve over a graded colour field with film grain">
+  <defs>
+    <linearGradient id="a-grade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1b3a2e"/>
+      <stop offset="45%" stop-color="#3f4a39"/>
+      <stop offset="100%" stop-color="#c98a4e"/>
+    </linearGradient>
+    <pattern id="a-grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" fill="none" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
+    <filter id="a-grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="720" fill="#141310"/>
+
+  <!-- graded photo field (framed) -->
+  <g>
+    <rect x="150" y="140" width="980" height="440" rx="16" fill="url(#a-grade)" opacity="0.5"/>
+    <rect x="150" y="140" width="980" height="440" rx="16" fill="none" stroke="#cdbfa3" stroke-opacity="0.45" stroke-width="2"/>
+  </g>
+
+  <!-- curve grid -->
+  <g transform="translate(150 140)">
+    <rect width="980" height="440" fill="url(#a-grid)"/>
+    <!-- diagonal reference (identity) -->
+    <line x1="0" y1="440" x2="980" y2="0" stroke="#ffffff" stroke-opacity="0.18" stroke-width="1.5" stroke-dasharray="4 8"/>
+    <!-- the tone curve (S-curve) -->
+    <path d="M0 440 C 240 430 300 300 490 220 C 680 140 740 30 980 18"
+          fill="none" stroke="#34d399" stroke-width="4" stroke-linecap="round"/>
+    <!-- control points -->
+    <g fill="#141310" stroke="#34d399" stroke-width="3">
+      <circle cx="0" cy="440" r="9"/>
+      <circle cx="490" cy="220" r="11"/>
+      <circle cx="980" cy="18" r="9"/>
+    </g>
+  </g>
+
+  <!-- colour swatch chips -->
+  <g>
+    <rect x="150" y="612" width="120" height="60" rx="10" fill="#1b3a2e"/>
+    <rect x="290" y="612" width="120" height="60" rx="10" fill="#3f4a39"/>
+    <rect x="430" y="612" width="120" height="60" rx="10" fill="#7d6b46"/>
+    <rect x="570" y="612" width="120" height="60" rx="10" fill="#c98a4e"/>
+    <rect x="710" y="612" width="120" height="60" rx="10" fill="#e0a45e"/>
+    <rect x="850" y="612" width="120" height="60" rx="10" fill="#efd9b8"/>
+    <rect x="990" y="612" width="120" height="60" rx="10" fill="#34d399"/>
+    <g fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1.5">
+      <rect x="150" y="612" width="120" height="60" rx="10"/>
+      <rect x="290" y="612" width="120" height="60" rx="10"/>
+      <rect x="430" y="612" width="120" height="60" rx="10"/>
+      <rect x="570" y="612" width="120" height="60" rx="10"/>
+      <rect x="710" y="612" width="120" height="60" rx="10"/>
+      <rect x="850" y="612" width="120" height="60" rx="10"/>
+      <rect x="990" y="612" width="120" height="60" rx="10"/>
+    </g>
+  </g>
+
+  <rect width="1280" height="720" filter="url(#a-grain)" opacity="0.06"/>
+</svg>
