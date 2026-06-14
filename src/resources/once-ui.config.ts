@@ -37,28 +37,29 @@ const protectedRoutes: ProtectedRoutesConfig = {
 };
 
 // Import and set font for each variant
-import { Geist } from "next/font/google";
-import { Geist_Mono } from "next/font/google";
+// Editorial-tech pairing: an expressive display serif (the writer), a refined
+// grotesk for body/labels (the operator), and a mono for code/tags (the engineer).
+import { Fraunces, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 
-const heading = Geist({
+const heading = Fraunces({
   variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
 });
 
-const body = Geist({
+const body = Hanken_Grotesk({
   variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
 });
 
-const label = Geist({
+const label = Hanken_Grotesk({
   variable: "--font-label",
   subsets: ["latin"],
   display: "swap",
 });
 
-const code = Geist_Mono({
+const code = JetBrains_Mono({
   variable: "--font-code",
   subsets: ["latin"],
   display: "swap",
@@ -74,14 +75,14 @@ const fonts: FontsConfig = {
 // default customization applied to the HTML in the main layout.tsx
 const style: StyleConfig = {
   theme: "system", // dark | light | system
-  neutral: "slate", // sand | gray | slate | custom
-  brand: "emerald", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
-  accent: "violet", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
+  neutral: "sand", // sand | gray | slate | custom — warm "paper" base for an editorial feel
+  brand: "emerald", // warm paper + green ink: a considered, editorial palette
+  accent: "emerald", // single confident accent — restraint over a scattered palette
   solid: "contrast", // color | contrast
   solidStyle: "flat", // flat | plastic
   border: "rounded", // rounded | playful | conservative
   surface: "translucent", // filled | translucent
-  transition: "micro", // all | micro | macro
+  transition: "all", // all | micro | macro — richer, smoother motion throughout
   scaling: "100", // 90 | 95 | 100 | 105 | 110
 };
 
@@ -190,7 +191,7 @@ const schema: SchemaConfig = {
   type: "Person",
   name: "Jeremy Smith",
   description: home.description,
-  email: "jeremy@neural-voice.ai",
+  email: "jezalexandersmith@gmail.com",
 };
 
 // social links
