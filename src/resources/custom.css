@@ -34,6 +34,12 @@ h6 {
   letter-spacing: -0.018em;
 }
 
+/* Italic emerald accent inside display headings (see home.headline) */
+.accent-italic {
+  font-style: italic;
+  color: var(--brand-on-background-weak);
+}
+
 /* Considered selection colour drawn from the brand (emerald) scale */
 ::selection {
   background: var(--brand-solid-strong, #1f7a5a);

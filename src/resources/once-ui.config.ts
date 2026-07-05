@@ -46,6 +46,7 @@ const heading = Fraunces({
   variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
+  style: ["normal", "italic"],
 });
 
 const body = Hanken_Grotesk({

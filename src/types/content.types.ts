@@ -99,6 +99,24 @@ export interface Home extends BasePageConfig {
   };
   /** The sub text which appears below the headline */
   subline: React.ReactNode;
+  /** Quiet typographic strip of press outlets, shown under the hero */
+  press?: {
+    display: boolean;
+    /** Kicker label, e.g. "As featured in" */
+    title: string;
+    /** Outlet names in display order */
+    outlets: string[];
+  };
+  /** Headline numbers band */
+  highlights?: {
+    display: boolean;
+    items: Array<{
+      /** The big figure, e.g. "£1m+" */
+      value: string;
+      /** What the figure means, kept short */
+      label: string;
+    }>;
+  };
 }
 
 /**

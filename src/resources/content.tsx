@@ -49,7 +49,12 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building AI that actually ships, from enterprise platforms to open-source tools and research</>,
+  headline: (
+    <>
+      Building AI that <em className="accent-italic">actually ships</em>, from enterprise platforms
+      to open-source tools and research
+    </>
+  ),
   featured: {
     display: true,
     title: (
@@ -65,10 +70,34 @@ const home: Home = {
   },
   subline: (
     <>
-      I'm Jeremy. I lead AI strategy and product at Travel Counsellors, I founded Neural Voice, and I build open-source AI tools and research in the open.
-      <br /> I work across conversational AI, multi-agent systems, and agentic engineering, and I love taking things from a rough idea to something real and in front of people.
+      I'm Jeremy. I lead AI strategy and product at Travel Counsellors, I founded Neural Voice, and
+      I build open-source AI tools and research in the open.
+      <br /> I work across conversational AI, multi-agent systems, and agentic engineering, and I
+      love taking things from a rough idea to something real and in front of people.
     </>
   ),
+  press: {
+    display: true,
+    title: "As featured in",
+    outlets: [
+      "BBC News",
+      "WIRED",
+      "The Washington Post",
+      "NBC News",
+      "Fox News",
+      "Euronews",
+      "Travel Weekly",
+    ],
+  },
+  highlights: {
+    display: true,
+    items: [
+      { value: "£1m+", label: "raised as a first-time founder" },
+      { value: "2", label: "world-first AI political avatars" },
+      { value: "10k", label: "simultaneous voice conversations" },
+      { value: "87%", label: "cost saving vs traditional call centres" },
+    ],
+  },
 };
 
 const about: About = {
@@ -92,10 +121,11 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        I'm an AI builder and founder. Right now I lead AI strategy and product at Travel Counsellors, a £1bn+ travel
-        group, after founding Neural Voice and Neural River. On the side I ship open-source AI tools and publish research,
-        covering everything from governance for coding agents and LLM context tooling to multi-agent language systems.
-        I've raised over £1m, taken products from nothing to revenue, hired and led teams, and I still get stuck into the
+        I'm an AI builder and founder. Right now I lead AI strategy and product at Travel
+        Counsellors, a £1bn+ travel group, after founding Neural Voice and Neural River. On the side
+        I ship open-source AI tools and publish research, covering everything from governance for
+        coding agents and LLM context tooling to multi-agent language systems. I've raised over £1m,
+        taken products from nothing to revenue, hired and led teams, and I still get stuck into the
         hard AI problems myself.
       </>
     ),
@@ -110,13 +140,16 @@ const about: About = {
         role: "AI Innovation Partner",
         achievements: [
           <>
-            Leading AI strategy and product across a £1bn+ travel group, finding the use cases that actually matter and taking them from prototype to production
+            Leading AI strategy and product across a £1bn+ travel group, finding the use cases that
+            actually matter and taking them from prototype to production
           </>,
           <>
-            Built and shipped real products: voice agents for recruitment (hooked into Zoom Contact Center), AI customer and app support agents, and a ChatGPT app for travel matching
+            Built and shipped real products: voice agents for recruitment (hooked into Zoom Contact
+            Center), AI customer and app support agents, and a ChatGPT app for travel matching
           </>,
           <>
-            Gave the keynote at TC Together in Manchester, walking counsellors and senior leadership through where we're taking AI
+            Gave the keynote at TC Together in Manchester, walking counsellors and senior leadership
+            through where we're taking AI
           </>,
         ],
         images: [],
@@ -127,19 +160,27 @@ const about: About = {
         role: "Co-Founder & CEO",
         achievements: [
           <>
-            Founded company from scratch, raising nearly £1m and securing Innovate UK grant (selected from 2,250 competing businesses)
+            Founded company from scratch, raising nearly £1m and securing Innovate UK grant
+            (selected from 2,250 competing businesses)
           </>,
           <>
-            Built proprietary enterprise AI agent platform from the ground up, working with leading AI providers whilst developing all core technology in-house to create unique conversational capabilities that scale to hundreds of thousands of simultaneous calls with sub-300ms latency, NLP, and sentiment detection
+            Built proprietary enterprise AI agent platform from the ground up, working with leading
+            AI providers whilst developing all core technology in-house to create unique
+            conversational capabilities that scale to hundreds of thousands of simultaneous calls
+            with sub-300ms latency, NLP, and sentiment detection
           </>,
           <>
-            Integrated platform with 600+ business tools including leading GDS, PMS, and CRM systems; partnered with largest UK travel businesses delivering 87% cost savings versus traditional call centres
+            Integrated platform with 600+ business tools including leading GDS, PMS, and CRM
+            systems; partnered with largest UK travel businesses delivering 87% cost savings versus
+            traditional call centres
           </>,
           <>
-            Featured on BBC, ITV, Fox News, NBC, The Independent, Travel Weekly; keynote at ITT 'Humans vs AI' with industry C-suite executives
+            Featured on BBC, ITV, Fox News, NBC, The Independent, Travel Weekly; keynote at ITT
+            'Humans vs AI' with industry C-suite executives
           </>,
           <>
-            Invited to Downing Street for AI policy work with Labour government; presented at universities, AI conferences, and travel events
+            Invited to Downing Street for AI policy work with Labour government; presented at
+            universities, AI conferences, and travel events
           </>,
         ],
         images: [],
@@ -150,13 +191,16 @@ const about: About = {
         role: "Co-Founder",
         achievements: [
           <>
-            Founded AI incubator identifying and developing fresh university AI talent to work on internal and external AI startups
+            Founded AI incubator identifying and developing fresh university AI talent to work on
+            internal and external AI startups
           </>,
           <>
-            Grew business with expanding portfolio of AI ventures; developed lifelike AI avatars for travel, legal, and sales sectors
+            Grew business with expanding portfolio of AI ventures; developed lifelike AI avatars for
+            travel, legal, and sales sectors
           </>,
           <>
-            Launched Sales Compass as Neural River product, providing fractional sales leadership and strategic guidance to B2B technology companies
+            Launched Sales Compass as Neural River product, providing fractional sales leadership
+            and strategic guidance to B2B technology companies
           </>,
         ],
         images: [],
@@ -167,10 +211,12 @@ const about: About = {
         role: "BDR/SDR Manager",
         achievements: [
           <>
-            Led UK market expansion, establishing entire UK sales operation from ground up; recruited and managed high-performing BDR team
+            Led UK market expansion, establishing entire UK sales operation from ground up;
+            recruited and managed high-performing BDR team
           </>,
           <>
-            Implemented Sales Enablement platform and designed inbound/outbound strategies; streamlined operations by integrating underutilised systems
+            Implemented Sales Enablement platform and designed inbound/outbound strategies;
+            streamlined operations by integrating underutilised systems
           </>,
         ],
         images: [],
@@ -181,10 +227,12 @@ const about: About = {
         role: "Inside Sales Manager",
         achievements: [
           <>
-            Led Inside Sales team of 8 representatives; launched partnership division; achieved 100%+ target attainment across all ramped reps in Q2 2022
+            Led Inside Sales team of 8 representatives; launched partnership division; achieved
+            100%+ target attainment across all ramped reps in Q2 2022
           </>,
           <>
-            Rapidly promoted through four roles in under two years; established training frameworks and became recognised expert in education sector
+            Rapidly promoted through four roles in under two years; established training frameworks
+            and became recognised expert in education sector
           </>,
         ],
         images: [],
@@ -197,7 +245,13 @@ const about: About = {
     institutions: [
       {
         name: "Bangor University, Wales",
-        description: <>MA in Business and Marketing (Distinction, 2019-20). BSc in Business and Finance (2:1, 2016-19). President of Bangor Poker Society (2018-19, Won Best New Opportunity Award). Silver Duke of Edinburgh Award.</>,
+        description: (
+          <>
+            MA in Business and Marketing (Distinction, 2019-20). BSc in Business and Finance (2:1,
+            2016-19). President of Bangor Poker Society (2018-19, Won Best New Opportunity Award).
+            Silver Duke of Edinburgh Award.
+          </>
+        ),
       },
       {
         name: "Collyer's College, Horsham",
@@ -210,16 +264,19 @@ const about: About = {
     title: "Publications",
     papers: [
       {
-        title: "Don't Merge Carol: Cross-Inhibition and Protected Dissent in Multi-Agent Language Systems",
+        title:
+          "Don't Merge Carol: Cross-Inhibition and Protected Dissent in Multi-Agent Language Systems",
         venue: "Zenodo",
         date: "2026",
         description: (
           <>
-            A study of multi-agent language systems exploring whether agents can coordinate through a shared latent buffer
-            rather than text. Phase 1 introduces a text-level blackboard with cross-inhibition and a structurally protected
-            dissenter ("Carol"); Phase 2 introduces the Latent Resonance Loop, with Behaviourally-Aligned Prefix Codecs and
-            TIES-inspired conflict resolution. Demonstrates that protected dissent and latent-space conflict resolution can
-            produce emergent shared representations distinct from any individual agent.
+            A study of multi-agent language systems exploring whether agents can coordinate through
+            a shared latent buffer rather than text. Phase 1 introduces a text-level blackboard with
+            cross-inhibition and a structurally protected dissenter ("Carol"); Phase 2 introduces
+            the Latent Resonance Loop, with Behaviourally-Aligned Prefix Codecs and TIES-inspired
+            conflict resolution. Demonstrates that protected dissent and latent-space conflict
+            resolution can produce emergent shared representations distinct from any individual
+            agent.
           </>
         ),
         link: "https://zenodo.org/records/19467363",
@@ -264,7 +321,12 @@ const about: About = {
       {
         title: "AI & Technology",
         description: (
-          <>Expert in Conversational &amp; Voice AI, multi-agent systems, agentic engineering, LLM tooling, NLP, platform architecture, and API integration. Built enterprise-scale AI platforms handling hundreds of thousands of concurrent calls with sub-300ms latency, and ship in TypeScript, Python, and Rust.</>
+          <>
+            Expert in Conversational &amp; Voice AI, multi-agent systems, agentic engineering, LLM
+            tooling, NLP, platform architecture, and API integration. Built enterprise-scale AI
+            platforms handling hundreds of thousands of concurrent calls with sub-300ms latency, and
+            ship in TypeScript, Python, and Rust.
+          </>
         ),
         tags: [
           {
@@ -277,7 +339,11 @@ const about: About = {
       {
         title: "Leadership & Strategy",
         description: (
-          <>Proven track record in fundraising (£1m+), strategic planning, stakeholder engagement, public speaking, team building, and agile methodologies. Successfully led companies from concept to enterprise deployment.</>
+          <>
+            Proven track record in fundraising (£1m+), strategic planning, stakeholder engagement,
+            public speaking, team building, and agile methodologies. Successfully led companies from
+            concept to enterprise deployment.
+          </>
         ),
         tags: [],
         images: [],
@@ -285,7 +351,11 @@ const about: About = {
       {
         title: "Sales & Business Development",
         description: (
-          <>Extensive experience in B2B SaaS, Enterprise Sales, Pipeline Management, Customer Success, Market Expansion, and Sales Enablement across travel, HR-tech, marketing automation, and SaaS sectors.</>
+          <>
+            Extensive experience in B2B SaaS, Enterprise Sales, Pipeline Management, Customer
+            Success, Market Expansion, and Sales Enablement across travel, HR-tech, marketing
+            automation, and SaaS sectors.
+          </>
         ),
         tags: [],
         images: [],
@@ -293,7 +363,11 @@ const about: About = {
       {
         title: "Open Source & Research",
         description: (
-          <>I build and maintain open-source AI tools like Project Foundry (governance for AI coding agents) and the snug context-budgeting library, and I publish research on multi-agent language systems. Most of it lives on GitHub at JeremySNR.</>
+          <>
+            I build and maintain open-source AI tools like Project Foundry (governance for AI coding
+            agents) and the snug context-budgeting library, and I publish research on multi-agent
+            language systems. Most of it lives on GitHub at JeremySNR.
+          </>
         ),
         tags: [
           {
@@ -413,7 +487,8 @@ const news: News = {
   description: `Where ${person.name} and his work have been featured in the press`,
   intro: (
     <>
-      A running list of where my work has turned up. Some of it people loved, a fair bit of it people loved to hate. Either way, here it all is.
+      A running list of where my work has turned up. Some of it people loved, a fair bit of it
+      people loved to hate. Either way, here it all is.
     </>
   ),
   items: [
@@ -570,7 +645,8 @@ const news: News = {
     },
     {
       outlet: "TTG",
-      title: "'AI will soon be part of every travel transaction, but there's hope yet for humans' (ITT 2024)",
+      title:
+        "'AI will soon be part of every travel transaction, but there's hope yet for humans' (ITT 2024)",
       date: "Jun 2024",
       tag: "Travel",
       link: "https://www.ttgmedia.com/news/ai-will-soon-become-a-part-of-every-travel-transaction-but-theres-hope-yet-for-humans-itt-delegates-told-52758",
