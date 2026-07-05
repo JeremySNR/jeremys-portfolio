@@ -128,7 +128,9 @@ const about: About = {
         travel companies as clients. I sit on the board of the Institute of Travel &amp; Tourism as
         a Director, and I was named one of TTG's 30 Under 30. That work keeps pulling me into
         national AI policy too: I collaborate with Westminster on strategy for UK AI sovereignty,
-        and building AI Mark put me in direct conversation with OpenAI's policy leadership. What
+        work with the Yorkshire APPG on AI strategy and deployment, campaign for AI funding in the
+        North of England, and building AI Mark put me in direct conversation with OpenAI's policy
+        leadership. What
         makes me unusual is range: I can own the strategy, raise the money, close the deals, and
         hire the team — and then sit down and build the product myself. On the side I ship
         open-source AI tools and publish research on multi-agent systems.
@@ -255,6 +257,10 @@ const about: About = {
       },
       {
         title: "Westminster collaboration on UK AI sovereignty & strategy",
+        meta: "AI policy",
+      },
+      {
+        title: "Working with the Yorkshire APPG on AI strategy & deployment",
         meta: "AI policy",
       },
       {
