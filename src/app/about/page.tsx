@@ -41,6 +41,11 @@ export default function About() {
       items: about.work.experiences.map((experience) => experience.company),
     },
     {
+      title: about.recognition?.title ?? "",
+      display: about.recognition?.display ?? false,
+      items: [],
+    },
+    {
       title: about.studies.title,
       display: about.studies.display,
       items: about.studies.institutions.map((institution) => institution.name),
@@ -88,7 +93,7 @@ export default function About() {
           <TableOfContents structure={structure} about={about} />
         </Column>
       )}
-      <Row fillWidth s={{ direction: "column"}} horizontal="center">
+      <Row fillWidth s={{ direction: "column" }} horizontal="center">
         {about.avatar.display && (
           <Column
             className={styles.avatar}
@@ -265,6 +270,47 @@ export default function About() {
                       </Row>
                     )}
                   </Column>
+                ))}
+              </Column>
+            </>
+          )}
+
+          {about.recognition?.display && (
+            <>
+              <Heading
+                as="h2"
+                id={about.recognition.title}
+                variant="display-strong-s"
+                marginBottom="m"
+              >
+                {about.recognition.title}
+              </Heading>
+              <Column fillWidth gap="16" marginBottom="40">
+                {about.recognition.items.map((item, index) => (
+                  <Row
+                    key={`${item.title}-${index}`}
+                    fillWidth
+                    horizontal="between"
+                    vertical="center"
+                    gap="16"
+                  >
+                    {item.link ? (
+                      <SmartLink href={item.link} suffixIcon="arrowUpRightFromSquare">
+                        <Text variant="body-default-m">{item.title}</Text>
+                      </SmartLink>
+                    ) : (
+                      <Text variant="body-default-m">{item.title}</Text>
+                    )}
+                    {item.meta && (
+                      <Text
+                        variant="body-default-s"
+                        onBackground="neutral-weak"
+                        style={{ whiteSpace: "nowrap" }}
+                      >
+                        {item.meta}
+                      </Text>
+                    )}
+                  </Row>
                 ))}
               </Column>
             </>

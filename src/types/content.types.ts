@@ -181,6 +181,22 @@ export interface About extends BasePageConfig {
       }>;
     }>;
   };
+  /** Board roles, industry appointments and awards */
+  recognition?: {
+    /** Whether to display the section */
+    display: boolean;
+    /** Title for the section */
+    title: string;
+    /** List of roles and honours */
+    items: Array<{
+      /** The role or award, e.g. "Director, Institute of Travel & Tourism" */
+      title: string;
+      /** Short context label, e.g. "Board appointment" */
+      meta?: string;
+      /** Optional link to the organisation or announcement */
+      link?: string;
+    }>;
+  };
   /** Studies/education section */
   studies: {
     /** Whether to display studies section */

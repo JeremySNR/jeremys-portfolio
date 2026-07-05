@@ -126,7 +126,8 @@ const about: About = {
         I ship open-source AI tools and publish research, covering everything from governance for
         coding agents and LLM context tooling to multi-agent language systems. I've raised over £1m,
         taken products from nothing to revenue, hired and led teams, and I still get stuck into the
-        hard AI problems myself.
+        hard AI problems myself. I also sit on the board of the Institute of Travel &amp; Tourism as
+        a Director, and I was named one of TTG's 30 Under 30.
       </>
     ),
   },
@@ -236,6 +237,22 @@ const about: About = {
           </>,
         ],
         images: [],
+      },
+    ],
+  },
+  recognition: {
+    display: true,
+    title: "Roles & Recognition",
+    items: [
+      {
+        title: "Director, Institute of Travel & Tourism (ITT)",
+        meta: "Board appointment",
+        link: "https://www.itt.co.uk",
+      },
+      {
+        title: "TTG 30 Under 30",
+        meta: "Tomorrow's travel leaders",
+        link: "https://www.ttgmedia.com",
       },
     ],
   },
@@ -652,6 +669,18 @@ const news: News = {
       link: "https://www.ttgmedia.com/news/ai-will-soon-become-a-part-of-every-travel-transaction-but-theres-hope-yet-for-humans-itt-delegates-told-52758",
     },
     // Recognition
+    {
+      outlet: "TTG",
+      title: "Named one of TTG's 30 Under 30, the travel industry's ones to watch",
+      tag: "Recognition",
+      link: "https://www.ttgmedia.com",
+    },
+    {
+      outlet: "ITT",
+      title: "Appointed Director of the Institute of Travel & Tourism",
+      tag: "Recognition",
+      link: "https://www.itt.co.uk",
+    },
     {
       outlet: "GrantUp",
       title: "Neural Voice wins an Innovate UK Smart Grant (£341,810)",
