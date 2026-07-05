@@ -7,12 +7,12 @@ import styles from "./Showcase.module.scss";
  * Curated selected work for the homepage: one flagship case study up top,
  * then a hand-picked grid. Everything else lives on /work.
  */
-const FEATURE = { slug: "project-foundry", tag: "Open source · Latest" };
+const FEATURE = { slug: "neural-voice", tag: "The venture · Co-founder & CEO" };
 
 const GRID = [
   { slug: "ai-steve", tag: "World first · 2024" },
   { slug: "ai-mark", tag: "World first · 2025" },
-  { slug: "neural-voice", tag: "Venture · Co-founder" },
+  { slug: "project-foundry", tag: "Open source · Latest" },
   { slug: "pluribus", tag: "Research · Published paper" },
 ];
 

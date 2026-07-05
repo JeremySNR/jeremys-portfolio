@@ -121,6 +121,11 @@ export default function Home() {
           <PressStrip />
         </RevealFx>
 
+        {/* The numbers */}
+        <Reveal>
+          <StatBand />
+        </Reveal>
+
         {/* Selected work */}
         <Column fillWidth gap="l">
           <Reveal>
@@ -128,11 +133,6 @@ export default function Home() {
           </Reveal>
           <Showcase />
         </Column>
-
-        {/* The numbers */}
-        <Reveal>
-          <StatBand />
-        </Reveal>
 
         {/* Research & writing */}
         <Column fillWidth gap="l">

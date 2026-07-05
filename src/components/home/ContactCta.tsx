@@ -25,8 +25,8 @@ export function ContactCta() {
         variant="body-default-m"
         className={styles.sub}
       >
-        Whether it&apos;s a product that needs shipping, a platform that needs a strategy, or a
-        strange idea that might just work — I&apos;m always up for a conversation.
+        Whether it&apos;s an AI strategy that needs an owner, a product that needs taking to market,
+        or a partnership worth exploring — I&apos;m always up for a conversation.
       </Text>
       <Row gap="12" horizontal="center" wrap paddingTop="8">
         <Button href={`mailto:${person.email}`} variant="primary" size="m" arrowIcon>

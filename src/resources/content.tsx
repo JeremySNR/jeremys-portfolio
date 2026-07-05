@@ -51,29 +51,29 @@ const home: Home = {
   description: `Portfolio website showcasing my work as a ${person.role}`,
   headline: (
     <>
-      Building AI that <em className="accent-italic">actually ships</em>, from enterprise platforms
-      to open-source tools and research
+      Turning AI into real products, real revenue, and{" "}
+      <em className="accent-italic">the odd world first</em>
     </>
   ),
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Recent Work</strong>{" "}
+        <strong className="ml-4">Now</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          Project Foundry
+          AI Innovation Partner, Travel Counsellors
         </Text>
       </Row>
     ),
-    href: "/work/project-foundry",
+    href: "/about",
   },
   subline: (
     <>
-      I'm Jeremy. I lead AI strategy and product at Travel Counsellors, I founded Neural Voice, and
-      I build open-source AI tools and research in the open.
-      <br /> I work across conversational AI, multi-agent systems, and agentic engineering, and I
-      love taking things from a rough idea to something real and in front of people.
+      I'm Jeremy. I lead AI strategy and product at Travel Counsellors, a £1bn+ travel group, after
+      founding Neural Voice and raising £1m as a first-time CEO.
+      <br /> Strategy, fundraising, sales, and hiring are my day job — and I'm still technical
+      enough to build the product myself, from voice platforms to published research.
     </>
   ),
   press: {
@@ -92,10 +92,10 @@ const home: Home = {
   highlights: {
     display: true,
     items: [
+      { value: "£1bn+", label: "travel group where I lead AI" },
       { value: "£1m+", label: "raised as a first-time founder" },
+      { value: "87%", label: "cost saving delivered for clients" },
       { value: "2", label: "world-first AI political avatars" },
-      { value: "10k", label: "simultaneous voice conversations" },
-      { value: "87%", label: "cost saving vs traditional call centres" },
     ],
   },
 };
@@ -121,13 +121,15 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        I'm an AI builder and founder. Right now I lead AI strategy and product at Travel
-        Counsellors, a £1bn+ travel group, after founding Neural Voice and Neural River. On the side
-        I ship open-source AI tools and publish research, covering everything from governance for
-        coding agents and LLM context tooling to multi-agent language systems. I've raised over £1m,
-        taken products from nothing to revenue, hired and led teams, and I still get stuck into the
-        hard AI problems myself. I also sit on the board of the Institute of Travel &amp; Tourism as
-        a Director, and I was named one of TTG's 30 Under 30.
+        I'm a commercial leader and founder working at the sharp end of AI. I lead AI strategy and
+        product at Travel Counsellors, a £1bn+ travel group, after founding Neural Voice — where I
+        raised nearly £1m as a first-time CEO, won an Innovate UK grant against 2,250 other
+        businesses, and took an enterprise platform from an idea to revenue with the UK's largest
+        travel companies as clients. I sit on the board of the Institute of Travel &amp; Tourism as
+        a Director, and I was named one of TTG's 30 Under 30. What makes me unusual is range: I can
+        own the strategy, raise the money, close the deals, and hire the team — and then sit down
+        and build the product myself. On the side I ship open-source AI tools and publish research
+        on multi-agent systems.
       </>
     ),
   },
@@ -336,30 +338,12 @@ const about: About = {
     title: "Key Skills & Expertise",
     skills: [
       {
-        title: "AI & Technology",
-        description: (
-          <>
-            Expert in Conversational &amp; Voice AI, multi-agent systems, agentic engineering, LLM
-            tooling, NLP, platform architecture, and API integration. Built enterprise-scale AI
-            platforms handling hundreds of thousands of concurrent calls with sub-300ms latency, and
-            ship in TypeScript, Python, and Rust.
-          </>
-        ),
-        tags: [
-          {
-            name: "AI",
-            icon: "openai",
-          },
-        ],
-        images: [],
-      },
-      {
         title: "Leadership & Strategy",
         description: (
           <>
-            Proven track record in fundraising (£1m+), strategic planning, stakeholder engagement,
-            public speaking, team building, and agile methodologies. Successfully led companies from
-            concept to enterprise deployment.
+            Proven track record in fundraising (£1m+), strategic planning, board-level stakeholder
+            engagement, public speaking, and team building. Led companies from concept to enterprise
+            deployment, and now shaping AI strategy for a £1bn+ travel group.
           </>
         ),
         tags: [],
@@ -375,6 +359,24 @@ const about: About = {
           </>
         ),
         tags: [],
+        images: [],
+      },
+      {
+        title: "AI & Technology",
+        description: (
+          <>
+            Expert in Conversational &amp; Voice AI, multi-agent systems, agentic engineering, LLM
+            tooling, NLP, platform architecture, and API integration. Built enterprise-scale AI
+            platforms handling hundreds of thousands of concurrent calls with sub-300ms latency, and
+            ship in TypeScript, Python, and Rust.
+          </>
+        ),
+        tags: [
+          {
+            name: "AI",
+            icon: "openai",
+          },
+        ],
         images: [],
       },
       {
@@ -401,7 +403,7 @@ const about: About = {
 const blog: Blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
+  title: "Writing on AI, travel, and building businesses",
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
@@ -411,7 +413,7 @@ const work: Work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
+  description: `Ventures, products, and research by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
 };
