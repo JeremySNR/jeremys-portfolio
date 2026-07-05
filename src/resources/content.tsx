@@ -126,10 +126,12 @@ const about: About = {
         raised nearly £1m as a first-time CEO, won an Innovate UK grant against 2,250 other
         businesses, and took an enterprise platform from an idea to revenue with the UK's largest
         travel companies as clients. I sit on the board of the Institute of Travel &amp; Tourism as
-        a Director, and I was named one of TTG's 30 Under 30. What makes me unusual is range: I can
-        own the strategy, raise the money, close the deals, and hire the team — and then sit down
-        and build the product myself. On the side I ship open-source AI tools and publish research
-        on multi-agent systems.
+        a Director, and I was named one of TTG's 30 Under 30. That work keeps pulling me into
+        national AI policy too: I collaborate with Westminster on strategy for UK AI sovereignty,
+        and building AI Mark put me in direct conversation with OpenAI's policy leadership. What
+        makes me unusual is range: I can own the strategy, raise the money, close the deals, and
+        hire the team — and then sit down and build the product myself. On the side I ship
+        open-source AI tools and publish research on multi-agent systems.
       </>
     ),
   },
@@ -250,6 +252,10 @@ const about: About = {
         title: "Director, Institute of Travel & Tourism (ITT)",
         meta: "Board appointment",
         link: "https://www.itt.co.uk",
+      },
+      {
+        title: "Westminster collaboration on UK AI sovereignty & strategy",
+        meta: "AI policy",
       },
       {
         title: "TTG 30 Under 30",
