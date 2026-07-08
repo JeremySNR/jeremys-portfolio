@@ -158,7 +158,14 @@ const about: About = {
             through where we're taking AI
           </>,
         ],
-        images: [],
+        images: [
+          {
+            src: "/images/gallery/tc-together-keynote.jpg",
+            alt: "Jeremy Smith speaking at the TC Together conference in Manchester",
+            width: 16,
+            height: 9,
+          },
+        ],
       },
       {
         company: "Neural Voice",
@@ -437,6 +444,16 @@ const gallery: Gallery = {
   // Images by https://lorant.one
   // These are placeholder images, replace with your own
   images: [
+    {
+      src: "/images/gallery/tc-together-keynote.jpg",
+      alt: "Jeremy Smith speaking at the TC Together conference in Manchester",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/gallery/studio-interview.jpg",
+      alt: "Jeremy Smith during a studio interview",
+      orientation: "vertical",
+    },
     {
       src: "/images/gallery/IMG-20250402-WA0027.jpg",
       alt: "Gallery photo",
