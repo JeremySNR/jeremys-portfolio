@@ -1,0 +1,34 @@
+---
+title: "ClipForge: The Open-Source Opus Clip Alternative"
+publishedAt: "2026-07-08"
+summary: "A free desktop app that turns podcasts, webinars and streams into ready-to-post vertical clips. AI-picked moments, research-backed virality scores, animated captions and speaker-aware reframing, for cents per video instead of a subscription."
+images:
+  - "/images/projects/clip-forge/cover.svg"
+team:
+  - name: "Jeremy Smith"
+    role: "Creator"
+    avatar: "/images/1726940932303.jpeg"
+    linkedIn: "https://linkedin.com/in/jsmithsales"
+link: "https://github.com/JeremySNR/clip-forge"
+---
+
+## What it is
+
+ClipForge takes long video, a podcast, a webinar, a stream, an interview, and turns it into short vertical clips that are actually ready to post. It finds the moments worth clipping, scores them for virality, reframes to 9:16 around whoever is speaking, burns in animated captions, and exports platform-ready MP4s. It runs entirely on your desktop as a free, MIT-licensed app.
+
+## The commercial wedge
+
+Tools like Opus Clip do this well, but they charge a monthly subscription, cap your processing minutes, and upload your footage to their cloud. ClipForge does the same job for the cost of the API calls, roughly $0.36 per hour of video. Your footage stays on your machine; only audio, transcripts and a handful of frames ever leave it. For anyone producing regular long-form content, that's the difference between dollars per month per seat and cents per video.
+
+## What it does
+
+- **Import anything.** Local files or a pasted URL from YouTube, Vimeo, TikTok or Twitch. Private and SSO-protected videos work by borrowing the login from your browser.
+- **Finds real moments, not random cuts.** An LLM hunts for self-contained hook, build, payoff micro-stories, and a second pass reviews every clip ending and extends it to the beat that completes the thought. You can steer it with your own prompt.
+- **Virality scores you can argue with.** A 0-99 score built on published research: a text rubric from Berger and Milkman's *What Makes Online Content Viral?* plus measured vocal energy, combined with a vision pass that rates sampled frames for scroll-stopping potential.
+- **Edits like a pro would.** Scene-aware auto zoom on the most energetic lines, automatic removal of pauses and filler words, and twelve karaoke-style caption looks with custom font support.
+- **Speaker-aware reframing, on device.** Active speaker detection checks every face's lip movement against the soundtrack, so the 9:16 crop cuts between speakers like a camera operator, not a motion sensor. All of it runs locally via ONNX, no cloud.
+- **Ships the whole workflow.** Loudness-normalised exports with GPU encoding, your own watermark, and one-click AI post captions written hook-first for TikTok, Reels and Shorts.
+
+## Why I built it
+
+Short-form clipping is one of those markets where the SaaS pricing has drifted a long way from the underlying cost. The models to do the job well are a few cents per video; the subscriptions are hundreds of pounds a year. Building the free version that respects your footage felt like both a useful product and a point worth making. It's also my working testbed for agentic engineering: I build it with AI coding agents doing the heavy lifting under my direction, which is exactly how I think product teams will work from here on.

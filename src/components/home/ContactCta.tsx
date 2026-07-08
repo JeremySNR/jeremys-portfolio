@@ -26,7 +26,7 @@ export function ContactCta() {
         className={styles.sub}
       >
         Whether it&apos;s an AI strategy that needs an owner, a product that needs taking to market,
-        or a partnership worth exploring — I&apos;m always up for a conversation.
+        or a partnership worth exploring, I&apos;m always up for a conversation.
       </Text>
       <Row gap="12" horizontal="center" wrap paddingTop="8">
         <Button href={`mailto:${person.email}`} variant="primary" size="m" arrowIcon>

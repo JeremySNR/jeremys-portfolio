@@ -70,10 +70,10 @@ const home: Home = {
   },
   subline: (
     <>
-      I'm Jeremy. I lead AI strategy and product at Travel Counsellors, a £1bn+ travel group, after
-      founding Neural Voice and raising £1m as a first-time CEO.
-      <br /> Strategy, fundraising, sales, and hiring are my day job — and I'm still technical
-      enough to build the product myself, from voice platforms to published research.
+      I'm Jeremy. I lead AI transformation and strategy across Travel Counsellors, a £1.5bn
+      PE-backed travel group, after founding Neural Voice and raising £1m as a first-time CEO.
+      <br /> I've built sales teams from scratch, taken enterprise AI from pitch to production, and
+      I'm still technical enough to build the product myself.
     </>
   ),
   press: {
@@ -92,7 +92,7 @@ const home: Home = {
   highlights: {
     display: true,
     items: [
-      { value: "£1bn+", label: "travel group where I lead AI" },
+      { value: "£1.5bn", label: "travel group where I lead AI" },
       { value: "£1m+", label: "raised as a first-time founder" },
       { value: "87%", label: "cost saving delivered for clients" },
       { value: "2", label: "world-first AI political avatars" },
@@ -122,18 +122,17 @@ const about: About = {
     description: (
       <>
         I'm a commercial leader and founder working at the sharp end of AI. I lead AI strategy and
-        product at Travel Counsellors, a £1bn+ travel group, after founding Neural Voice — where I
-        raised nearly £1m as a first-time CEO, won an Innovate UK grant against 2,250 other
+        product at Travel Counsellors, a £1.5bn PE-backed travel group, after founding Neural Voice,
+        where I raised nearly £1m as a first-time CEO, won an Innovate UK grant against 2,250 other
         businesses, and took an enterprise platform from an idea to revenue with the UK's largest
         travel companies as clients. I sit on the board of the Institute of Travel &amp; Tourism as
         a Director, and I was named one of TTG's 30 Under 30. That work keeps pulling me into
         national AI policy too: I collaborate with Westminster on strategy for UK AI sovereignty,
         work with the Yorkshire APPG on AI strategy and deployment, campaign for AI funding in the
         North of England, and building AI Mark put me in direct conversation with OpenAI's policy
-        leadership. What
-        makes me unusual is range: I can own the strategy, raise the money, close the deals, and
-        hire the team — and then sit down and build the product myself. On the side I ship
-        open-source AI tools and publish research on multi-agent systems.
+        leadership. What makes me unusual is range: I can own the strategy, raise the money, close
+        the deals, and hire the team, and then sit down and build the product myself. On the side I
+        ship open-source AI tools and publish research on multi-agent systems.
       </>
     ),
   },
@@ -147,8 +146,8 @@ const about: About = {
         role: "AI Innovation Partner",
         achievements: [
           <>
-            Leading AI strategy and product across a £1bn+ travel group, finding the use cases that
-            actually matter and taking them from prototype to production
+            Leading AI transformation and strategy across a £1.5bn travel group, finding the use
+            cases that actually matter and taking them from prototype to production
           </>,
           <>
             Built and shipped real products: voice agents for recruitment (hooked into Zoom Contact
@@ -355,7 +354,7 @@ const about: About = {
           <>
             Proven track record in fundraising (£1m+), strategic planning, board-level stakeholder
             engagement, public speaking, and team building. Led companies from concept to enterprise
-            deployment, and now shaping AI strategy for a £1bn+ travel group.
+            deployment, and now leading AI transformation for a £1.5bn travel group.
           </>
         ),
         tags: [],

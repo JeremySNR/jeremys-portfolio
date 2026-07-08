@@ -12,8 +12,8 @@ const FEATURE = { slug: "neural-voice", tag: "The venture · Co-founder & CEO" }
 const GRID = [
   { slug: "ai-steve", tag: "World first · 2024" },
   { slug: "ai-mark", tag: "World first · 2025" },
-  { slug: "project-foundry", tag: "Open source · Latest" },
-  { slug: "pluribus", tag: "Research · Published paper" },
+  { slug: "clip-forge", tag: "Open source · Just shipped" },
+  { slug: "project-foundry", tag: "Open source · Agent governance" },
 ];
 
 export function Showcase() {
