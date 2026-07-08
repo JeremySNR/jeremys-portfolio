@@ -51,8 +51,8 @@ const home: Home = {
   description: `Portfolio website showcasing my work as a ${person.role}`,
   headline: (
     <>
-      Turning AI into real products, real revenue, and{" "}
-      <em className="accent-italic">the odd world first</em>
+      AI leadership that ships products, wins revenue, and{" "}
+      <em className="accent-italic">makes headlines</em>
     </>
   ),
   featured: {
