@@ -1,0 +1,7 @@
+.row {
+  border-bottom: 1px solid var(--neutral-alpha-weak);
+}
+
+.row:last-child {
+  border-bottom: none;
+}

@@ -107,6 +107,18 @@ export interface Home extends BasePageConfig {
     /** Outlet names in display order */
     outlets: string[];
   };
+  /** Featured external essays, shown in the research & writing section */
+  essays?: {
+    display: boolean;
+    items: Array<{
+      /** Essay title */
+      title: string;
+      /** Context label, e.g. "Essay on LinkedIn" */
+      meta?: string;
+      /** Link to the essay */
+      link: string;
+    }>;
+  };
   /** Headline numbers band */
   highlights?: {
     display: boolean;

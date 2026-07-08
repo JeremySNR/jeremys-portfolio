@@ -72,7 +72,7 @@ const home: Home = {
     <>
       I'm Jeremy. I lead AI transformation and strategy across Travel Counsellors, a £1.5bn
       PE-backed travel group, after founding Neural Voice and raising £1m as a first-time CEO.
-      <br /> I've built sales teams from scratch, taken enterprise AI from pitch to production, and
+      <br /> I've built sales teams from scratch, I work with Westminster on UK AI sovereignty, and
       I'm still technical enough to build the product myself.
     </>
   ),
@@ -87,6 +87,21 @@ const home: Home = {
       "Fox News",
       "Euronews",
       "Travel Weekly",
+    ],
+  },
+  essays: {
+    display: true,
+    items: [
+      {
+        title: "The Fable Situation Has Moved in the Direction We'd Hope",
+        meta: "Essay on LinkedIn",
+        link: "https://www.linkedin.com/pulse/fable-situation-has-moved-direction-wed-hope-jeremy-smith-k1wce/",
+      },
+      {
+        title: "The Fable 5 Shutdown: What It Means for British Business",
+        meta: "Essay on LinkedIn",
+        link: "https://www.linkedin.com/pulse/fable-5-shutdown-what-means-british-business-jeremy-smith-s2sze/",
+      },
     ],
   },
   highlights: {
@@ -257,17 +272,17 @@ const about: About = {
     title: "Roles & Recognition",
     items: [
       {
-        title: "Director, Institute of Travel & Tourism (ITT)",
-        meta: "Board appointment",
-        link: "https://www.itt.co.uk",
-      },
-      {
         title: "Westminster collaboration on UK AI sovereignty & strategy",
         meta: "AI policy",
       },
       {
         title: "Working with the Yorkshire APPG on AI strategy & deployment",
         meta: "AI policy",
+      },
+      {
+        title: "Director, Institute of Travel & Tourism (ITT)",
+        meta: "Board appointment",
+        link: "https://www.itt.co.uk",
       },
       {
         title: "TTG 30 Under 30",
@@ -324,6 +339,16 @@ const about: About = {
     display: true,
     title: "Talks & Writing",
     items: [
+      {
+        title: "The Fable Situation Has Moved in the Direction We'd Hope",
+        meta: "Essay on LinkedIn",
+        link: "https://www.linkedin.com/pulse/fable-situation-has-moved-direction-wed-hope-jeremy-smith-k1wce/",
+      },
+      {
+        title: "The Fable 5 Shutdown: What It Means for British Business",
+        meta: "Essay on LinkedIn",
+        link: "https://www.linkedin.com/pulse/fable-5-shutdown-what-means-british-business-jeremy-smith-s2sze/",
+      },
       {
         title: "Building an AI business",
         meta: "Leeds Business Podcast",

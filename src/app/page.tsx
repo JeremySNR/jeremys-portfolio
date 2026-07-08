@@ -19,6 +19,7 @@ import { PressStrip } from "@/components/home/PressStrip";
 import { Showcase } from "@/components/home/Showcase";
 import { StatBand } from "@/components/home/StatBand";
 import { ResearchPanel } from "@/components/home/ResearchPanel";
+import { EssayList } from "@/components/home/EssayList";
 import { ContactCta } from "@/components/home/ContactCta";
 
 export async function generateMetadata() {
@@ -139,13 +140,16 @@ export default function Home() {
           <Reveal>
             <SectionLabel
               index="02"
-              title="Research & writing"
+              title="Policy, research & writing"
               href={routes["/blog"] ? "/blog" : undefined}
               linkLabel="All writing"
             />
           </Reveal>
           <Reveal>
             <ResearchPanel />
+          </Reveal>
+          <Reveal delay={0.04}>
+            <EssayList />
           </Reveal>
           {routes["/blog"] && (
             <Reveal delay={0.08}>
