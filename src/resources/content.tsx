@@ -438,16 +438,6 @@ const gallery: Gallery = {
   // These are placeholder images, replace with your own
   images: [
     {
-      src: "/images/gallery/manchester-tc-together.jpg",
-      alt: "Jeremy Smith speaking after a keynote at TC Together in Manchester",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/jeremy-interview.jpg",
-      alt: "Jeremy Smith during a media interview",
-      orientation: "vertical",
-    },
-    {
       src: "/images/gallery/IMG-20250402-WA0027.jpg",
       alt: "Gallery photo",
       orientation: "vertical",
