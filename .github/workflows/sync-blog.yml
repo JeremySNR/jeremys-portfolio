@@ -37,7 +37,7 @@ jobs:
 
       - name: Commit and push if anything changed
         run: |
-          if git diff --quiet -- src/app/blog/posts; then
+          if [ -z "$(git status --porcelain -- src/app/blog/posts)" ]; then
             echo "No new or changed posts."
             exit 0
           fi

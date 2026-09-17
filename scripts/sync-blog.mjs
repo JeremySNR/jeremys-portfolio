@@ -162,6 +162,15 @@ async function main() {
     ].join("\n");
 
     const outPath = path.join(OUT_DIR, `${parsed.slug}.mdx`);
+    try {
+      const existing = await fs.readFile(outPath, "utf8");
+      if (matter(existing).data.source !== MARKER) {
+        console.warn(`skip ${parsed.slug}.mdx: hand-written post with same slug`);
+        continue;
+      }
+    } catch (err) {
+      if (err.code !== "ENOENT") throw err;
+    }
     await fs.writeFile(outPath, `${frontmatter}${toMdxBody(content)}\n`, "utf8");
     written.add(`${parsed.slug}.mdx`);
     console.log(`synced ${parsed.slug}.mdx`);
