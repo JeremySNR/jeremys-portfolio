@@ -1,7 +1,6 @@
-import { Meta, Schema } from "@once-ui-system/core";
+import { Flex, Meta, Schema } from "@once-ui-system/core";
 import GalleryView from "@/components/gallery/GalleryView";
 import { baseURL, gallery, person } from "@/resources";
-import { PageIntro } from "@/components/PageIntro";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -15,7 +14,7 @@ export async function generateMetadata() {
 
 export default function Gallery() {
   return (
-    <>
+    <Flex maxWidth="l">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -29,15 +28,7 @@ export default function Gallery() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <PageIntro
-        label="Photos"
-        count={gallery.images.length}
-        title="Stages, studios and the odd hotel lobby."
-        lede="Keynotes, interviews and the places the work has taken me."
-      />
-      <div className="container" style={{ paddingBottom: "var(--section)" }}>
-        <GalleryView />
-      </div>
-    </>
+      <GalleryView />
+    </Flex>
   );
 }

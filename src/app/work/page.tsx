@@ -1,8 +1,6 @@
-import { Meta, Schema } from "@once-ui-system/core";
+import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
-import { WorkIndex } from "@/components/work/WorkIndex";
-import { getAllWork } from "@/components/work/getWorkIndex";
-import { PageIntro } from "@/components/PageIntro";
+import { Projects } from "@/components/work/Projects";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -15,9 +13,8 @@ export async function generateMetadata() {
 }
 
 export default function Work() {
-  const items = getAllWork();
   return (
-    <>
+    <Column maxWidth="m" paddingTop="24">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -31,15 +28,10 @@ export default function Work() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <PageIntro
-        label="Work"
-        count={items.length}
-        title="Ventures, in-house programmes, open source and research."
-        lede="Everything here was built to be used by someone other than me. Newest first; the ventures and the world-firsts are where the bigger stories live."
-      />
-      <section className="container" style={{ paddingBottom: "var(--section)" }}>
-        <WorkIndex items={items} />
-      </section>
-    </>
+      <Heading marginBottom="l" variant="heading-strong-xl" align="center">
+        {work.title}
+      </Heading>
+      <Projects />
+    </Column>
   );
 }
