@@ -49,12 +49,9 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: (
-    <>
-      AI leadership that ships products, wins revenue, and{" "}
-      <em className="accent-italic">makes headlines</em>
-    </>
-  ),
+  headline: <>I build AI that real businesses run on, then take it all the way to market.</>,
+  now: "AI Innovation Partner, Travel Counsellors",
+  previously: "Co-founder & CEO, Neural Voice",
   featured: {
     display: true,
     title: (
@@ -70,10 +67,10 @@ const home: Home = {
   },
   subline: (
     <>
-      I'm Jeremy. I lead AI transformation and strategy across Travel Counsellors, a £1.5bn
-      PE-backed travel group, after founding Neural Voice and raising £1m as a first-time CEO.
-      <br /> I've built sales teams from scratch, I work with Westminster on UK AI sovereignty, and
-      I'm still technical enough to build the product myself.
+      I lead AI at Travel Counsellors, a £1.5bn travel group, taking use cases from prototype to
+      production. Before that I co-founded Neural Voice, raised close to £1m, and shipped voice
+      agents that handled live calls for the UK's largest travel companies. I write the code, close
+      the deals, and go on the record.
     </>
   ),
   press: {
@@ -107,11 +104,46 @@ const home: Home = {
   highlights: {
     display: true,
     items: [
-      { value: "£1.5bn", label: "travel group where I lead AI" },
-      { value: "£1m+", label: "raised as a first-time founder" },
-      { value: "87%", label: "cost saving delivered for clients" },
-      { value: "2", label: "world-first AI political avatars" },
+      { value: "£1.5bn", label: "travel group where I lead AI strategy and delivery" },
+      { value: "£1m", label: "raised as a first-time CEO, plus an Innovate UK grant" },
+      { value: "87%", label: "cost saving for clients against traditional call centres" },
+      { value: "<300ms", label: "voice latency at hundreds of thousands of concurrent calls" },
     ],
+  },
+  range: {
+    display: true,
+    title: "Builder, operator, and the person in front of the camera.",
+    items: [
+      {
+        title: "Build",
+        lines: [
+          "Voice agents at sub-300ms latency, scaled to hundreds of thousands of concurrent calls",
+          "Open-source tooling for agent governance, context budgeting and video, all on GitHub",
+          "TypeScript, Python and Rust, shipped to production rather than left in a notebook",
+        ],
+      },
+      {
+        title: "Lead and sell",
+        lines: [
+          "Raised close to £1m as a first-time CEO and won an Innovate UK grant chosen from 2,250 entrants",
+          "Built sales teams from scratch at Force24 and AssessFirst, then closed enterprise travel deals at Neural Voice",
+          "Board Director at the Institute of Travel & Tourism; named in TTG's 30 Under 30",
+        ],
+      },
+      {
+        title: "Speak and shape",
+        lines: [
+          "Working with Westminster on UK AI sovereignty and with the Yorkshire APPG on deployment",
+          "Keynotes at TC Together and ITT; covered by the BBC, WIRED and the Washington Post",
+          "Publish research on multi-agent systems and write about what is actually changing",
+        ],
+      },
+    ],
+  },
+  closing: {
+    display: true,
+    title: "A founder who never stopped writing code.",
+    body: "I started in B2B sales, built and led teams, then co-founded Neural Voice and learned what it takes to get AI into production for large, cautious businesses. Today I lead AI at Travel Counsellors, sit on the board of the Institute of Travel & Tourism, and work with Westminster on UK AI sovereignty. I live in Leeds, and I'm happiest between an engineering problem and the people it's for.",
   },
 };
 
@@ -651,6 +683,7 @@ const news: News = {
       date: "Aug 2025",
       tag: "AI Mark",
       link: "https://www.euronews.com/next/2025/08/06/a-british-politician-turned-himself-into-an-ai-chatbot-meet-the-uks-first-virtual-mp",
+      featured: true,
     },
     {
       outlet: "Raconteur",

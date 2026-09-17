@@ -37,31 +37,31 @@ const protectedRoutes: ProtectedRoutesConfig = {
   "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
 };
 
-// Import and set font for each variant
-// Editorial-tech pairing: an expressive display serif (the writer), a refined
-// grotesk for body/labels (the operator), and a mono for code/tags (the engineer).
-import { Fraunces, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
+// Type: Newsreader is the reading voice (display and long-form), Geist is the
+// interface voice (navigation, body, UI), Geist Mono carries metadata only.
+import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 
-const heading = Fraunces({
+const heading = Newsreader({
   variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
   style: ["normal", "italic"],
+  axes: ["opsz"],
 });
 
-const body = Hanken_Grotesk({
+const body = Geist({
   variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
 });
 
-const label = Hanken_Grotesk({
+const label = Geist({
   variable: "--font-label",
   subsets: ["latin"],
   display: "swap",
 });
 
-const code = JetBrains_Mono({
+const code = Geist_Mono({
   variable: "--font-code",
   subsets: ["latin"],
   display: "swap",
@@ -77,14 +77,14 @@ const fonts: FontsConfig = {
 // default customization applied to the HTML in the main layout.tsx
 const style: StyleConfig = {
   theme: "system", // dark | light | system
-  neutral: "sand", // sand | gray | slate | custom. Warm "paper" base for an editorial feel
-  brand: "emerald", // warm paper + green ink: a considered, editorial palette
-  accent: "emerald", // single confident accent, restraint over a scattered palette
+  neutral: "custom", // scales defined in custom.css (paper light, tinted near-black dark)
+  brand: "custom", // one rationed deep-green accent
+  accent: "custom",
   solid: "contrast", // color | contrast
   solidStyle: "flat", // flat | plastic
-  border: "rounded", // rounded | playful | conservative
-  surface: "translucent", // filled | translucent
-  transition: "all", // all | micro | macro. Richer, smoother motion throughout
+  border: "conservative", // rounded | playful | conservative
+  surface: "filled", // filled | translucent
+  transition: "micro", // all | micro | macro
   scaling: "100", // 90 | 95 | 100 | 105 | 110
 };
 
@@ -103,29 +103,20 @@ const dataStyle: DataStyleConfig = {
 };
 
 const effects: EffectsConfig = {
-  mask: {
-    cursor: false,
+  // All decorative background effects are off: depth comes from type, hairlines and paper.
+  mask: { cursor: false, x: 50, y: 0, radius: 100 },
+  gradient: {
+    display: false,
+    opacity: 0,
     x: 50,
     y: 0,
-    radius: 120,
-  },
-  gradient: {
-    display: true,
-    opacity: 70,
-    x: 50,
-    y: 55,
-    width: 140,
-    height: 90,
-    tilt: 10,
+    width: 100,
+    height: 100,
+    tilt: 0,
     colorStart: "brand-background-strong",
     colorEnd: "page-background",
   },
-  dots: {
-    display: false,
-    opacity: 0,
-    size: "2",
-    color: "brand-on-background-weak",
-  },
+  dots: { display: false, opacity: 0, size: "2", color: "brand-on-background-weak" },
   grid: {
     display: false,
     opacity: 0,
@@ -135,7 +126,7 @@ const effects: EffectsConfig = {
   },
   lines: {
     display: false,
-    opacity: 100,
+    opacity: 0,
     color: "neutral-alpha-weak",
     size: "16",
     thickness: 1,

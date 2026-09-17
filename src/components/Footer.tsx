@@ -1,47 +1,61 @@
-import { Row, IconButton, SmartLink, Text } from "@once-ui-system/core";
-import { person, social } from "@/resources";
+import Link from "next/link";
+import { person, social, gallery, routes } from "@/resources";
+import { LocalTime } from "./LocalTime";
 import styles from "./Footer.module.scss";
 
 export const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
+  const links = social.filter((s) => s.link);
 
   return (
-    <Row as="footer" fillWidth padding="8" horizontal="center" s={{ direction: "column" }}>
-      <Row
-        className={styles.mobile}
-        maxWidth="m"
-        paddingY="8"
-        paddingX="16"
-        gap="16"
-        horizontal="between"
-        vertical="center"
-        s={{
-          direction: "column",
-          horizontal: "center",
-          align: "center",
-        }}
-      >
-        <Text variant="body-default-s" onBackground="neutral-strong">
-          <Text onBackground="neutral-weak">© {currentYear}</Text>
-          <Text paddingX="4">{person.name}</Text>
-        </Text>
-        <Row gap="16">
-          {social.map(
-            (item) =>
-              item.link && (
-                <IconButton
-                  key={item.name}
+    <footer className={styles.footer}>
+      <div className={`container ${styles.inner}`}>
+        <div className={styles.top}>
+          <div className={styles.left}>
+            <p className={`display-m ${styles.line}`}>
+              Say hello.
+              <br />
+              <a href={`mailto:${person.email}`} className={styles.email}>
+                {person.email}
+              </a>
+            </p>
+          </div>
+          <ul className={styles.links}>
+            {links.map((item) => (
+              <li key={item.name}>
+                <a
                   href={item.link}
-                  icon={item.icon}
-                  tooltip={item.name}
-                  size="s"
-                  variant="ghost"
-                />
-              ),
-          )}
-        </Row>
-      </Row>
-      <Row height="80" hide s={{ hide: false }} />
-    </Row>
+                  className="link-under"
+                  target={item.link.startsWith("http") ? "_blank" : undefined}
+                  rel={item.link.startsWith("http") ? "noreferrer" : undefined}
+                >
+                  {item.name === "Website" ? "Neural Voice" : item.name}
+                </a>
+              </li>
+            ))}
+            {routes["/gallery"] && (
+              <li>
+                <Link href={gallery.path} className="link-under">
+                  Photos
+                </Link>
+              </li>
+            )}
+          </ul>
+        </div>
+        <div className={`mono ${styles.bottom}`}>
+          <span>
+            © {year} {person.name}
+          </span>
+          <span className={styles.dot} aria-hidden="true">
+            ·
+          </span>
+          <span>
+            Leeds, England <LocalTime timeZone={person.location} />
+          </span>
+          <span className={styles.spacer} />
+          <span>Set in Newsreader and Geist</span>
+        </div>
+      </div>
+    </footer>
   );
 };
