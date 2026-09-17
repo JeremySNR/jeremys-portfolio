@@ -42,8 +42,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     const y = e.clientY - rect.top;
     el.style.setProperty("--mx", `${x}px`);
     el.style.setProperty("--my", `${y}px`);
-    el.style.setProperty("--rx", `${((x / rect.width) - 0.5) * 5}deg`);
-    el.style.setProperty("--ry", `${((y / rect.height) - 0.5) * -5}deg`);
+    el.style.setProperty("--rx", `${(x / rect.width - 0.5) * 5}deg`);
+    el.style.setProperty("--ry", `${(y / rect.height - 0.5) * -5}deg`);
   };
 
   const handleLeave = () => {
@@ -55,52 +55,57 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <div ref={cardRef} className={styles.card} onMouseMove={handleMove} onMouseLeave={handleLeave}>
-    <Column fillWidth gap="m">
-      <Carousel
-        sizes="(max-width: 960px) 100vw, 960px"
-        items={images.map((image) => ({
-          slide: image,
-          alt: title,
-        }))}
-      />
-      <Flex
-        s={{ direction: "column" }}
-        fillWidth
-        paddingX="s"
-        paddingTop="12"
-        paddingBottom="24"
-        gap="l"
-      >
-        {title && (
-          <Flex flex={5}>
-            <Heading as="h2" wrap="balance" variant="heading-strong-xl">
-              {title}
-            </Heading>
-          </Flex>
-        )}
-        {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
-          <Column flex={7} gap="16">
-            {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
-            {description?.trim() && (
-              <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
-                {description}
-              </Text>
-            )}
-            <Flex gap="24" wrap>
-              {link && (
-                <SmartLink
-                  suffixIcon="arrowUpRightFromSquare"
-                  style={{ margin: "0", width: "fit-content" }}
-                  href={link}
-                >
-                  <Text variant="body-default-s">View project</Text>
-                </SmartLink>
-              )}
+      <Column fillWidth gap="m">
+        <Carousel
+          sizes="(max-width: 960px) 100vw, 960px"
+          items={images.map((image) => ({
+            slide: image,
+            alt: title,
+          }))}
+        />
+        <Flex
+          s={{ direction: "column" }}
+          fillWidth
+          paddingX="s"
+          paddingTop="12"
+          paddingBottom="24"
+          gap="l"
+        >
+          {title && (
+            <Flex flex={5}>
+              <Heading as="h2" wrap="balance" variant="heading-strong-xl">
+                {title}
+              </Heading>
             </Flex>
-          </Column>
-        )}
-      </Flex>
-    </Column>
+          )}
+          {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
+            <Column flex={7} gap="16">
+              {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
+              {description?.trim() && (
+                <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
+                  {description}
+                </Text>
+              )}
+              <Flex gap="24" wrap>
+                {href && (
+                  <SmartLink style={{ margin: "0", width: "fit-content" }} href={href}>
+                    <Text variant="body-default-s">Read case study</Text>
+                  </SmartLink>
+                )}
+                {link && (
+                  <SmartLink
+                    suffixIcon="arrowUpRightFromSquare"
+                    style={{ margin: "0", width: "fit-content" }}
+                    href={link}
+                  >
+                    <Text variant="body-default-s">View project</Text>
+                  </SmartLink>
+                )}
+              </Flex>
+            </Column>
+          )}
+        </Flex>
+      </Column>
     </div>
   );
 };
