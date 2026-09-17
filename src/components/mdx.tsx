@@ -86,15 +86,15 @@ function slugify(str: string): string {
 }
 
 function createHeading(as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") {
-  const CustomHeading = ({
-    children,
-    ...props
-  }: Omit<React.ComponentProps<typeof HeadingLink>, "as" | "id">) => {
-    const slug = slugify(children as string);
-    return (
-      <HeadingLink marginTop="24" marginBottom="12" as={as} id={slug} {...props}>
+  const CustomHeading = ({ children }: { children?: ReactNode }) => {
+    const text = typeof children === "string" ? children : String(children ?? "");
+    const slug = slugify(text);
+    return React.createElement(
+      as,
+      { id: slug },
+      <a href={`#${slug}`} className="prose-anchor">
         {children}
-      </HeadingLink>
+      </a>,
     );
   };
 
@@ -103,18 +103,8 @@ function createHeading(as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") {
   return CustomHeading;
 }
 
-function createParagraph({ children }: TextProps) {
-  return (
-    <Text
-      style={{ lineHeight: "175%" }}
-      variant="body-default-m"
-      onBackground="neutral-medium"
-      marginTop="8"
-      marginBottom="12"
-    >
-      {children}
-    </Text>
-  );
+function createParagraph({ children }: { children?: ReactNode }) {
+  return <p>{children}</p>;
 }
 
 function createInlineCode({ children }: { children: ReactNode }) {
@@ -151,23 +141,19 @@ function createCodeBlock(props: any) {
 }
 
 function createList({ children }: { children: ReactNode }) {
-  return <List>{children}</List>;
+  return <ul>{children}</ul>;
+}
+
+function createOrderedList({ children }: { children: ReactNode }) {
+  return <ol>{children}</ol>;
 }
 
 function createListItem({ children }: { children: ReactNode }) {
-  return (
-    <ListItem marginTop="4" marginBottom="8" style={{ lineHeight: "175%" }}>
-      {children}
-    </ListItem>
-  );
+  return <li>{children}</li>;
 }
 
 function createHR() {
-  return (
-    <Row fillWidth horizontal="center">
-      <Line maxWidth="40" />
-    </Row>
-  );
+  return <hr />;
 }
 
 const components = {
@@ -182,7 +168,7 @@ const components = {
   a: CustomLink as any,
   code: createInlineCode as any,
   pre: createCodeBlock as any,
-  ol: createList as any,
+  ol: createOrderedList as any,
   ul: createList as any,
   li: createListItem as any,
   hr: createHR as any,

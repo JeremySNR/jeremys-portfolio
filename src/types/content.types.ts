@@ -99,6 +99,22 @@ export interface Home extends BasePageConfig {
   };
   /** The sub text which appears below the headline */
   subline: React.ReactNode;
+  /** Current role, shown in the hero rail */
+  now?: string;
+  /** Previous role, shown in the hero rail */
+  previously?: string;
+  /** Three-column evidence block: build / lead / speak */
+  range?: {
+    display: boolean;
+    title: string;
+    items: Array<{ title: string; lines: string[] }>;
+  };
+  /** Short closing biography with a link to the About page */
+  closing?: {
+    display: boolean;
+    title: string;
+    body: string;
+  };
   /** Quiet typographic strip of press outlets, shown under the hero */
   press?: {
     display: boolean;

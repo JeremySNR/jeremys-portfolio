@@ -1,124 +1,500 @@
 /* ------------------------------------------------------------------ *
- * Jeremy Smith, editorial-tech finishing layer
+ * Jeremy Smith — design foundation
  *
- * Additive polish on top of the Once UI design system:
- * serif optical tuning, a film-grain overlay for depth, a considered
- * selection colour, animated in-article links, refined focus + scrollbars.
- * Custom colour scales can be defined via https://once-ui.com/customize
- * and pasted into a :root block here if ever needed.
+ * An editorial working record. Warm paper in the light theme, tinted
+ * near-black in the dark theme. Newsreader for reading, Geist for the
+ * interface, Geist Mono for metadata only. Hairlines instead of shadows,
+ * one deep-green accent, and a single choreographed reveal on load.
  * ------------------------------------------------------------------ */
 
-/* Smooth, anchor-aware scrolling that clears the sticky header */
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 96px;
+/* ---- Once UI scheme hooks (neutral / brand / accent = "custom") ---- */
+:root {
+  /* Neutral: 100 is the darkest step (dark canvas), 1200 the lightest (paper). */
+  --scheme-neutral-100: #0b0c0e;
+  --scheme-neutral-200: #141518;
+  --scheme-neutral-300: #2a2c30;
+  --scheme-neutral-400: #45474c;
+  --scheme-neutral-500: #62646a;
+  --scheme-neutral-600: #7c7c76;
+  --scheme-neutral-700: #9c9a92;
+  --scheme-neutral-800: #c1beb3;
+  --scheme-neutral-900: #d9d5ca;
+  --scheme-neutral-1000: #e6e2d8;
+  --scheme-neutral-1100: #efece4;
+  --scheme-neutral-1200: #f6f4ee;
+  --scheme-neutral-600-15: #7c7c7626;
+  --scheme-neutral-600-30: #7c7c764d;
+  --scheme-neutral-600-50: #7c7c7680;
+
+  /* Brand and accent: one deep green, inherited from the Neural Voice years. */
+  --scheme-brand-100: #06140e;
+  --scheme-brand-200: #0c2419;
+  --scheme-brand-300: #14382a;
+  --scheme-brand-400: #1a4a36;
+  --scheme-brand-500: #1f5c42;
+  --scheme-brand-600: #2e7d5b;
+  --scheme-brand-700: #4e9c79;
+  --scheme-brand-800: #7fc8a4;
+  --scheme-brand-900: #a9ddc3;
+  --scheme-brand-1000: #cdebdb;
+  --scheme-brand-1100: #e3f3ea;
+  --scheme-brand-1200: #f0f8f3;
+  --scheme-brand-600-15: #2e7d5b26;
+  --scheme-brand-600-30: #2e7d5b4d;
+  --scheme-brand-600-50: #2e7d5b80;
+
+  --scheme-accent-100: var(--scheme-brand-100);
+  --scheme-accent-200: var(--scheme-brand-200);
+  --scheme-accent-300: var(--scheme-brand-300);
+  --scheme-accent-400: var(--scheme-brand-400);
+  --scheme-accent-500: var(--scheme-brand-500);
+  --scheme-accent-600: var(--scheme-brand-600);
+  --scheme-accent-700: var(--scheme-brand-700);
+  --scheme-accent-800: var(--scheme-brand-800);
+  --scheme-accent-900: var(--scheme-brand-900);
+  --scheme-accent-1000: var(--scheme-brand-1000);
+  --scheme-accent-1100: var(--scheme-brand-1100);
+  --scheme-accent-1200: var(--scheme-brand-1200);
+  --scheme-accent-600-15: var(--scheme-brand-600-15);
+  --scheme-accent-600-30: var(--scheme-brand-600-30);
+  --scheme-accent-600-50: var(--scheme-brand-600-50);
+
+  /* ---- Layout + rhythm ---- */
+  --site-max: 1280px;
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --measure: 66ch;
+  --section: clamp(4.5rem, 9vw, 7.5rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-std: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --radius-card: 6px;
+  --radius-media: 4px;
 }
 
-/* Crisper type rendering across the board */
+/* ---- Semantic tokens ---- */
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+  --canvas: #f6f4ee;
+  --surface: #efece4;
+  --surface-2: #e8e4da;
+  --hairline: #e2ded4;
+  --hairline-strong: #cbc6ba;
+  --ink: #17170f;
+  --body: #3b3a33;
+  --muted: #7a776c;
+  --faint: #aaa69a;
+  --accent: #1f4d3a;
+  --accent-ink: #163a2c;
+  --accent-soft: rgba(31, 77, 58, 0.1);
+  --selection: #1f4d3a;
+  --on-selection: #f6f4ee;
+  --grain-blend: multiply;
+  --grain-opacity: 0.045;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #0b0c0e;
+  --surface: #111214;
+  --surface-2: #17181b;
+  --hairline: rgba(255, 255, 255, 0.08);
+  --hairline-strong: rgba(255, 255, 255, 0.15);
+  --ink: #f2f2ee;
+  --body: #b8b8b0;
+  --muted: #7c7c76;
+  --faint: #55554f;
+  --accent: #7fc8a4;
+  --accent-ink: #a9ddc3;
+  --accent-soft: rgba(127, 200, 164, 0.12);
+  --selection: #7fc8a4;
+  --on-selection: #0b0c0e;
+  --grain-blend: overlay;
+  --grain-opacity: 0.05;
+}
+
+/* Make the Once UI page background follow the semantic canvas exactly. */
+:root[data-theme="light"],
+:root[data-theme="dark"] {
+  --page-background: var(--canvas);
+  --surface-background: var(--surface);
+}
+
+/* ---- Base ---- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  background: var(--canvas);
+}
+
 body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  font-feature-settings: "ss03", "cv01", "calt", "liga";
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Let the Fraunces display serif breathe with optical sizing and tighter,
-   more editorial tracking on the larger headings. */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-optical-sizing: auto;
-  font-feature-settings: "ss01", "liga", "calt";
-  letter-spacing: -0.018em;
-}
-
-/* Italic emerald accent inside display headings (see home.headline) */
-.accent-italic {
-  font-style: italic;
-  color: var(--brand-on-background-weak);
-}
-
-/* Considered selection colour drawn from the brand (emerald) scale */
 ::selection {
-  background: var(--brand-solid-strong, #1f7a5a);
-  color: var(--brand-on-solid-strong, #ffffff);
+  background: var(--selection);
+  color: var(--on-selection);
 }
 
-/* ------------------------------------------------------------------ *
- * Film-grain overlay: a quiet, premium tactile texture over the page.
- * Fixed, non-interactive, and very low opacity so it reads as depth
- * rather than noise.
- * ------------------------------------------------------------------ */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.04;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 240px 240px;
-}
-
-/* ------------------------------------------------------------------ *
- * In-article links (blog posts + project write-ups): an editorial
- * underline that grows from the left on hover.
- * ------------------------------------------------------------------ */
-article a {
-  text-decoration: none;
-  background-image: linear-gradient(currentColor, currentColor);
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  background-size: 100% 1px;
-  padding-bottom: 1px;
-  transition: background-size 0.25s ease, opacity 0.25s ease;
-}
-
-article a:hover {
-  background-size: 100% 2px;
-  opacity: 0.85;
-}
-
-/* ------------------------------------------------------------------ *
- * Focus + scrollbars
- * ------------------------------------------------------------------ */
 :focus-visible {
-  outline: 2px solid var(--brand-solid-strong, #1f7a5a);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--neutral-alpha-medium) transparent;
+  scrollbar-color: var(--hairline-strong) transparent;
 }
 
-*::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+img,
+video {
+  max-width: 100%;
+  display: block;
 }
 
-*::-webkit-scrollbar-thumb {
-  background: var(--neutral-alpha-medium);
-  border-radius: 999px;
-  border: 3px solid transparent;
-  background-clip: content-box;
+/* ---- Film grain: printed rather than rendered ---- */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: var(--grain-blend);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
 }
 
-*::-webkit-scrollbar-thumb:hover {
-  background: var(--neutral-alpha-strong);
-  background-clip: content-box;
+/* ---- Type utilities ---- */
+.serif {
+  font-family: var(--font-heading), Georgia, "Times New Roman", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
 }
 
-/* Respect users who prefer reduced motion */
+.display-xl {
+  font-family: var(--font-heading), Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: clamp(2.625rem, 6vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -0.028em;
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+.display-l {
+  font-family: var(--font-heading), Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: clamp(2.125rem, 4.2vw, 3.5rem);
+  line-height: 1.06;
+  letter-spacing: -0.024em;
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+.display-m {
+  font-family: var(--font-heading), Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: clamp(1.625rem, 2.6vw, 2.25rem);
+  line-height: 1.12;
+  letter-spacing: -0.018em;
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+.title {
+  font-family: var(--font-heading), Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 1.375rem;
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+}
+
+.lede {
+  font-size: clamp(1.0625rem, 1.35vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--body);
+  text-wrap: pretty;
+  max-width: var(--measure);
+}
+
+.mono {
+  font-family: var(--font-code), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  font-feature-settings: "ss01";
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.body {
+  color: var(--body);
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* ---- Layout ---- */
+.site {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.site-main {
+  flex: 1;
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--site-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--hairline);
+  margin: 0;
+  width: 100%;
+}
+
+.section {
+  padding-block: var(--section);
+}
+
+/* ---- Links ---- */
+a:not(.button) {
+  color: inherit;
+}
+
+a.link,
+.link {
+  color: inherit;
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.3s var(--ease-out), color 0.2s ease;
+}
+
+a.link:hover,
+a.link:focus-visible,
+.link:hover,
+.link:focus-visible {
+  background-size: 100% 1px;
+}
+
+a.link-under,
+.link-under {
+  color: inherit;
+  text-decoration: none;
+  background-image: linear-gradient(var(--hairline-strong), var(--hairline-strong));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 1px;
+  transition: background-image 0.2s ease, color 0.2s ease;
+}
+
+a.link-under:hover,
+.link-under:hover {
+  background-image: linear-gradient(currentColor, currentColor);
+}
+
+/* ---- Long-form articles (project write-ups, posts) ---- */
+.prose {
+  color: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  max-width: var(--measure);
+}
+
+.prose > * + * {
+  margin-top: 1.1em;
+}
+
+.prose h2,
+.prose h3,
+.prose h4 {
+  font-family: var(--font-heading), Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.prose h2 {
+  font-size: 1.875rem;
+  line-height: 1.15;
+  margin-top: 2.4em;
+  padding-top: 1.2em;
+  border-top: 1px solid var(--hairline);
+}
+
+.prose h3 {
+  font-size: 1.375rem;
+  line-height: 1.25;
+  margin-top: 1.8em;
+}
+
+.prose h4 {
+  font-size: 1.125rem;
+  margin-top: 1.5em;
+}
+
+.prose p,
+.prose li {
+  text-wrap: pretty;
+}
+
+.prose strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.prose a:not(.button) {
+  color: var(--ink);
+  text-decoration: none;
+  background-image: linear-gradient(var(--hairline-strong), var(--hairline-strong));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 1px;
+  transition: background-image 0.2s ease, color 0.2s ease;
+}
+
+.prose a:not(.button):hover {
+  color: var(--accent);
+  background-image: linear-gradient(var(--accent), var(--accent));
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.25em;
+}
+
+.prose li + li {
+  margin-top: 0.4em;
+}
+
+.prose ul li::marker {
+  color: var(--faint);
+}
+
+.prose blockquote {
+  margin: 1.5em 0;
+  padding-left: 1.25em;
+  border-left: 1px solid var(--hairline-strong);
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: 1.25rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--hairline);
+  margin: 2.5em 0;
+}
+
+.prose code {
+  font-family: var(--font-code), ui-monospace, monospace;
+  font-size: 0.875em;
+}
+
+.prose img {
+  border-radius: var(--radius-media);
+  border: 1px solid var(--hairline);
+}
+
+/* ---- Motion: one choreographed hero reveal, then hover only ---- */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.6em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: rise 0.9s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 90ms);
+}
+
+/* Images drift into place as they enter the viewport, CSS-only. */
+@supports (animation-timeline: view()) {
+  .drift {
+    animation: drift linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 55%;
+  }
+}
+
+@keyframes drift {
+  from {
+    opacity: 0.35;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  article a {
-    transition: none;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.001ms !important;
   }
+}
+
+/* Heading anchors inside articles: plain text, quiet hash on hover */
+.prose a.prose-anchor {
+  color: inherit;
+  background: none;
+  text-decoration: none;
+}
+
+.prose a.prose-anchor:hover::after {
+  content: " #";
+  color: var(--faint);
 }
