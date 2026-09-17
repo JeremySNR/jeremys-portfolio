@@ -47,10 +47,9 @@ export type FontsConfig = {
  */
 export type StyleConfig = {
   theme: Theme;
-  /** Once UI scheme, or "custom" to use the --scheme-* variables defined in custom.css */
-  neutral: NeutralColor | "custom";
-  brand: Schemes | "custom";
-  accent: Schemes | "custom";
+  neutral: NeutralColor;
+  brand: Schemes;
+  accent: Schemes;
   solid: SolidType;
   solidStyle: SolidStyle;
   border: BorderStyle;

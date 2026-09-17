@@ -1,9 +1,22 @@
-import Image from "next/image";
-import React from "react";
-import { Meta, Schema } from "@once-ui-system/core";
+import {
+  Avatar,
+  Button,
+  Column,
+  Heading,
+  Icon,
+  IconButton,
+  Media,
+  Tag,
+  Text,
+  Meta,
+  Schema,
+  Row,
+  SmartLink,
+} from "@once-ui-system/core";
 import { baseURL, about, person, social } from "@/resources";
-import { AboutNav } from "@/components/about/AboutNav";
+import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
+import React from "react";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -15,29 +28,46 @@ export async function generateMetadata() {
   });
 }
 
-const slug = (s: string) =>
-  s
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
-
 export default function About() {
-  const sections = [
-    { title: about.intro.title, display: about.intro.display },
-    { title: about.work.title, display: about.work.display },
-    { title: about.recognition?.title ?? "", display: about.recognition?.display ?? false },
-    { title: about.publications?.title ?? "", display: about.publications?.display ?? false },
-    { title: about.talks?.title ?? "", display: about.talks?.display ?? false },
-    { title: about.technical.title, display: about.technical.display },
-    { title: about.studies.title, display: about.studies.display },
-  ]
-    .filter((s) => s.display && s.title)
-    .map((s) => ({ ...s, id: slug(s.title) }));
-
-  const links = social.filter((s) => s.link);
-
+  const structure = [
+    {
+      title: about.intro.title,
+      display: about.intro.display,
+      items: [],
+    },
+    {
+      title: about.work.title,
+      display: about.work.display,
+      items: about.work.experiences.map((experience) => experience.company),
+    },
+    {
+      title: about.recognition?.title ?? "",
+      display: about.recognition?.display ?? false,
+      items: [],
+    },
+    {
+      title: about.studies.title,
+      display: about.studies.display,
+      items: about.studies.institutions.map((institution) => institution.name),
+    },
+    {
+      title: about.publications?.title ?? "",
+      display: about.publications?.display ?? false,
+      items: about.publications?.papers.map((paper) => paper.title) ?? [],
+    },
+    {
+      title: about.talks?.title ?? "",
+      display: about.talks?.display ?? false,
+      items: about.talks?.items.map((item) => item.title) ?? [],
+    },
+    {
+      title: about.technical.title,
+      display: about.technical.display,
+      items: about.technical.skills.map((skill) => skill.title),
+    },
+  ];
   return (
-    <>
+    <Column maxWidth="m">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -51,199 +81,399 @@ export default function About() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-
-      <div className={`container ${styles.page}`}>
-        <header className={styles.header}>
-          <div className={`mono ${styles.crumb} rise`} style={{ ["--i" as string]: 0 }}>
-            About
-          </div>
-          <div className={styles.headMain}>
-            <h1 className={`display-xl ${styles.name} rise`} style={{ ["--i" as string]: 1 }}>
-              {person.name}
-            </h1>
-            <p className={`lede ${styles.role} rise`} style={{ ["--i" as string]: 2 }}>
-              {person.role}. Based in Leeds, working across the UK.
-            </p>
-          </div>
-        </header>
-
-        <div className={styles.body}>
-          <aside className={styles.rail}>
-            <div className={styles.railInner}>
-              {about.avatar.display && (
-                <Image
-                  src={person.avatar}
-                  alt={`Portrait of ${person.name}`}
-                  width={480}
-                  height={480}
-                  sizes="(max-width: 767px) 40vw, 220px"
-                  priority
-                  className={styles.portrait}
+      {about.tableOfContent.display && (
+        <Column
+          left="0"
+          style={{ top: "50%", transform: "translateY(-50%)" }}
+          position="fixed"
+          paddingLeft="24"
+          gap="32"
+          s={{ hide: true }}
+        >
+          <TableOfContents structure={structure} about={about} />
+        </Column>
+      )}
+      <Row fillWidth s={{ direction: "column" }} horizontal="center">
+        {about.avatar.display && (
+          <Column
+            className={styles.avatar}
+            top="64"
+            fitHeight
+            position="sticky"
+            s={{ position: "relative", style: { top: "auto" } }}
+            xs={{ style: { top: "auto" } }}
+            minWidth="160"
+            paddingX="l"
+            paddingBottom="xl"
+            gap="m"
+            flex={3}
+            horizontal="center"
+          >
+            <Avatar src={person.avatar} size="xl" />
+            <Row gap="8" vertical="center">
+              <Icon onBackground="accent-weak" name="globe" />
+              {person.location}
+            </Row>
+            {person.languages && person.languages.length > 0 && (
+              <Row wrap gap="8">
+                {person.languages.map((language, index) => (
+                  <Tag key={index} size="l">
+                    {language}
+                  </Tag>
+                ))}
+              </Row>
+            )}
+          </Column>
+        )}
+        <Column className={styles.blockAlign} flex={9} maxWidth={40}>
+          <Column
+            id={about.intro.title}
+            fillWidth
+            minHeight="160"
+            vertical="center"
+            marginBottom="32"
+          >
+            {about.calendar.display && (
+              <Row
+                fitWidth
+                border="brand-alpha-medium"
+                background="brand-alpha-weak"
+                radius="full"
+                padding="4"
+                gap="8"
+                marginBottom="m"
+                vertical="center"
+                className={styles.blockAlign}
+                style={{
+                  backdropFilter: "blur(var(--static-space-1))",
+                }}
+              >
+                <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
+                <Row paddingX="8">Schedule a call</Row>
+                <IconButton
+                  href={about.calendar.link}
+                  data-border="rounded"
+                  variant="secondary"
+                  icon="chevronRight"
                 />
-              )}
-              <ul className={styles.contacts}>
-                {links.map((item) => (
-                  <li key={item.name}>
-                    <a
-                      href={item.link}
-                      className="link-under"
-                      target={item.link.startsWith("http") ? "_blank" : undefined}
-                      rel={item.link.startsWith("http") ? "noreferrer" : undefined}
-                    >
-                      {item.name === "Website" ? "Neural Voice" : item.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              {about.tableOfContent.display && <AboutNav sections={sections} />}
-            </div>
-          </aside>
-
-          <div className={styles.main}>
-            {about.intro.display && (
-              <section id={slug(about.intro.title)} className={styles.section}>
-                <p className={`lede ${styles.intro}`}>{about.intro.description}</p>
-              </section>
+              </Row>
             )}
-
-            {about.work.display && (
-              <section id={slug(about.work.title)} className={styles.section}>
-                <h2 className={`display-m ${styles.h2}`}>{about.work.title}</h2>
-                <ol className={styles.timeline}>
-                  {about.work.experiences.map((exp) => (
-                    <li key={`${exp.company}-${exp.role}`} className={styles.entry}>
-                      <div className={`mono ${styles.when}`}>{exp.timeframe}</div>
-                      <div className={styles.entryBody}>
-                        <h3 className={`title ${styles.company}`}>{exp.company}</h3>
-                        <div className={styles.entryRole}>{exp.role}</div>
-                        <ul className={styles.achievements}>
-                          {exp.achievements.map((a, i) => (
-                            <li key={i}>{a}</li>
-                          ))}
-                        </ul>
-                        {exp.images && exp.images.length > 0 && (
-                          <div className={styles.entryMedia}>
-                            {exp.images.map((img) => (
-                              <Image
-                                key={img.src}
-                                src={img.src}
-                                alt={img.alt}
-                                width={1200}
-                                height={675}
-                                sizes="(max-width: 767px) 100vw, 640px"
-                                className={`${styles.entryImg} drift`}
-                              />
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-              </section>
+            <Heading className={styles.textAlign} variant="display-strong-xl">
+              {person.name}
+            </Heading>
+            <Text
+              className={styles.textAlign}
+              variant="display-default-xs"
+              onBackground="neutral-weak"
+            >
+              {person.role}
+            </Text>
+            {social.length > 0 && (
+              <Row
+                className={styles.blockAlign}
+                paddingTop="20"
+                paddingBottom="8"
+                gap="8"
+                wrap
+                horizontal="center"
+                fitWidth
+                data-border="rounded"
+              >
+                {social.map(
+                  (item) =>
+                    item.link && (
+                      <React.Fragment key={item.name}>
+                        <Row s={{ hide: true }}>
+                          <Button
+                            key={item.name}
+                            href={item.link}
+                            prefixIcon={item.icon}
+                            label={item.name}
+                            size="s"
+                            weight="default"
+                            variant="secondary"
+                          />
+                        </Row>
+                        <Row hide s={{ hide: false }}>
+                          <IconButton
+                            size="l"
+                            key={`${item.name}-icon`}
+                            href={item.link}
+                            icon={item.icon}
+                            variant="secondary"
+                          />
+                        </Row>
+                      </React.Fragment>
+                    ),
+                )}
+              </Row>
             )}
+          </Column>
 
-            {about.recognition?.display && (
-              <section id={slug(about.recognition.title)} className={styles.section}>
-                <h2 className={`display-m ${styles.h2}`}>{about.recognition.title}</h2>
-                <ul className={styles.rows}>
-                  {about.recognition.items.map((item) => (
-                    <li key={item.title} className={styles.row}>
-                      {item.link ? (
-                        <a
-                          href={item.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          className={`link-under ${styles.rowTitle}`}
-                        >
-                          {item.title}
-                        </a>
-                      ) : (
-                        <span className={styles.rowTitle}>{item.title}</span>
+          {about.intro.display && (
+            <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
+              {about.intro.description}
+            </Column>
+          )}
+
+          {about.work.display && (
+            <>
+              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">
+                {about.work.title}
+              </Heading>
+              <Column fillWidth gap="l" marginBottom="40">
+                {about.work.experiences.map((experience, index) => (
+                  <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
+                    <Row fillWidth horizontal="between" vertical="end" marginBottom="4">
+                      <Text id={experience.company} variant="heading-strong-l">
+                        {experience.company}
+                      </Text>
+                      <Text variant="heading-default-xs" onBackground="neutral-weak">
+                        {experience.timeframe}
+                      </Text>
+                    </Row>
+                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
+                      {experience.role}
+                    </Text>
+                    <Column as="ul" gap="16">
+                      {experience.achievements.map(
+                        (achievement: React.ReactNode, index: number) => (
+                          <Text
+                            as="li"
+                            variant="body-default-m"
+                            key={`${experience.company}-${index}`}
+                          >
+                            {achievement}
+                          </Text>
+                        ),
                       )}
-                      {item.meta && <span className={`mono ${styles.rowMeta}`}>{item.meta}</span>}
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )}
-
-            {about.publications?.display && (
-              <section id={slug(about.publications.title)} className={styles.section}>
-                <h2 className={`display-m ${styles.h2}`}>{about.publications.title}</h2>
-                {about.publications.papers.map((paper) => (
-                  <article key={paper.title} className={styles.paper}>
-                    <div className={`mono ${styles.paperMeta}`}>
-                      {paper.venue}
-                      {paper.date ? ` · ${paper.date}` : ""}
-                    </div>
-                    <h3 className={`title ${styles.paperTitle}`}>
-                      <a href={paper.link} target="_blank" rel="noreferrer" className="link">
-                        {paper.title}
-                      </a>
-                    </h3>
-                    {paper.description && (
-                      <p className={styles.paperAbstract}>{paper.description}</p>
+                    </Column>
+                    {experience.images && experience.images.length > 0 && (
+                      <Row fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
+                        {experience.images.map((image, index) => (
+                          <Row
+                            key={index}
+                            border="neutral-medium"
+                            radius="m"
+                            minWidth={image.width}
+                            height={image.height}
+                          >
+                            <Media
+                              enlarge
+                              radius="m"
+                              sizes={image.width.toString()}
+                              alt={image.alt}
+                              src={image.src}
+                            />
+                          </Row>
+                        ))}
+                      </Row>
                     )}
-                  </article>
+                  </Column>
                 ))}
-              </section>
-            )}
+              </Column>
+            </>
+          )}
 
-            {about.talks?.display && (
-              <section id={slug(about.talks.title)} className={styles.section}>
-                <h2 className={`display-m ${styles.h2}`}>{about.talks.title}</h2>
-                <ul className={styles.rows}>
-                  {about.talks.items.map((item) => (
-                    <li key={item.link} className={styles.row}>
-                      <a
-                        href={item.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={`link-under ${styles.rowTitle}`}
+          {about.recognition?.display && (
+            <>
+              <Heading
+                as="h2"
+                id={about.recognition.title}
+                variant="display-strong-s"
+                marginBottom="m"
+              >
+                {about.recognition.title}
+              </Heading>
+              <Column fillWidth gap="16" marginBottom="40">
+                {about.recognition.items.map((item, index) => (
+                  <Row
+                    key={`${item.title}-${index}`}
+                    fillWidth
+                    horizontal="between"
+                    vertical="center"
+                    gap="16"
+                  >
+                    {item.link ? (
+                      <SmartLink href={item.link} suffixIcon="arrowUpRightFromSquare">
+                        <Text variant="body-default-m">{item.title}</Text>
+                      </SmartLink>
+                    ) : (
+                      <Text variant="body-default-m">{item.title}</Text>
+                    )}
+                    {item.meta && (
+                      <Text
+                        variant="body-default-s"
+                        onBackground="neutral-weak"
+                        style={{ whiteSpace: "nowrap" }}
                       >
-                        {item.title}
-                      </a>
-                      {item.meta && <span className={`mono ${styles.rowMeta}`}>{item.meta}</span>}
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )}
+                        {item.meta}
+                      </Text>
+                    )}
+                  </Row>
+                ))}
+              </Column>
+            </>
+          )}
 
-            {about.technical.display && (
-              <section id={slug(about.technical.title)} className={styles.section}>
-                <h2 className={`display-m ${styles.h2}`}>{about.technical.title}</h2>
-                <div className={styles.skills}>
-                  {about.technical.skills.map((skill) => (
-                    <div key={skill.title} className={styles.skill}>
-                      <h3 className={`title ${styles.skillTitle}`}>{skill.title}</h3>
-                      <p className={styles.skillBody}>{skill.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
+          {about.studies.display && (
+            <>
+              <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m">
+                {about.studies.title}
+              </Heading>
+              <Column fillWidth gap="l" marginBottom="40">
+                {about.studies.institutions.map((institution, index) => (
+                  <Column key={`${institution.name}-${index}`} fillWidth gap="4">
+                    <Text id={institution.name} variant="heading-strong-l">
+                      {institution.name}
+                    </Text>
+                    <Text variant="heading-default-xs" onBackground="neutral-weak">
+                      {institution.description}
+                    </Text>
+                  </Column>
+                ))}
+              </Column>
+            </>
+          )}
 
-            {about.studies.display && (
-              <section id={slug(about.studies.title)} className={styles.section}>
-                <h2 className={`display-m ${styles.h2}`}>{about.studies.title}</h2>
-                <ol className={styles.timeline}>
-                  {about.studies.institutions.map((inst) => (
-                    <li key={inst.name} className={styles.entry}>
-                      <div className={`mono ${styles.when}`} />
-                      <div className={styles.entryBody}>
-                        <h3 className={`title ${styles.company}`}>{inst.name}</h3>
-                        <p className={styles.entryText}>{inst.description}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-              </section>
-            )}
-          </div>
-        </div>
-      </div>
-    </>
+          {about.publications?.display && (
+            <>
+              <Heading
+                as="h2"
+                id={about.publications.title}
+                variant="display-strong-s"
+                marginBottom="m"
+              >
+                {about.publications.title}
+              </Heading>
+              <Column fillWidth gap="l" marginBottom="40">
+                {about.publications.papers.map((paper, index) => (
+                  <Column key={`${paper.title}-${index}`} fillWidth gap="8">
+                    <Row fillWidth horizontal="between" vertical="end" marginBottom="4">
+                      <Text id={paper.title} variant="heading-strong-l">
+                        {paper.title}
+                      </Text>
+                      {paper.date && (
+                        <Text variant="heading-default-xs" onBackground="neutral-weak">
+                          {paper.date}
+                        </Text>
+                      )}
+                    </Row>
+                    {paper.venue && (
+                      <Text variant="body-default-s" onBackground="brand-weak">
+                        {paper.venue}
+                      </Text>
+                    )}
+                    {paper.description && (
+                      <Text variant="body-default-m" onBackground="neutral-weak">
+                        {paper.description}
+                      </Text>
+                    )}
+                    <Row paddingTop="4">
+                      <Button
+                        href={paper.link}
+                        prefixIcon="document"
+                        suffixIcon="arrowUpRightFromSquare"
+                        label="Read paper"
+                        size="s"
+                        weight="default"
+                        variant="secondary"
+                      />
+                    </Row>
+                  </Column>
+                ))}
+              </Column>
+            </>
+          )}
+
+          {about.talks?.display && (
+            <>
+              <Heading as="h2" id={about.talks.title} variant="display-strong-s" marginBottom="m">
+                {about.talks.title}
+              </Heading>
+              <Column fillWidth gap="16" marginBottom="40">
+                {about.talks.items.map((item, index) => (
+                  <Row
+                    key={`${item.title}-${index}`}
+                    fillWidth
+                    horizontal="between"
+                    vertical="center"
+                    gap="16"
+                  >
+                    <SmartLink href={item.link} suffixIcon="arrowUpRightFromSquare">
+                      <Text variant="body-default-m">{item.title}</Text>
+                    </SmartLink>
+                    {item.meta && (
+                      <Text
+                        variant="body-default-s"
+                        onBackground="neutral-weak"
+                        style={{ whiteSpace: "nowrap" }}
+                      >
+                        {item.meta}
+                      </Text>
+                    )}
+                  </Row>
+                ))}
+              </Column>
+            </>
+          )}
+
+          {about.technical.display && (
+            <>
+              <Heading
+                as="h2"
+                id={about.technical.title}
+                variant="display-strong-s"
+                marginBottom="40"
+              >
+                {about.technical.title}
+              </Heading>
+              <Column fillWidth gap="l">
+                {about.technical.skills.map((skill, index) => (
+                  <Column key={`${skill}-${index}`} fillWidth gap="4">
+                    <Text id={skill.title} variant="heading-strong-l">
+                      {skill.title}
+                    </Text>
+                    <Text variant="body-default-m" onBackground="neutral-weak">
+                      {skill.description}
+                    </Text>
+                    {skill.tags && skill.tags.length > 0 && (
+                      <Row wrap gap="8" paddingTop="8">
+                        {skill.tags.map((tag, tagIndex) => (
+                          <Tag key={`${skill.title}-${tagIndex}`} size="l" prefixIcon={tag.icon}>
+                            {tag.name}
+                          </Tag>
+                        ))}
+                      </Row>
+                    )}
+                    {skill.images && skill.images.length > 0 && (
+                      <Row fillWidth paddingTop="m" gap="12" wrap>
+                        {skill.images.map((image, index) => (
+                          <Row
+                            key={index}
+                            border="neutral-medium"
+                            radius="m"
+                            minWidth={image.width}
+                            height={image.height}
+                          >
+                            <Media
+                              enlarge
+                              radius="m"
+                              sizes={image.width.toString()}
+                              alt={image.alt}
+                              src={image.src}
+                            />
+                          </Row>
+                        ))}
+                      </Row>
+                    )}
+                  </Column>
+                ))}
+              </Column>
+            </>
+          )}
+        </Column>
+      </Row>
+    </Column>
   );
 }
