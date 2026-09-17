@@ -18,6 +18,10 @@ type Metadata = {
   tag?: string;
   team: Team[];
   link?: string;
+  /** Where the post was synced from, e.g. "github-blog" */
+  source?: string;
+  /** Original URL when the post was first published elsewhere */
+  canonical?: string;
 };
 
 import { notFound } from "next/navigation";
@@ -47,6 +51,8 @@ function readMDXFile(filePath: string) {
     tag: data.tag || [],
     team: data.team || [],
     link: data.link || "",
+    source: data.source || "",
+    canonical: data.canonical || "",
   };
 
   return { metadata, content };

@@ -125,12 +125,15 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
           )}
           <Column as="article" maxWidth="s">
             <CustomMDX source={post.content} />
+            {post.metadata.canonical && (
+              <Text variant="body-default-s" onBackground="neutral-weak" marginTop="24">
+                First published on{" "}
+                <SmartLink href={post.metadata.canonical}>jeremysnr.github.io</SmartLink>.
+              </Text>
+            )}
           </Column>
-          
-          <ShareSection 
-            title={post.metadata.title} 
-            url={`${baseURL}${blog.path}/${post.slug}`} 
-          />
+
+          <ShareSection title={post.metadata.title} url={`${baseURL}${blog.path}/${post.slug}`} />
 
           <Column fillWidth gap="40" horizontal="center" marginTop="40">
             <Line maxWidth="40" />
