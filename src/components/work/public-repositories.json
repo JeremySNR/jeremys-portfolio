@@ -1,0 +1,147 @@
+[
+  {
+    "label": "Recent builds",
+    "repos": [
+      {
+        "name": "Cutawan",
+        "url": "https://github.com/JeremySNR/cutawan",
+        "summary": "Find strong moments in podcasts or long recordings, track the speaker and turn clips into captioned vertical video on the desktop."
+      },
+      {
+        "name": "Modalore",
+        "url": "https://github.com/JeremySNR/Modalore",
+        "summary": "A Windows preview for remixing gameplay. Start with a recipe, change movement or gravity, and test it in an isolated Luanti world."
+      },
+      {
+        "name": "Metachlorian",
+        "url": "https://github.com/JeremySNR/Metachlorian",
+        "summary": "Search a local footage library by scene or spoken line, find the exact shot and pass selects to an editor or an AI agent."
+      },
+      {
+        "name": "BRINK",
+        "url": "https://github.com/JeremySNR/brink",
+        "summary": "A seven-player strategy game about pressure between great powers. Players submit simultaneous orders while a shared crisis track can end the game for everyone."
+      },
+      {
+        "name": "Quillgon",
+        "url": "https://github.com/JeremySNR/quillgon",
+        "summary": "An open-source writing desk that keeps a novel’s outline, characters, drafts and reviewed revisions together on the author’s machine."
+      }
+    ]
+  },
+  {
+    "label": "Tools, research and earlier projects",
+    "repos": [
+      {
+        "name": "Pluribus",
+        "url": "https://github.com/JeremySNR/Pluribus",
+        "summary": "Research into agent disagreement and a permanent dissenter. The companion study is Don’t Merge Carol."
+      },
+      {
+        "name": "Project Foundry",
+        "url": "https://github.com/JeremySNR/Project-foundry",
+        "summary": "A governed ticket-to-PR workflow for coding agents with policy checks and human approval."
+      },
+      {
+        "name": "snug",
+        "url": "https://github.com/JeremySNR/snug",
+        "summary": "Fit ranked message and tool blocks into a token budget without breaking a paired tool request and result."
+      },
+      {
+        "name": "Ashla",
+        "url": "https://github.com/JeremySNR/ashla-lightroom",
+        "summary": "A Lightroom Classic plugin that reads a photo or reference image and returns editable develop settings."
+      },
+      {
+        "name": "converge",
+        "url": "https://github.com/JeremySNR/converge",
+        "summary": "A TypeScript library that translates conversation history and tool calls between OpenAI, Anthropic and Gemini message formats without contacting a model."
+      },
+      {
+        "name": "Holocron",
+        "url": "https://github.com/JeremySNR/holocron",
+        "summary": "A local-first knowledge base with a block editor, relational tables and on-device semantic search."
+      },
+      {
+        "name": "Amadeus Flight Tool",
+        "url": "https://github.com/JeremySNR/amadeus-flight-tool",
+        "summary": "A serverless wrapper that connects Vapi voice assistants with Amadeus flight search. The only sampled commit is linked to another GitHub account."
+      }
+    ]
+  },
+  {
+    "label": "Companion projects",
+    "repos": [
+      {
+        "name": "Pluribus Phase 2",
+        "url": "https://github.com/JeremySNR/Pluribus-P2",
+        "summary": "A second phase of the protected-dissent research, exploring coordination through a shared latent buffer."
+      },
+      {
+        "name": "Metachlorian website",
+        "url": "https://github.com/JeremySNR/Metachlorian-site",
+        "summary": "The product site and download instructions for Metachlorian."
+      },
+      {
+        "name": "Metachlorian Community",
+        "url": "https://github.com/JeremySNR/Metachlorian-community",
+        "summary": "A public search index of voluntarily shared video metadata that keeps private libraries separate."
+      },
+      {
+        "name": "snug-openai",
+        "url": "https://github.com/JeremySNR/snug-openai",
+        "summary": "Token budgeting for OpenAI SDK message arrays."
+      },
+      {
+        "name": "snug-anthropic",
+        "url": "https://github.com/JeremySNR/snug-anthropic",
+        "summary": "Token budgeting for Anthropic SDK message arrays."
+      },
+      {
+        "name": "snug-tiktoken",
+        "url": "https://github.com/JeremySNR/snug-tiktoken",
+        "summary": "A tiktoken adapter that counts tokens for snug."
+      }
+    ]
+  },
+  {
+    "label": "Writing and websites",
+    "repos": [
+      {
+        "name": "Notes for Future Agents",
+        "url": "https://github.com/JeremySNR/notes-for-future-agents",
+        "summary": "A published collection of handoffs, case notes and a conversation dataset about how agents work together and when they should ask for help."
+      },
+      {
+        "name": "Jeremy’s essays",
+        "url": "https://github.com/JeremySNR/JeremySNR.github.io",
+        "summary": "My essays on AI, infrastructure and ownership."
+      },
+      {
+        "name": "Portfolio website",
+        "url": "https://github.com/JeremySNR/jeremys-portfolio",
+        "summary": "The source for this portfolio and work archive."
+      },
+      {
+        "name": "GitHub profile",
+        "url": "https://github.com/JeremySNR/JeremySNR",
+        "summary": "My GitHub profile, with links to releases and downloads."
+      }
+    ]
+  },
+  {
+    "label": "Contributions to other projects",
+    "repos": [
+      {
+        "name": "Silo server contributions",
+        "url": "https://github.com/JeremySNR/silo-server",
+        "summary": "My playback fix for the self-hosted Silo media server."
+      },
+      {
+        "name": "Awesome MCP Servers",
+        "url": "https://github.com/JeremySNR/awesome-mcp-servers",
+        "summary": "My contribution adds Metachlorian to the community catalogue of MCP servers."
+      }
+    ]
+  }
+]

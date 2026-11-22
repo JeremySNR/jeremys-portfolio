@@ -67,7 +67,7 @@ export default function About() {
     },
   ];
   return (
-    <Column maxWidth="m">
+    <Column maxWidth="m" className="about-page">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -82,16 +82,7 @@ export default function About() {
         }}
       />
       {about.tableOfContent.display && (
-        <Column
-          left="0"
-          style={{ top: "50%", transform: "translateY(-50%)" }}
-          position="fixed"
-          paddingLeft="24"
-          gap="32"
-          s={{ hide: true }}
-        >
-          <TableOfContents structure={structure} about={about} />
-        </Column>
+        <TableOfContents structure={structure} showSubItems={about.tableOfContent.subItems} />
       )}
       <Row fillWidth s={{ direction: "column" }} horizontal="center">
         {about.avatar.display && (
@@ -134,31 +125,16 @@ export default function About() {
             marginBottom="32"
           >
             {about.calendar.display && (
-              <Row
-                fitWidth
-                border="brand-alpha-medium"
-                background="brand-alpha-weak"
-                radius="full"
-                padding="4"
-                gap="8"
-                marginBottom="m"
-                vertical="center"
-                className={styles.blockAlign}
-                style={{
-                  backdropFilter: "blur(var(--static-space-1))",
-                }}
+              <a
+                className="broadcast-button about-contact"
+                href={/^https?:\/\/cal\.com\/?$/.test(about.calendar.link)
+                  ? `mailto:${person.email}?subject=Arrange%20a%20call`
+                  : about.calendar.link}
               >
-                <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                <Row paddingX="8">Schedule a call</Row>
-                <IconButton
-                  href={about.calendar.link}
-                  data-border="rounded"
-                  variant="secondary"
-                  icon="chevronRight"
-                />
-              </Row>
+                Arrange a call <span aria-hidden="true">↗</span>
+              </a>
             )}
-            <Heading className={styles.textAlign} variant="display-strong-xl">
+            <Heading className={styles.textAlign} as="h1" variant="display-strong-xl">
               {person.name}
             </Heading>
             <Text
@@ -197,6 +173,7 @@ export default function About() {
                         <Row hide s={{ hide: false }}>
                           <IconButton
                             size="l"
+                            aria-label={item.name}
                             key={`${item.name}-icon`}
                             href={item.link}
                             icon={item.icon}
@@ -289,6 +266,8 @@ export default function About() {
                 {about.recognition.items.map((item, index) => (
                   <Row
                     key={`${item.title}-${index}`}
+                    id={item.title}
+                    className="about-detail-row"
                     fillWidth
                     horizontal="between"
                     vertical="center"
@@ -305,7 +284,7 @@ export default function About() {
                       <Text
                         variant="body-default-s"
                         onBackground="neutral-weak"
-                        style={{ whiteSpace: "nowrap" }}
+                        className="about-detail-meta"
                       >
                         {item.meta}
                       </Text>
@@ -395,6 +374,8 @@ export default function About() {
                 {about.talks.items.map((item, index) => (
                   <Row
                     key={`${item.title}-${index}`}
+                    id={item.title}
+                    className="about-detail-row"
                     fillWidth
                     horizontal="between"
                     vertical="center"
@@ -407,7 +388,7 @@ export default function About() {
                       <Text
                         variant="body-default-s"
                         onBackground="neutral-weak"
-                        style={{ whiteSpace: "nowrap" }}
+                        className="about-detail-meta"
                       >
                         {item.meta}
                       </Text>

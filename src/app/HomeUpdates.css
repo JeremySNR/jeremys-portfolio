@@ -1,0 +1,96 @@
+.flagship {
+  display: grid;
+  grid-template-columns: 1.08fr 1fr;
+  align-items: center;
+  gap: clamp(24px, 4vw, 80px);
+  border-block: 2px solid currentColor;
+  padding: clamp(18px, 3vw, 48px) 0;
+  margin-bottom: clamp(32px, 4vw, 64px);
+}
+.flagship-art,
+.flagship-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.flagship-copy h3 {
+  font: 400 clamp(62px, 7.5vw, 128px) / 0.96 var(--font-heading), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -.025em;
+  margin: 12px 0;
+}
+.flagship-copy p:not(.feature-label) {
+  max-width: 45ch;
+  font-size: clamp(16px, 1.4vw, 23px);
+  line-height: 1.45;
+}
+.feature-label,
+.gallery-strip figcaption {
+  font: .86rem / 1.45 var(--font-code), monospace;
+}
+.feature-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  align-items: center;
+  margin: 22px 0 5px;
+}
+.feature-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.home-photos {
+  background: var(--ink);
+  color: var(--sun);
+}
+.gallery-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 36px);
+}
+.gallery-strip figure {
+  margin: 0;
+}
+.gallery-strip figure > div {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.gallery-strip img {
+  object-fit: cover;
+  object-position: center 38%;
+}
+.gallery-strip figure:last-child img {
+  object-position: center 45%;
+}
+.gallery-strip figcaption {
+  margin-top: 10px;
+}
+@media (max-width: 700px) {
+  .flagship {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+  .flagship-art img {
+    aspect-ratio: 1.9;
+    object-fit: cover;
+  }
+}
+@media (max-width: 600px) {
+  .gallery-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .gallery-strip figure:first-child {
+    grid-column: 1 / -1;
+  }
+  .gallery-strip figure:first-child > div {
+    aspect-ratio: 1.85;
+  }
+  .gallery-strip figure:not(:first-child) > div {
+    aspect-ratio: 1;
+  }
+  .gallery-strip figcaption {
+    font-size: .8rem;
+  }
+}

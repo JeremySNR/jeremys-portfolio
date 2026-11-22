@@ -1,18 +1,16 @@
+import { ArchivePhoto } from "@/components/ArchivePhoto";
 import { notFound } from "next/navigation";
 import { getPosts } from "@/utils/utils";
 import {
   Meta,
   Schema,
   AvatarGroup,
-  Button,
   Column,
-  Flex,
   Heading,
   Media,
   Text,
   SmartLink,
   Row,
-  Avatar,
   Line,
 } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
@@ -119,7 +117,7 @@ export default async function Project({
       {post.metadata.images.length > 0 && (
         <Media
           priority
-          aspectRatio="16 / 9"
+          aspectRatio="3 / 2"
           radius="none"
           alt={post.metadata.coverAlt || post.metadata.title}
           src={post.metadata.images[0]}
@@ -132,19 +130,14 @@ export default async function Project({
             Visit project source ↗
           </a>
         )}
-        {post.metadata.images
-          .slice(1)
-          .filter((src) => !src.endsWith(".svg"))
-          .map((src) => (
-            <Media
-              key={src}
-              src={src}
-              alt={`${post.metadata.title} project archive`}
-              enlarge
-              marginTop="24"
-              radius="none"
-            />
-          ))}
+        {post.metadata.images.length > 1 && (
+          <section className="project-archive" aria-labelledby="project-material">
+            <h2 id="project-material">Project archive</h2>
+            {post.metadata.images.slice(1).map((src, index) => (
+              <ArchivePhoto key={src} src={src} alt={`Original project image ${index + 1} for ${post.metadata.title}`} />
+            ))}
+          </section>
+        )}
       </Column>
       <Column fillWidth gap="40" horizontal="center" marginTop="40">
         <Line maxWidth="40" />

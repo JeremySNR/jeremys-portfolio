@@ -1,8 +1,5 @@
-import { Column, Heading, Meta, Row, Schema, Tag, Text } from "@once-ui-system/core";
+import { Column, Heading, Meta, Schema, Text } from "@once-ui-system/core";
 import { baseURL, about, person, news } from "@/resources";
-import { NewsCard } from "@/components/NewsCard";
-import { Reveal } from "@/components/Reveal";
-
 export async function generateMetadata() {
   return Meta.generate({
     title: news.title,
@@ -13,11 +10,9 @@ export async function generateMetadata() {
   });
 }
 
-const featuredOutlets = ["BBC", "WIRED", "The Washington Post", "NBC", "Fox News"];
-
 export default function News() {
   return (
-    <Column maxWidth="l" paddingTop="24" gap="xl" horizontal="center">
+    <Column className="press-index" maxWidth="l" paddingTop="24" gap="xl">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -32,40 +27,27 @@ export default function News() {
         }}
       />
 
-      <Column maxWidth="s" horizontal="center" align="center" gap="m">
-        <Heading variant="display-strong-xl" align="center" wrap="balance">
+      <Column maxWidth="s" gap="m">
+        <Heading as="h1" className="broadcast-title" variant="display-strong-xl">
           In the news
         </Heading>
-        <Text variant="heading-default-xl" onBackground="neutral-weak" align="center" wrap="balance">
+        <Text variant="heading-default-xl" onBackground="neutral-weak">
           {news.intro}
         </Text>
       </Column>
 
-      <Row fillWidth wrap horizontal="center" gap="8">
-        {featuredOutlets.map((outlet) => (
-          <Tag key={outlet} size="l">
-            {outlet}
-          </Tag>
+      <ul className="press-list">
+        {news.items.map((item) => (
+          <li key={item.link}>
+            <a href={item.link}>
+              <span className="archive-meta">{[item.tag, item.date].filter(Boolean).join(" · ")}</span>
+              <strong>{item.outlet}</strong>
+              <span className="press-headline">{item.title}</span>
+              <span className="press-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
         ))}
-      </Row>
-
-      <Row fillWidth wrap gap="16" horizontal="center">
-        {news.items.map((item, index) => (
-          <Reveal
-            key={`${item.outlet}-${item.title}`}
-            delay={Math.min(index * 0.04, 0.4)}
-            style={{ flex: "1 1 340px", maxWidth: "440px", display: "flex" }}
-          >
-            <NewsCard
-              outlet={item.outlet}
-              title={item.title}
-              date={item.date}
-              tag={item.tag}
-              link={item.link}
-            />
-          </Reveal>
-        ))}
-      </Row>
+      </ul>
     </Column>
   );
 }

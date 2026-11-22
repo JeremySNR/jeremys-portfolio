@@ -1,5 +1,7 @@
 import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
+import repositories from "@/components/work/public-repositories.json";
+import "./WorkDirectory.css";
 import { Projects } from "@/components/work/Projects";
 
 export async function generateMetadata() {
@@ -31,7 +33,27 @@ export default function Work() {
       <Heading marginBottom="l" variant="heading-strong-xl" align="center">
         Project archive.
       </Heading>
-      <Projects />
+      <Projects selected={["clip-forge", "metachlorian", "modalore", "brink", "quillgon"]} />
+      <Projects exclude={["clip-forge", "metachlorian", "modalore", "brink", "quillgon"]} />
+      <section className="repo-directory" aria-labelledby="repo-heading">
+        <h2 id="repo-heading">On GitHub.</h2>
+        <p>My public repositories and contributions, grouped by what they do.</p>
+        {repositories.map(({ label, repos }) => (
+          <details key={label} open={label === "Recent builds"}>
+            <summary>
+              {label} <span>({repos.length})</span>
+            </summary>
+            <ul>
+              {repos.map(({ name, url, summary }) => (
+                <li key={url}>
+                  <a href={url}>{name} ↗</a>
+                  <p>{summary}</p>
+                </li>
+              ))}
+            </ul>
+          </details>
+        ))}
+      </section>
     </Column>
   );
 }
