@@ -282,12 +282,12 @@ const about: About = {
       {
         title: "Director, Institute of Travel & Tourism (ITT)",
         meta: "Board appointment",
-        link: "https://www.itt.co.uk",
+        link: "https://www.itt.co.uk/jeremy-smith",
       },
       {
         title: "TTG 30 Under 30",
         meta: "Tomorrow's travel leaders",
-        link: "https://www.ttgmedia.com",
+        link: "https://www.ttgmedia.com/travel-industry-news/travel-counsellors-ai-lead-technology-should-make-agents-best-version",
       },
     ],
   },
@@ -417,7 +417,7 @@ const about: About = {
         tags: [
           {
             name: "AI",
-            icon: "openai",
+            icon: "cpu",
           },
         ],
         images: [],
@@ -560,7 +560,7 @@ const news: News = {
       title: "AI Steve, the chatbot running for UK Parliament",
       date: "Jun 2024",
       tag: "AI Steve",
-      link: "https://www.google.com/search?q=wired+AI+Steve+morgan+meaker+member+of+parliament",
+      link: "https://www.wired.com/story/ai-candidate-running-for-parliament-uk/",
       featured: true,
     },
     {
@@ -718,13 +718,13 @@ const news: News = {
       outlet: "TTG",
       title: "Named one of TTG's 30 Under 30, the travel industry's ones to watch",
       tag: "Recognition",
-      link: "https://www.ttgmedia.com",
+      link: "https://www.ttgmedia.com/travel-industry-news/travel-counsellors-ai-lead-technology-should-make-agents-best-version",
     },
     {
       outlet: "ITT",
       title: "Appointed Director of the Institute of Travel & Tourism",
       tag: "Recognition",
-      link: "https://www.itt.co.uk",
+      link: "https://www.itt.co.uk/jeremy-smith",
     },
     {
       outlet: "GrantUp",

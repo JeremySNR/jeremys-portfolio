@@ -13,8 +13,8 @@ import {
 } from "@/types";
 import { home } from "./index";
 
-// IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL: string = "https://jsmithportfolio.vercel.app";
+// This is the public portfolio address used in share cards, feeds and the sitemap.
+const baseURL: string = "https://jeremys-portfolio-8ueo.vercel.app";
 
 const routes: RoutesConfig = {
   "/": true,

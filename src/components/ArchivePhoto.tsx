@@ -18,7 +18,7 @@ export function ArchivePhoto({ src, alt, ratio, sizes = "(max-width: 700px) 92vw
     <figure className="archive-photo">
       <button type="button" aria-label={`Enlarge: ${alt}`} onClick={() => { setViewed(true); dialog.current?.showModal(); }}>
         <Image src={src} alt={alt} width={1000} height={667} sizes={sizes}
-          style={{ aspectRatio: ratio || "auto", objectFit: ratio ? "cover" : "contain" }} />
+          style={{ aspectRatio: ratio, objectFit: ratio ? "cover" : "contain" }} />
       </button>
       {caption && <figcaption>{caption}</figcaption>}
       <dialog ref={dialog} aria-label={alt} onClick={(event) => {
