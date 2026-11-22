@@ -1,3 +1,10 @@
+/* Selected work keeps its yellow background in both themes. */
+#portfolio {
+  --brand-on-background-medium: var(--ink);
+  --brand-on-background-strong: var(--ink);
+  --neutral-border-strong: var(--ink);
+}
+
 .flagship {
   display: grid;
   grid-template-columns: 1.08fr 1fr;
