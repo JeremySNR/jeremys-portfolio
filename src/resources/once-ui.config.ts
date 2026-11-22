@@ -37,35 +37,27 @@ const protectedRoutes: ProtectedRoutesConfig = {
   "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
 };
 
-// Import and set font for each variant
-// Editorial-tech pairing: an expressive display serif (the writer), a refined
-// grotesk for body/labels (the operator), and a mono for code/tags (the engineer).
-import { Fraunces, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 
-const heading = Fraunces({
+const heading = localFont({
+  src: "../../public/broadcast/fonts/barlow-poster.woff2",
   variable: "--font-heading",
-  subsets: ["latin"],
   display: "swap",
-  style: ["normal", "italic"],
 });
-
-const body = Hanken_Grotesk({
+const body = localFont({
+  src: [
+    { path: "../../public/broadcast/fonts/hanken-regular.woff2", weight: "400" },
+    { path: "../../public/broadcast/fonts/hanken-bold.woff2", weight: "700" },
+  ],
   variable: "--font-body",
-  subsets: ["latin"],
   display: "swap",
 });
-
-const label = Hanken_Grotesk({
-  variable: "--font-label",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const code = JetBrains_Mono({
+const code = localFont({
+  src: "../../public/broadcast/fonts/jetbrains-mono.woff2",
   variable: "--font-code",
-  subsets: ["latin"],
   display: "swap",
 });
+const label = code;
 
 const fonts: FontsConfig = {
   heading: heading,
@@ -77,12 +69,12 @@ const fonts: FontsConfig = {
 // default customization applied to the HTML in the main layout.tsx
 const style: StyleConfig = {
   theme: "system", // dark | light | system
-  neutral: "sand", // sand | gray | slate | custom. Warm "paper" base for an editorial feel
-  brand: "emerald", // warm paper + green ink: a considered, editorial palette
-  accent: "emerald", // single confident accent, restraint over a scattered palette
+  neutral: "slate",
+  brand: "indigo",
+  accent: "orange",
   solid: "contrast", // color | contrast
   solidStyle: "flat", // flat | plastic
-  border: "rounded", // rounded | playful | conservative
+  border: "conservative",
   surface: "translucent", // filled | translucent
   transition: "all", // all | micro | macro. Richer, smoother motion throughout
   scaling: "100", // 90 | 95 | 100 | 105 | 110

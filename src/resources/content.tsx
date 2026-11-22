@@ -45,10 +45,10 @@ const social: Social = [
 
 const home: Home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: "/broadcast/hero3.webp",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
+  title: `${person.name} | AI, ideas and selected work`,
+  description: "Jeremy Smith on new AI releases, open-source tools, voice technology and multi-agent research.",
   headline: (
     <>
       AI leadership that ships products, wins revenue, and{" "}

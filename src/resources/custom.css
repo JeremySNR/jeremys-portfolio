@@ -1,124 +1,462 @@
-/* ------------------------------------------------------------------ *
- * Jeremy Smith, editorial-tech finishing layer
- *
- * Additive polish on top of the Once UI design system:
- * serif optical tuning, a film-grain overlay for depth, a considered
- * selection colour, animated in-article links, refined focus + scrollbars.
- * Custom colour scales can be defined via https://once-ui.com/customize
- * and pasted into a :root block here if ever needed.
- * ------------------------------------------------------------------ */
-
-/* Smooth, anchor-aware scrolling that clears the sticky header */
+:root {
+  --ink: #182780;
+  --sun: #ffcf34;
+  --signal: #ff784c;
+  --paper: var(--sun);
+  --type: var(--ink);
+}
+html[data-theme="dark"] {
+  --paper: var(--ink);
+  --type: var(--sun);
+}
+html[data-theme],
+html:not([data-theme]) {
+  --page-background: var(--paper);
+  --surface-background: var(--paper);
+  --neutral-on-background-strong: var(--type);
+  --neutral-on-background-medium: var(--type);
+  --neutral-on-background-weak: var(--type);
+  --brand-on-background-strong: var(--type);
+  --brand-on-background-medium: var(--type);
+  --brand-on-background-weak: var(--type);
+  --accent-on-background-strong: var(--type);
+  --accent-on-background-medium: var(--type);
+  --accent-on-background-weak: var(--type);
+  --brand-solid-strong: var(--signal);
+  --brand-on-solid-strong: var(--ink);
+  --font-label: var(--font-code);
+  --brand-border-weak: var(--type);
+  --brand-background-weak: var(--paper);
+  --brand-solid-weak: var(--signal);
+  --brand-border-medium: var(--type);
+  --brand-background-medium: var(--paper);
+  --brand-solid-medium: var(--signal);
+  --brand-border-strong: var(--type);
+  --brand-background-strong: var(--paper);
+  --brand-solid-strong: var(--signal);
+  --brand-alpha-weak: color-mix(in srgb, var(--type) 8%, transparent);
+  --brand-alpha-medium: color-mix(in srgb, var(--type) 15%, transparent);
+  --brand-alpha-strong: color-mix(in srgb, var(--type) 25%, transparent);
+  --brand-on-solid-weak: var(--ink);
+  --brand-on-solid-strong: var(--ink);
+  --accent-border-weak: var(--type);
+  --accent-background-weak: var(--paper);
+  --accent-solid-weak: var(--signal);
+  --accent-border-medium: var(--type);
+  --accent-background-medium: var(--paper);
+  --accent-solid-medium: var(--signal);
+  --accent-border-strong: var(--type);
+  --accent-background-strong: var(--paper);
+  --accent-solid-strong: var(--signal);
+  --accent-alpha-weak: color-mix(in srgb, var(--type) 8%, transparent);
+  --accent-alpha-medium: color-mix(in srgb, var(--type) 15%, transparent);
+  --accent-alpha-strong: color-mix(in srgb, var(--type) 25%, transparent);
+  --accent-on-solid-weak: var(--ink);
+  --accent-on-solid-strong: var(--ink);
+  --neutral-border-weak: var(--type);
+  --neutral-background-weak: var(--paper);
+  --neutral-solid-weak: var(--type);
+  --neutral-border-medium: var(--type);
+  --neutral-background-medium: var(--paper);
+  --neutral-solid-medium: var(--type);
+  --neutral-border-strong: var(--type);
+  --neutral-background-strong: var(--paper);
+  --neutral-solid-strong: var(--type);
+  --neutral-alpha-weak: color-mix(in srgb, var(--type) 8%, transparent);
+  --neutral-alpha-medium: color-mix(in srgb, var(--type) 15%, transparent);
+  --neutral-alpha-strong: color-mix(in srgb, var(--type) 25%, transparent);
+  --neutral-on-solid-weak: var(--paper);
+  --neutral-on-solid-strong: var(--paper);
+}
+* {
+  box-sizing: border-box;
+}
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 96px;
+  scroll-padding-top: 2rem;
 }
-
-/* Crisper type rendering across the board */
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--type);
+  font-family: var(--font-body), sans-serif;
 }
-
-/* Let the Fraunces display serif breathe with optical sizing and tighter,
-   more editorial tracking on the larger headings. */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-optical-sizing: auto;
-  font-feature-settings: "ss01", "liga", "calt";
-  letter-spacing: -0.018em;
+body,
+#content {
+  width: 100%;
 }
-
-/* Italic emerald accent inside display headings (see home.headline) */
-.accent-italic {
-  font-style: italic;
-  color: var(--brand-on-background-weak);
+img {
+  max-width: 100%;
 }
-
-/* Considered selection colour drawn from the brand (emerald) scale */
-::selection {
-  background: var(--brand-solid-strong, #1f7a5a);
-  color: var(--brand-on-solid-strong, #ffffff);
+a {
+  color: inherit;
 }
-
-/* ------------------------------------------------------------------ *
- * Film-grain overlay: a quiet, premium tactile texture over the page.
- * Fixed, non-interactive, and very low opacity so it reads as depth
- * rather than noise.
- * ------------------------------------------------------------------ */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.04;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 240px 240px;
-}
-
-/* ------------------------------------------------------------------ *
- * In-article links (blog posts + project write-ups): an editorial
- * underline that grows from the left on hover.
- * ------------------------------------------------------------------ */
-article a {
-  text-decoration: none;
-  background-image: linear-gradient(currentColor, currentColor);
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  background-size: 100% 1px;
-  padding-bottom: 1px;
-  transition: background-size 0.25s ease, opacity 0.25s ease;
-}
-
-article a:hover {
-  background-size: 100% 2px;
-  opacity: 0.85;
-}
-
-/* ------------------------------------------------------------------ *
- * Focus + scrollbars
- * ------------------------------------------------------------------ */
 :focus-visible {
-  outline: 2px solid var(--brand-solid-strong, #1f7a5a);
-  outline-offset: 3px;
-  border-radius: 2px;
+  outline: 3px solid currentColor;
+  outline-offset: 4px;
 }
-
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--neutral-alpha-medium) transparent;
+::selection {
+  background: var(--signal);
+  color: var(--ink);
 }
-
-*::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+.sr-only,
+.skip-link:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
-
-*::-webkit-scrollbar-thumb {
-  background: var(--neutral-alpha-medium);
-  border-radius: 999px;
-  border: 3px solid transparent;
-  background-clip: content-box;
+.skip-link:focus {
+  display: block;
+  position: absolute;
+  z-index: 20;
+  padding: .8rem;
+  background: var(--signal);
+  color: var(--ink);
 }
-
-*::-webkit-scrollbar-thumb:hover {
-  background: var(--neutral-alpha-strong);
-  background-clip: content-box;
+.masthead {
+  background: var(--sun);
+  color: var(--ink);
+  border-bottom: 3px double var(--ink);
 }
-
-/* Respect users who prefer reduced motion */
+.masthead-inner {
+  width: min(100%, 1600px);
+  margin: auto;
+  min-height: 64px;
+  padding: 8px clamp(18px, 4vw, 64px);
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 2vw, 32px);
+}
+.wordmark {
+  margin-right: auto;
+  font: clamp(32px, 3.8vw, 52px) / 0.95 var(--font-heading), sans-serif;
+  letter-spacing: -.055em;
+  text-decoration: none;
+}
+.wordmark span {
+  color: var(--ink);
+}
+.masthead nav,
+.broadcast-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(12px, 2vw, 32px);
+}
+.masthead nav a,
+.broadcast-footer nav a {
+  font: .875rem / 1.2 var(--font-code), monospace;
+  text-decoration: none;
+}
+.masthead nav a:hover,
+.masthead nav a[aria-current="page"],
+.broadcast-footer nav a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.masthead-inner > button {
+  color: var(--ink) !important;
+}
+#content {
+  min-height: 60vh;
+}
+#content > :not(.broadcast-home) {
+  margin: 0 auto;
+  padding: clamp(36px, 5vw, 80px) clamp(18px, 4vw, 64px);
+}
+#content > .work-index {
+  width: min(100%, 1600px);
+}
+#content h1,
+#content h2,
+.editorial-heading,
+.broadcast-title {
+  font-family: var(--font-heading), sans-serif;
+  font-weight: 400;
+  text-wrap: balance;
+  letter-spacing: -.02em;
+}
+#content .broadcast-title,
+.work-index > h1 {
+  font-size: clamp(46px, 6vw, 96px);
+  text-transform: uppercase;
+  line-height: 1;
+}
+.broadcast-hero {
+  position: relative;
+  background: var(--ink);
+  color: var(--sun);
+}
+.broadcast-hero picture,
+.broadcast-hero picture img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.hero-intro,
+.hero-bio {
+  position: absolute;
+  bottom: 10%;
+}
+.hero-intro {
+  left: 4%;
+}
+.hero-intro h2,
+.home-section h2 {
+  text-transform: uppercase;
+  line-height: 0.91;
+  margin: 0;
+  font-size: clamp(44px, 5.5vw, 104px);
+}
+.hero-intro h2 {
+  margin-bottom: 20px;
+}
+.hero-bio {
+  right: 4%;
+  margin: 0;
+  width: 21%;
+  font-size: clamp(16px, 1.45vw, 25px);
+  line-height: 1.3;
+}
+.broadcast-button {
+  display: inline-flex;
+  align-items: center;
+  background: var(--signal);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 13px 20px;
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--type);
+}
+.hero-intro .broadcast-button {
+  box-shadow: 4px 4px 0 var(--sun);
+}
+.broadcast-button:hover {
+  text-decoration: underline;
+}
+.home-section {
+  padding: clamp(32px, 4vw, 76px) clamp(18px, 4vw, 72px);
+  background: var(--sun);
+  color: var(--ink);
+}
+.index-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+.index-heading a,
+.project-meta,
+.index-row small {
+  font: .875rem / 1.5 var(--font-code), monospace;
+}
+.index-heading a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2.25vw, 40px);
+  width: 100%;
+  text-align: left;
+}
+.project-link {
+  display: block;
+  border-top: 2px solid currentColor;
+  padding: 12px 0 22px;
+  text-decoration: none;
+}
+.project-art {
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+}
+.project-art img {
+  object-fit: cover;
+  transition: transform .22s;
+}
+.project-link:hover .project-art img {
+  transform: scale(1.025);
+}
+.project-link:hover h3 {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  margin: 14px 0 6px;
+}
+.project-link h3 {
+  font: bold clamp(23px, 2.05vw, 36px) / 1.06 var(--font-body), sans-serif;
+  letter-spacing: -.035em;
+  margin: 0;
+}
+.project-link p {
+  margin: 9px 0 0;
+  max-width: 52ch;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.home-writing {
+  background: var(--ink);
+  color: var(--sun);
+}
+.index-row {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  justify-content: space-between;
+  border-top: 1px solid currentColor;
+  padding: 22px 0;
+  font: bold clamp(21px, 2.2vw, 40px) / 1.12 var(--font-body), sans-serif;
+  text-decoration: none;
+}
+.index-row:hover span {
+  text-decoration: underline;
+}
+.index-row small {
+  flex-shrink: 0;
+}
+.home-about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10%;
+}
+.home-about h2 {
+  font-size: clamp(38px, 4vw, 72px);
+}
+.home-about p {
+  font-size: 1.17rem;
+  max-width: 42ch;
+  line-height: 1.45;
+  margin: 14px 0 22px;
+}
+.home-about .broadcast-button {
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.case-study article,
+article p,
+article li {
+  line-height: 1.62;
+}
+article a {
+  text-decoration: underline;
+  text-underline-offset: .17em;
+}
+.project-source {
+  align-self: flex-start;
+  margin-top: 24px;
+}
+.broadcast-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 30px 4%;
+  background: var(--ink);
+  color: var(--sun);
+  border-top: 1px solid var(--sun);
+}
+.broadcast-footer strong {
+  font: 2rem / 1 var(--font-heading), sans-serif;
+  text-transform: uppercase;
+}
+.broadcast-footer small {
+  font-size: .8rem;
+}
+@media (max-width: 940px) {
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .broadcast-footer {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 700px) {
+  .masthead-inner {
+    flex-wrap: wrap;
+    row-gap: 10px;
+    padding-block: 10px;
+  }
+  .masthead nav {
+    order: 3;
+    width: 100%;
+    gap: 10px 16px;
+  }
+  .masthead nav a {
+    font-size: .8rem;
+    padding: 2px 0;
+  }
+  .broadcast-hero {
+    display: grid;
+    grid-template-columns: .95fr 1fr;
+    gap: 14px;
+    padding-bottom: 24px;
+    align-items: start;
+  }
+  .broadcast-hero picture {
+    grid-column: 1 / -1;
+  }
+  .hero-intro,
+  .hero-bio {
+    position: static;
+    width: auto;
+    margin: 0;
+  }
+  .hero-intro {
+    padding-left: 9%;
+  }
+  .hero-intro h2 {
+    font-size: clamp(30px, 7.5vw, 46px);
+    margin-bottom: 12px;
+  }
+  .hero-intro h2 br {
+    display: none;
+  }
+  .hero-intro .broadcast-button {
+    font-size: .9rem;
+    padding: 10px 12px;
+  }
+  .hero-bio {
+    padding-right: 8%;
+    font-size: 1rem;
+  }
+  .index-row {
+    display: block;
+  }
+  .index-row small {
+    display: block;
+    margin-top: 10px;
+  }
+  .home-about {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+}
+@media (max-width: 600px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+  .broadcast-footer {
+    display: grid;
+  }
+  .index-heading a {
+    font-size: .8rem;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  article a {
+  .project-art img {
     transition: none;
   }
 }
