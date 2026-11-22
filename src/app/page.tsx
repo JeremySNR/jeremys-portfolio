@@ -1,173 +1,163 @@
-import {
-  Heading,
-  Text,
-  Button,
-  Avatar,
-  RevealFx,
-  Column,
-  Badge,
-  Row,
-  Schema,
-  Meta,
-} from "@once-ui-system/core";
-import { home, about, person, baseURL, routes } from "@/resources";
-import { Posts } from "@/components/blog/Posts";
-import { NeuralField } from "@/components/effects/NeuralField";
-import { Reveal } from "@/components/Reveal";
-import { SectionLabel } from "@/components/home/SectionLabel";
-import { PressStrip } from "@/components/home/PressStrip";
-import { Showcase } from "@/components/home/Showcase";
-import { StatBand } from "@/components/home/StatBand";
-import { ResearchPanel } from "@/components/home/ResearchPanel";
-import { EssayList } from "@/components/home/EssayList";
-import { ContactCta } from "@/components/home/ContactCta";
+import { Meta, Schema } from "@once-ui-system/core";
+import Image from "next/image";
+import { ArchiveHighlights } from "@/components/home/ArchiveHighlights";
+import "./HomeUpdates.css";
+import Link from "next/link";
+import { about, baseURL, home, person } from "@/resources";
+import { getPosts } from "@/utils/utils";
+import { Projects } from "@/components/work/Projects";
 
-export async function generateMetadata() {
+export function generateMetadata() {
   return Meta.generate({
     title: home.title,
     description: home.description,
-    baseURL: baseURL,
+    baseURL,
     path: home.path,
     image: home.image,
   });
 }
 
 export default function Home() {
+  const posts = getPosts(["src", "app", "blog", "posts"])
+    .sort((a, b) => b.metadata.publishedAt.localeCompare(a.metadata.publishedAt))
+    .slice(0, 3);
   return (
-    <>
-      <NeuralField />
-      <Column
-        maxWidth="m"
-        gap="xl"
-        paddingY="12"
-        horizontal="center"
-        style={{ position: "relative", zIndex: 1 }}
-      >
-        <Schema
-          as="webPage"
-          baseURL={baseURL}
-          path={home.path}
-          title={home.title}
-          description={home.description}
-          image={`/api/og/generate?title=${encodeURIComponent(home.title)}`}
-          author={{
-            name: person.name,
-            url: `${baseURL}${about.path}`,
-            image: `${baseURL}${person.avatar}`,
-          }}
-        />
-
-        {/* Hero */}
-        <Column fillWidth horizontal="center" gap="m" paddingTop="24">
-          <Column maxWidth="s" horizontal="center" align="center">
-            {home.featured.display && (
-              <RevealFx
-                fillWidth
-                horizontal="center"
-                paddingTop="16"
-                paddingBottom="32"
-                paddingLeft="12"
-              >
-                <Badge
-                  background="brand-alpha-weak"
-                  paddingX="12"
-                  paddingY="4"
-                  onBackground="neutral-strong"
-                  textVariant="label-default-s"
-                  arrow={false}
-                  href={home.featured.href}
-                >
-                  <Row paddingY="2">{home.featured.title}</Row>
-                </Badge>
-              </RevealFx>
-            )}
-            <RevealFx translateY="4" fillWidth horizontal="center" paddingBottom="16">
-              <Heading wrap="balance" variant="display-strong-xl">
-                {home.headline}
-              </Heading>
-            </RevealFx>
-            <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingBottom="32">
-              <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-                {home.subline}
-              </Text>
-            </RevealFx>
-            <RevealFx paddingTop="12" delay={0.4} horizontal="center" paddingLeft="12">
-              <Button
-                id="about"
-                data-border="rounded"
-                href={about.path}
-                variant="secondary"
-                size="m"
-                weight="default"
-                arrowIcon
-              >
-                <Row gap="8" vertical="center" paddingRight="4">
-                  {about.avatar.display && (
-                    <Avatar
-                      marginRight="8"
-                      style={{ marginLeft: "-0.75rem" }}
-                      src={person.avatar}
-                      size="m"
-                    />
-                  )}
-                  {about.title}
-                </Row>
-              </Button>
-            </RevealFx>
-          </Column>
-        </Column>
-
-        {/* Press */}
-        <RevealFx translateY="12" delay={0.6}>
-          <PressStrip />
-        </RevealFx>
-
-        {/* The numbers */}
-        <Reveal>
-          <StatBand />
-        </Reveal>
-
-        {/* Selected work */}
-        <Column fillWidth gap="l">
-          <Reveal>
-            <SectionLabel index="01" title="Selected work" href="/work" linkLabel="All work" />
-          </Reveal>
-          <Showcase />
-        </Column>
-
-        {/* Research & writing */}
-        <Column fillWidth gap="l">
-          <Reveal>
-            <SectionLabel
-              index="02"
-              title="Policy, research & writing"
-              href={routes["/blog"] ? "/blog" : undefined}
-              linkLabel="All writing"
+    <div className="broadcast-home">
+      <Schema
+        as="webPage"
+        baseURL={baseURL}
+        path={home.path}
+        title={home.title}
+        description={home.description}
+        image={home.image}
+        author={{ name: person.name, url: baseURL + about.path, image: baseURL + person.avatar }}
+      />
+      <section className="broadcast-hero" aria-labelledby="hero-name">
+        <h1 id="hero-name" className="sr-only">
+          Jeremy Smith
+        </h1>
+        <picture>
+          <source media="(max-width: 700px)" srcSet="/broadcast/mobile3.webp" />
+          <img
+            src="/broadcast/hero3.webp"
+            width="1600"
+            height="667"
+            alt="Jeremy Smith"
+            fetchPriority="high"
+          />
+        </picture>
+        <div className="hero-intro">
+          <h2>
+            My take
+            <br /> on AI.
+          </h2>
+          <Link className="broadcast-button" href="#portfolio">
+            Explore my work
+          </Link>
+        </div>
+        <p className="hero-bio">
+          I build AI at Travel Counsellors. Here’s my take on the new releases, big ideas and
+          arguments in AI.
+        </p>
+      </section>
+      <section id="portfolio" className="home-section">
+        <div className="index-heading">
+          <h2>Selected work.</h2>
+          <Link href="/work">All projects ↗</Link>
+        </div>
+        <article className="flagship">
+          <Link
+            href="/work/clip-forge"
+            className="flagship-art"
+            aria-label="Read the Cutawan case study"
+          >
+            <Image
+              src="/broadcast/projects/clip-forge.webp"
+              alt="A mechanical splicer cutting a strip of film."
+              width={764}
+              height={508}
+              sizes="(max-width: 700px) 92vw, 50vw"
             />
-          </Reveal>
-          <Reveal>
-            <ResearchPanel />
-          </Reveal>
-          <Reveal delay={0.04}>
-            <EssayList />
-          </Reveal>
-          {routes["/blog"] && (
-            <Reveal delay={0.08}>
-              <Posts range={[1, 2]} columns="2" />
-            </Reveal>
-          )}
-        </Column>
-
-        {/* Contact */}
-        <Column fillWidth gap="l">
-          <Reveal>
-            <SectionLabel index="03" title="Contact" />
-          </Reveal>
-          <Reveal>
-            <ContactCta />
-          </Reveal>
-        </Column>
-      </Column>
-    </>
+          </Link>
+          <div className="flagship-copy">
+            <p className="feature-label">Featured open source</p>
+            <h3>Cutawan.</h3>
+            <p>
+              Give it a two-hour podcast. Get back the moments worth sharing, with captions and a
+              crop that follows the speaker. Keep editing on your desktop, dub the clip, or send the
+              timeline to your editor.
+            </p>
+            <div className="feature-links">
+              <Link className="broadcast-button" href="/work/clip-forge">
+                Inside Cutawan
+              </Link>
+              <a href="https://github.com/JeremySNR/cutawan">View on GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+        <Projects selected={["metachlorian", "pluribus", "neural-voice"]} />
+      </section>
+      <section className="home-section home-writing">
+        <div className="index-heading">
+          <h2>On my mind.</h2>
+          <Link href="/blog">All writing ↗</Link>
+        </div>
+        {posts.map(({ slug, metadata }) => (
+          <Link className="index-row" key={slug} href={`/blog/${slug}`}>
+            <span>{metadata.title}</span>
+            <small>{metadata.publishedAt.slice(0, 10)}</small>
+          </Link>
+        ))}
+      </section>
+      <ArchiveHighlights />
+      <section className="home-section home-photos" aria-labelledby="gallery-heading">
+        <div className="index-heading">
+          <h2 id="gallery-heading">In the frame.</h2>
+          <Link href="/gallery">Full gallery ↗</Link>
+        </div>
+        <div className="gallery-strip">
+          {[
+            ["studio-interview.jpg", "Jeremy seated for a studio interview", "In the studio"],
+            ["PXL_20250319_123231055.jpg", "Jeremy at the Neural Voice stand", "On the stand"],
+            [
+              "PXL_20251013_202014559.NIGHT.jpg",
+              "Jeremy outside the door of 10 Downing Street",
+              "Downing Street",
+            ],
+          ].map(([file, alt, caption]) => (
+            <figure key={file}>
+              <div>
+                <Image
+                  src={`/images/gallery/${file}`}
+                  alt={alt}
+                  fill
+                  sizes="(max-width: 600px) 92vw, 32vw"
+                />
+              </div>
+              <figcaption>{caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+      <section className="home-section home-about">
+        <div>
+          <h2>About Jeremy.</h2>
+          <p>
+            I work on AI in travel, build open-source tools, and research what happens when AI
+            agents disagree.
+          </p>
+          <Link className="broadcast-button" href="/about">
+            My background
+          </Link>
+        </div>
+        <div>
+          <h2>Get in touch.</h2>
+          <p>For speaking, research and project enquiries, you can reach me directly.</p>
+          <a className="broadcast-button" href={`mailto:${person.email}`}>
+            Email me
+          </a>
+        </div>
+      </section>
+    </div>
   );
 }

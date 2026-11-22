@@ -1,18 +1,16 @@
+import { ArchivePhoto } from "@/components/ArchivePhoto";
 import { notFound } from "next/navigation";
 import { getPosts } from "@/utils/utils";
 import {
   Meta,
   Schema,
   AvatarGroup,
-  Button,
   Column,
-  Flex,
   Heading,
   Media,
   Text,
   SmartLink,
   Row,
-  Avatar,
   Line,
 } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
@@ -47,7 +45,7 @@ export async function generateMetadata({
     title: post.metadata.title,
     description: post.metadata.summary,
     baseURL: baseURL,
-    image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
+    image: post.metadata.images[0] || post.metadata.image,
     path: `${work.path}/${post.slug}`,
   });
 }
@@ -74,7 +72,7 @@ export default async function Project({
     })) || [];
 
   return (
-    <Column as="section" maxWidth="m" horizontal="center" gap="l">
+    <Column as="section" className="case-study" maxWidth="m" horizontal="center" gap="l">
       <Schema
         as="blogPosting"
         baseURL={baseURL}
@@ -83,9 +81,7 @@ export default async function Project({
         description={post.metadata.summary}
         datePublished={post.metadata.publishedAt}
         dateModified={post.metadata.publishedAt}
-        image={
-          post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`
-        }
+        image={post.metadata.images[0] || post.metadata.image}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,
@@ -119,17 +115,36 @@ export default async function Project({
         </Row>
       </Row>
       {post.metadata.images.length > 0 && (
-        <Media priority aspectRatio="16 / 9" radius="m" alt="image" src={post.metadata.images[0]} />
+        <Media
+          priority
+          aspectRatio="3 / 2"
+          radius="none"
+          alt={post.metadata.coverAlt || post.metadata.title}
+          src={post.metadata.images[0]}
+        />
       )}
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
         <CustomMDX source={post.content} />
+        {post.metadata.link && (
+          <a className="broadcast-button project-source" href={post.metadata.link}>
+            Visit project source ↗
+          </a>
+        )}
+        {post.metadata.images.length > 1 && (
+          <section className="project-archive" aria-labelledby="project-material">
+            <h2 id="project-material">Project archive</h2>
+            {post.metadata.images.slice(1).map((src, index) => (
+              <ArchivePhoto key={src} src={src} alt={`Original project image ${index + 1} for ${post.metadata.title}`} />
+            ))}
+          </section>
+        )}
       </Column>
       <Column fillWidth gap="40" horizontal="center" marginTop="40">
         <Line maxWidth="40" />
         <Heading as="h2" variant="heading-strong-xl" marginBottom="24">
           Related projects
         </Heading>
-        <Projects exclude={[post.slug]} range={[2]} />
+        <Projects exclude={[post.slug]} range={[1, 3]} />
       </Column>
       <ScrollToHash />
     </Column>

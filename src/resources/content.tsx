@@ -45,10 +45,10 @@ const social: Social = [
 
 const home: Home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: "/broadcast/hero3.webp",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
+  title: `${person.name} | AI, ideas and selected work`,
+  description: "Jeremy Smith on new AI releases, open-source tools, voice technology and multi-agent research.",
   headline: (
     <>
       AI leadership that ships products, wins revenue, and{" "}
@@ -176,7 +176,7 @@ const about: About = {
         images: [
           {
             src: "/images/gallery/tc-together-keynote.jpg",
-            alt: "Jeremy Smith speaking at the TC Together conference in Manchester",
+            alt: "Jeremy speaking to camera in a busy TC Together conference hall.",
             width: 16,
             height: 9,
           },
@@ -282,12 +282,12 @@ const about: About = {
       {
         title: "Director, Institute of Travel & Tourism (ITT)",
         meta: "Board appointment",
-        link: "https://www.itt.co.uk",
+        link: "https://www.itt.co.uk/jeremy-smith",
       },
       {
         title: "TTG 30 Under 30",
         meta: "Tomorrow's travel leaders",
-        link: "https://www.ttgmedia.com",
+        link: "https://www.ttgmedia.com/travel-industry-news/travel-counsellors-ai-lead-technology-should-make-agents-best-version",
       },
     ],
   },
@@ -417,7 +417,7 @@ const about: About = {
         tags: [
           {
             name: "AI",
-            icon: "openai",
+            icon: "cpu",
           },
         ],
         images: [],
@@ -471,72 +471,72 @@ const gallery: Gallery = {
   images: [
     {
       src: "/images/gallery/tc-together-keynote.jpg",
-      alt: "Jeremy Smith speaking at the TC Together conference in Manchester",
+      alt: "Jeremy speaking to camera in a busy TC Together conference hall.",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/studio-interview.jpg",
-      alt: "Jeremy Smith during a studio interview",
+      alt: "Jeremy seated for a studio interview.",
       orientation: "vertical",
     },
     {
       src: "/images/gallery/IMG-20250402-WA0027.jpg",
-      alt: "Gallery photo",
+      alt: "A panel on stage at the Network ITT and Debate ITT event.",
       orientation: "vertical",
     },
     {
       src: "/images/gallery/IMG-20251014-WA0001.jpg",
-      alt: "Gallery photo",
+      alt: "Jeremy in conversation with two guests at a reception.",
       orientation: "vertical",
     },
     {
       src: "/images/gallery/ROZ_8680.jpg",
-      alt: "Gallery photo",
+      alt: "Jeremy standing by a kitchen counter at the Force24 office.",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/PXL_20250319_123231055.jpg",
-      alt: "Gallery photo",
+      alt: "Jeremy at a Neural Voice stand promoting voice AI agents.",
       orientation: "vertical",
     },
     {
       src: "/images/gallery/1241067471_HIGH.jpg",
-      alt: "Gallery photo",
+      alt: "Jeremy holding a glowing lightsaber under purple lighting.",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/PXL_20250916_170927338.jpg",
-      alt: "Gallery photo",
+      alt: "Jeremy taking a street selfie with a guest near the London Eye.",
       orientation: "vertical",
     },
     {
       src: "/images/gallery/IMG20230809090847_01.jpg",
-      alt: "Gallery photo",
+      alt: "Jeremy holding an open laptop outdoors.",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/PXL_20251013_202014559.NIGHT.jpg",
-      alt: "Gallery photo",
+      alt: "Jeremy outside the black front door of 10 Downing Street.",
       orientation: "vertical",
     },
     {
       src: "/images/gallery/IMG-20221207-WA0034.jpg",
-      alt: "Gallery photo",
+      alt: "Jeremy presenting beside a screen in a wood-panelled hall.",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/1_20240223_121141_0000.png",
-      alt: "Gallery photo",
+      alt: "Jeremy on a Neural Voice video cover about booking a sales meeting with AI.",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/20231121_103712_0000.png",
-      alt: "Gallery photo",
+      alt: "Jeremy on a Sales Compass video cover about pitching on a rollercoaster.",
       orientation: "vertical",
     },
     {
       src: "/images/projects/neural-river/1752133774471.jpeg",
-      alt: "Neural River AI Venture Builder",
+      alt: "A presentation to the audience at a Neural River event.",
       orientation: "horizontal",
     },
   ],
@@ -560,7 +560,7 @@ const news: News = {
       title: "AI Steve, the chatbot running for UK Parliament",
       date: "Jun 2024",
       tag: "AI Steve",
-      link: "https://www.google.com/search?q=wired+AI+Steve+morgan+meaker+member+of+parliament",
+      link: "https://www.wired.com/story/ai-candidate-running-for-parliament-uk/",
       featured: true,
     },
     {
@@ -718,13 +718,13 @@ const news: News = {
       outlet: "TTG",
       title: "Named one of TTG's 30 Under 30, the travel industry's ones to watch",
       tag: "Recognition",
-      link: "https://www.ttgmedia.com",
+      link: "https://www.ttgmedia.com/travel-industry-news/travel-counsellors-ai-lead-technology-should-make-agents-best-version",
     },
     {
       outlet: "ITT",
       title: "Appointed Director of the Institute of Travel & Tourism",
       tag: "Recognition",
-      link: "https://www.itt.co.uk",
+      link: "https://www.itt.co.uk/jeremy-smith",
     },
     {
       outlet: "GrantUp",

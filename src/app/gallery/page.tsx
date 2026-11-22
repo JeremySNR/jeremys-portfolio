@@ -1,4 +1,4 @@
-import { Flex, Meta, Schema } from "@once-ui-system/core";
+import { Column, Meta, Schema } from "@once-ui-system/core";
 import GalleryView from "@/components/gallery/GalleryView";
 import { baseURL, gallery, person } from "@/resources";
 
@@ -14,7 +14,7 @@ export async function generateMetadata() {
 
 export default function Gallery() {
   return (
-    <Flex maxWidth="l">
+    <Column maxWidth="l" gap="l">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -28,7 +28,8 @@ export default function Gallery() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
+      <h1 className="broadcast-title">Gallery.</h1>
       <GalleryView />
-    </Flex>
+    </Column>
   );
 }
