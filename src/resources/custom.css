@@ -180,7 +180,7 @@ a {
   letter-spacing: -.02em;
 }
 #content .broadcast-title,
-.work-index > h1 {
+#content .work-index > h1 {
   font-size: clamp(46px, 6vw, 96px);
   text-transform: uppercase;
   line-height: 1;
@@ -571,3 +571,5 @@ article a {
 }
 .broadcast-button { min-height: 44px; }
 .index-heading > a { flex-shrink: 0; white-space: nowrap; }
+
+.about-page a[aria-label] { min-height: 44px; min-width: 44px; }
