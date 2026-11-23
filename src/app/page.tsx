@@ -1,5 +1,6 @@
 import { Meta, Schema } from "@once-ui-system/core";
 import Image from "next/image";
+import { BroadcastHero } from "@/components/home/BroadcastHero";
 import { ArchiveHighlights } from "@/components/home/ArchiveHighlights";
 import "./HomeUpdates.css";
 import Link from "next/link";
@@ -32,34 +33,7 @@ export default function Home() {
         image={home.image}
         author={{ name: person.name, url: baseURL + about.path, image: baseURL + person.avatar }}
       />
-      <section className="broadcast-hero" aria-labelledby="hero-name">
-        <h1 id="hero-name" className="sr-only">
-          Jeremy Smith
-        </h1>
-        <picture className="hero-art">
-          <source media="(max-width: 700px)" srcSet="/broadcast/mobile3.webp" width={780} height={720} />
-          <img
-            src="/broadcast/hero3.webp"
-            width="1600"
-            height="667"
-            alt="Jeremy Smith"
-            fetchPriority="high"
-          />
-        </picture>
-        <div className="hero-intro">
-          <h2>
-            My take
-            <br /> on AI.
-          </h2>
-          <Link className="broadcast-button" href="#portfolio">
-            Explore my work
-          </Link>
-        </div>
-        <p className="hero-bio">
-          I build AI at Travel Counsellors. Here’s my take on the new releases, big ideas and
-          arguments in AI.
-        </p>
-      </section>
+      <BroadcastHero />
       <section id="portfolio" className="home-section">
         <div className="index-heading">
           <h2>Selected work.</h2>
