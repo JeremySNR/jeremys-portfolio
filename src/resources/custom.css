@@ -68,6 +68,18 @@ html:not([data-theme]) {
   --neutral-on-solid-weak: var(--paper);
   --neutral-on-solid-strong: var(--paper);
 }
+/* Fixed-colour sections and controls own their link palette in either theme.
+   Once UI uses the medium token for links and the strong token on hover. */
+.masthead, .home-section, .archive-highlights, .broadcast-button, .skip-link {
+  --brand-on-background-medium: var(--ink);
+  --brand-on-background-strong: var(--ink);
+  --neutral-border-strong: var(--ink);
+}
+.broadcast-hero, .home-writing, .home-photos, .broadcast-footer {
+  --brand-on-background-medium: var(--sun);
+  --brand-on-background-strong: var(--sun);
+  --neutral-border-strong: var(--sun);
+}
 * {
   box-sizing: border-box;
 }
@@ -346,6 +358,21 @@ a {
 article p,
 article li {
   line-height: 1.62;
+}
+/* Prism colours the tokens itself. Keep examples on a single legible palette. */
+#content pre[class*="language-"] {
+  background: var(--ink);
+  color: var(--sun);
+  --neutral-on-background-strong: var(--sun);
+  --neutral-on-background-medium: var(--sun);
+  --neutral-on-background-weak: var(--sun);
+  --code-gray: var(--sun);
+  --code-moss: var(--sun);
+  --code-violet: var(--signal);
+  --code-blue: var(--sun);
+  --code-aqua: var(--sun);
+  --code-green: var(--signal);
+  --code-orange: var(--signal);
 }
 article a {
   text-decoration: underline;

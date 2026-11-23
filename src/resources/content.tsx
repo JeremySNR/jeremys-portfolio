@@ -93,7 +93,7 @@ const home: Home = {
     display: true,
     items: [
       {
-        title: "The Fable Situation Has Moved in the Direction We'd Hope",
+        title: "The Fable Situation Has Moved. Not In The Direction We'd Hope.",
         meta: "Essay on LinkedIn",
         link: "https://www.linkedin.com/pulse/fable-situation-has-moved-direction-wed-hope-jeremy-smith-k1wce/",
       },
@@ -340,7 +340,7 @@ const about: About = {
     title: "Talks & Writing",
     items: [
       {
-        title: "The Fable Situation Has Moved in the Direction We'd Hope",
+        title: "The Fable Situation Has Moved. Not In The Direction We'd Hope.",
         meta: "Essay on LinkedIn",
         link: "https://www.linkedin.com/pulse/fable-situation-has-moved-direction-wed-hope-jeremy-smith-k1wce/",
       },
