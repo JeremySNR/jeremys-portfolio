@@ -36,8 +36,8 @@ export default function Home() {
         <h1 id="hero-name" className="sr-only">
           Jeremy Smith
         </h1>
-        <picture>
-          <source media="(max-width: 700px)" srcSet="/broadcast/mobile3.webp" />
+        <picture className="hero-art">
+          <source media="(max-width: 700px)" srcSet="/broadcast/mobile3.webp" width={780} height={720} />
           <img
             src="/broadcast/hero3.webp"
             width="1600"

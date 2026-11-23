@@ -101,3 +101,100 @@
     font-size: .8rem;
   }
 }
+
+.hero-art {
+  overflow: clip;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .broadcast-hero {
+    --settle: cubic-bezier(.22, 1, .36, 1);
+    --hero-drift: clamp(18px, 3vw, 40px);
+  }
+
+  .hero-art img {
+    transform-origin: 50% 44%;
+    animation: portrait-settle 900ms var(--settle) backwards;
+  }
+
+  .hero-intro h2 {
+    animation: headline-enter 620ms var(--settle) 60ms backwards;
+  }
+
+  .hero-bio,
+  .hero-intro .broadcast-button {
+    animation: hero-copy-enter 560ms var(--settle) 140ms backwards;
+  }
+
+  .hero-intro .broadcast-button {
+    animation-delay: 210ms;
+  }
+
+  .broadcast-hero::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 2px;
+    background: var(--signal);
+    transform-origin: left;
+    animation: broadcast-rule 780ms var(--settle) backwards;
+    pointer-events: none;
+  }
+
+  @supports (animation-timeline: view()) and (animation-range: exit 0% exit 100%) {
+    .hero-art {
+      view-timeline: --portrait block;
+    }
+
+    /* The picture is the stationary frame. Only the image inside it drifts. */
+    .hero-art img {
+      animation: portrait-settle 900ms var(--settle) backwards,
+        portrait-drift auto linear both;
+      animation-timeline: auto, --portrait;
+      animation-range: normal, exit 0% exit 100%;
+    }
+
+    .flagship-copy,
+    .gallery-strip figure {
+      animation: work-enter auto ease-out both;
+      animation-timeline: view(block);
+      animation-range: entry 0% entry 65%;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .broadcast-hero {
+    --hero-drift: 14px;
+  }
+}
+
+@keyframes portrait-settle {
+  from { transform: scale(1.018); }
+  to { transform: scale(1); }
+}
+
+@keyframes headline-enter {
+  from { transform: translateY(.17em); clip-path: inset(-15% -12% 78%); }
+  to { transform: translateY(0); clip-path: inset(-15% -12% -20%); }
+}
+
+@keyframes hero-copy-enter {
+  from { opacity: .48; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes broadcast-rule {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes portrait-drift {
+  from { translate: 0 0; }
+  to { translate: 0 var(--hero-drift); }
+}
+
+@keyframes work-enter {
+  from { transform: translateY(12px); }
+  to { transform: translateY(0); }
+}
